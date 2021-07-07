@@ -27,20 +27,20 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 **Required Must-have Stories**
 
-* User can login
-* User can create a new account
-* User can search for professor
-* User can see reviews made about a professor
-* User can compose a review for a professor
+- [ ] User can login
+- [ ] User can create a new account
+- [ ] User can search for professor
+- [ ] User can see reviews made about a professor
+- [ ] User can compose a review for a professor
 
 **Optional Nice-to-have Stories**
 
-* User can filter reviews
-* User can see a professor's profile page
-* User can see their profile page
-* User can see the profile page of other students, including a history of the students' reviews
-* User can rate other students' reviews
-* User can receive push notifications for new reviews and reminders for posting
+- [ ] User can filter reviews
+- [ ] User can see a professor's profile page
+- [ ] User can see their profile page
+- [ ] User can see the profile page of other students, including a history of the students' reviews
+- [ ] User can rate other students' reviews
+- [ ] User can receive push notifications for new reviews and reminders for posting
 
 
 ### 2. Screen Archetypes
