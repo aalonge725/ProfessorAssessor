@@ -120,15 +120,16 @@ ProfessorAssessor lets students find the right professors and courses for them b
    
 #### Professor
 
-   | objectID        | String                   | Unique id for the professor (default field)                 |
-   | --------------- | ------------------------ | ----------------------------------------------------------- |
-   | createdAt       | DateTime                 | Date when professor is created (default field)              |
-   | updatedAt       | DateTime                 | Date when professor is last updated (default field)         |
-   | name            | String                   | Professor’s name                                            |
-   | reviewsByCourse | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
-   | department      | String                   | Professor’s department                                      |
-   | reviewCount     | Number                   | Number of reviews a professor has received                  |
-   | avgRating       | Number                   | Average rating for professor from their reviews             |
+   | Property    | Type                     | Description                                                 |
+   | ----------- | ------------------------ | ----------------------------------------------------------- |
+   | objectID    | String                   | Unique id for the professor (default field)                 |
+   | createdAt   | DateTime                 | Date when professor is created (default field)              |
+   | updatedAt   | DateTime                 | Date when professor is last updated (default field)         |
+   | name        | String                   | Professor’s name                                            |
+   | courses     | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
+   | department  | String                   | Professor’s department                                      |
+   | reviewCount | Number                   | Number of reviews a professor has received                  |
+   | avgRating   | Number                   | Average rating for professor from their reviews             |
    
 #### Review
 
@@ -156,7 +157,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
 ### Networking
 
 * Reviews screen
-    * (GET) Query all reviews where professor is the one selected by the user
+    * (GET) Query reviews where professor is the one selected by the user
     * (POST) Create a rating on a post
     * (DELETE) Delete an existing rating
 * Create screen
