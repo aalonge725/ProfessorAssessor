@@ -101,6 +101,9 @@
 		F6BAD21E269CAB140071C070 /* ProfessorAssessor */ = {
 			isa = PBXGroup;
 			children = (
+				F6BAD256269CDA460071C070 /* Views */,
+				F6BAD255269CDA3E0071C070 /* Models */,
+				F6BAD254269CDA320071C070 /* View Controllers */,
 				F6BAD21F269CAB140071C070 /* AppDelegate.h */,
 				F6BAD220269CAB140071C070 /* AppDelegate.m */,
 				F6BAD222269CAB140071C070 /* SceneDelegate.h */,
@@ -130,6 +133,27 @@
 				F6BAD248269CAB160071C070 /* Info.plist */,
 			);
 			path = ProfessorAssessorUITests;
+			sourceTree = "<group>";
+		};
+		F6BAD254269CDA320071C070 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F6BAD255269CDA3E0071C070 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6BAD256269CDA460071C070 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
