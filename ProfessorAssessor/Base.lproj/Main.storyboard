@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="2731" y="151"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,13 +39,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdl-2g-r4x">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdl-2g-r4x">
                                 <rect key="frame" x="147" y="336" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-y6-x4G">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-y6-x4G">
                                 <rect key="frame" x="147" y="399" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -55,21 +55,37 @@
                                 <rect key="frame" x="176" y="482" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xn0-Zg-xjc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03u-Wr-Mpv">
                                 <rect key="frame" x="169" y="520" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="didTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQn-YU-zuV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S03-c2-Dnb">
-                                <rect key="frame" x="113" y="558" width="164" height="30"/>
+                                <rect key="frame" x="118" y="558" width="155" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign up using Facebook"/>
+                                <state key="normal" title="Sign up with Facebook"/>
+                                <connections>
+                                    <action selector="didTapSignUpWithFB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ydX-zY-pIV"/>
+                                    <action selector="didTapSignUpWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t5o-CD-fuI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="gDb-y6-x4G" id="ebr-S7-aaT"/>
+                        <outlet property="username" destination="Tdl-2g-r4x" id="kLg-y1-dUt"/>
+                        <segue destination="yKb-M5-Ec2" kind="presentation" identifier="signUpSegue" modalPresentationStyle="fullScreen" id="lpB-HO-aIU"/>
+                        <segue destination="cG8-Pf-J8g" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="LTX-yy-YXY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,12 +94,17 @@
         <!--Tab Bar Controller-->
         <scene sceneID="wEV-kc-2TN">
             <objects>
-                <tabBarController id="cG8-Pf-J8g" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cG8-Pf-J8g" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2ZT-FQ-xhi"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="khb-yd-GtQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="nau-gM-rfb" kind="relationship" relationship="viewControllers" id="czO-Eo-0xv"/>
+                        <segue destination="KPD-nu-WaU" kind="relationship" relationship="viewControllers" id="jeW-SN-gaR"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcq-Ec-Hxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,17 +125,23 @@
             </objects>
             <point key="canvasLocation" x="-398" y="2128"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="aij-Ut-JST">
             <objects>
-                <viewController id="ZGL-ls-Vob" sceneMemberID="viewController">
+                <viewController id="ZGL-ls-Vob" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1Y-if-TGL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="68s-VG-3wb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RQL-s3-jjT"/>
+                    <navigationItem key="navigationItem" id="RQL-s3-jjT">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="1KT-Rc-kll">
+                            <connections>
+                                <action selector="didTapLogout:" destination="ZGL-ls-Vob" id="5IS-iZ-4X1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ra5-8l-8DJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,26 +163,33 @@
             </objects>
             <point key="canvasLocation" x="1091" y="2792"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="oSJ-AJ-XzZ">
             <objects>
-                <viewController id="VJl-h4-uMe" sceneMemberID="viewController">
+                <viewController id="VJl-h4-uMe" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNQ-m1-FsH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="kpX-bJ-tCd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pdn-aQ-HLc"/>
+                    <navigationItem key="navigationItem" id="pdn-aQ-HLc">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qAh-gD-zgo">
+                            <connections>
+                                <action selector="didTappedLogout:" destination="VJl-h4-uMe" id="2lk-aN-TFM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gb-vd-c2H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1974" y="2128"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="UkV-yO-WW9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nau-gM-rfb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="lQE-zo-18f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zdV-yw-MpQ">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -170,10 +204,11 @@
             </objects>
             <point key="canvasLocation" x="365" y="1455"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="I99-1m-FJ7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KPD-nu-WaU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="ZoR-2z-bT8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DgM-55-w71">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -226,6 +261,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
