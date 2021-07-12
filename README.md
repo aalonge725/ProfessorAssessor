@@ -90,46 +90,43 @@ ProfessorAssessor lets students find the right professors and courses for them b
 ### Models
 
 #### User
-   | Property    | Type                        | Description                                                    |
-   | ----------- | --------------------------- | -------------------------------------------------------------- |
-   | objectID    | String                      | Unique id for the user (default field)                         |
-   | createdAt   | DateTime                    | Date when user is created (default field)                      |
-   | updatedAt   | DateTime                    | Date when user is last updated (default field)                 |
-   | username    | String                      | User’s username                                                |
-   | firstName   | String                      | User’s first name                                              |
-   | lastName    | String                      | User’s last name                                               |
-   | password    | String                      | User’s password                                                |
-   | school      | Pointer to School           | User’s school                                                  |
-   | profList    | Array<Pointer to Professor> | List of professors a user has had or currently has             |
-   | programs    | Array<String>               | Programs of study that user majors, minors, or has interest in |
-   | reviewCount | Number                      | Number of reviews a user has posted                            |
-   | reviews     | Array<Pointer to Review>    | List of reviews made by user                                   |
+   | Property      | Type                        | Description                                                    |
+   | ------------- | --------------------------- | -------------------------------------------------------------- |
+   | objectID      | String                      | Unique id for the user (default field)                         |
+   | createdAt     | DateTime                    | Date when user is created (default field)                      |
+   | updatedAt     | DateTime                    | Date when user is last updated (default field)                 |
+   | username      | String                      | User’s username                                                |
+   | firstName     | String                      | User’s first name                                              |
+   | lastName      | String                      | User’s last name                                               |
+   | password      | String                      | User’s password                                                |
+   | school        | Pointer to School           | User’s school                                                  |
+   | professors    | Array<Pointer to Professor> | List of professors a user has had or currently has             |
+   | reviews       | Array<Pointer to Review>    | List of reviews made by user                                   |
 
    
 #### School
 
-   | Property  | Type                        | Description                                      |
-   | --------- | --------------------------- | ------------------------------------------------ |
-   | objectID  | String                      | Unique id for the school (default field)         |
-   | createdAt | DateTime                    | Date when school is created (default field)      |
-   | updatedAt | DateTime                    | Date when school is last updated (default field) |
-   | name      | String                      | School’s name                                    |
-   | profList  | Array<Pointer to Professor> | List of school’s professors                      |
-   | address   | String                      | School’s address                                 |
-   | programs  | Array<String>               | Programs of study available at the school        |
+   | Property    | Type                        | Description                                      |
+   | ----------- | --------------------------- | ------------------------------------------------ |
+   | objectID    | String                      | Unique id for the school (default field)         |
+   | createdAt   | DateTime                    | Date when school is created (default field)      |
+   | updatedAt   | DateTime                    | Date when school is last updated (default field) |
+   | name        | String                      | School’s name                                    |
+   | professors  | Array<Pointer to Professor> | List of school’s professors                      |
+   | address     | String                      | School’s address                                 |
+   | programs    | Array<String>               | Programs of study available at the school        |
    
 #### Professor
 
-   | Property    | Type                     | Description                                                 |
-   | ----------- | ------------------------ | ----------------------------------------------------------- |
-   | objectID    | String                   | Unique id for the professor (default field)                 |
-   | createdAt   | DateTime                 | Date when professor is created (default field)              |
-   | updatedAt   | DateTime                 | Date when professor is last updated (default field)         |
-   | name        | String                   | Professor’s name                                            |
-   | courses     | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
-   | department  | String                   | Professor’s department                                      |
-   | reviewCount | Number                   | Number of reviews a professor has received                  |
-   | avgRating   | Number                   | Average rating for professor from their reviews             |
+   | Property            | Type                     | Description                                                 |
+   | ------------------- | ------------------------ | ----------------------------------------------------------- |
+   | objectID            | String                   | Unique id for the professor (default field)                 |
+   | createdAt           | DateTime                 | Date when professor is created (default field)              |
+   | updatedAt           | DateTime                 | Date when professor is last updated (default field)         |
+   | name                | String                   | Professor’s name                                            |
+   | courses             | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
+   | departmentName      | String                   | Professor’s department                                      |
+   | averageRating       | Number                   | Average rating for professor from their reviews             |
    
 #### Review
 
@@ -138,8 +135,8 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | objectID  | String               | Unique id for the review (default field)         |
    | createdAt | DateTime             | Date when review is created (default field)      |
    | updatedAt | DateTime             | Date when review is last updated (default field) |
-   | author    | Pointer to User      | User who made the review                         |
-   | course    | String               | Course that the review is about                  |
+   | reviewer  | Pointer to User      | User who made the review                         |
+   | course    | Course               | Course that the review is about                  |
    | rating    | Number               | Rating for a professor for a specific course     |
    | content   | String               | Text of a review made by a user                  |
    | professor | Pointer to Professor | The professor that a review is about             |
