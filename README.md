@@ -154,6 +154,15 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | reviews   | Array<Review> | Reviews made by users for a course               |
 
 ### Networking
-- [Add list of network requests by screen ]
+
+* Reviews screen
+    * (GET) Query all reviews where professor is the one selected by the user
+    * (POST) Create a rating on a post
+    * (DELETE) Delete an existing rating
+* Create screen
+    * (POST) Create a new review object
+* Profile screen
+    * (GET) Query logged in user object
+   
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
