@@ -13,6 +13,7 @@
 		F670BBC3269CE8C8001FF9D6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC2269CE8C8001FF9D6 /* LoginViewController.m */; };
 		F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */; };
 		F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC8269CEE07001FF9D6 /* HomeViewController.m */; };
+		F670BBCF269CF38C001FF9D6 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBCE269CF38C001FF9D6 /* Review.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F670BBC7269CEE07001FF9D6 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F670BBC8269CEE07001FF9D6 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		F670BBCD269CF38C001FF9D6 /* Review.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		F670BBCE269CF38C001FF9D6 /* Review.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 		F6BAD255269CDA3E0071C070 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F670BBCD269CF38C001FF9D6 /* Review.h */,
+				F670BBCE269CF38C001FF9D6 /* Review.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				F6BAD232269CAB160071C070 /* main.m in Sources */,
 				F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */,
 				F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */,
+				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,
 				F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

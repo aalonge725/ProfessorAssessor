@@ -45,6 +45,7 @@
             // TODO: handle error
         } else {
             // TODO: manually segue to register view
+            [self performSegueWithIdentifier:@"signUpSegue" sender:self];
         }
     }];
 }
