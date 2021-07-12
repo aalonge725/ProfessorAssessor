@@ -79,7 +79,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
     * Stream
 
 ## Wireframes
-<img src="https://github.com/aalonge725/ProfessorAssessor/blob/develop/wireframe.jpg" width=600>
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/develop/wireframe.JPG" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
