@@ -14,6 +14,12 @@
 		F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */; };
 		F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC8269CEE07001FF9D6 /* HomeViewController.m */; };
 		F670BBCF269CF38C001FF9D6 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBCE269CF38C001FF9D6 /* Review.m */; };
+		F670BBD5269DFFC5001FF9D6 /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBD4269DFFC5001FF9D6 /* School.m */; };
+		F670BBD8269E0079001FF9D6 /* Professor.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBD7269E0079001FF9D6 /* Professor.m */; };
+		F670BBDB269E019C001FF9D6 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBDA269E019C001FF9D6 /* Course.m */; };
+		F670BBDE269E18EE001FF9D6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBDD269E18EE001FF9D6 /* User.m */; };
+		F670BBE1269E1FFD001FF9D6 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */; };
+		F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBE3269E32A3001FF9D6 /* Networker.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -59,6 +65,18 @@
 		F670BBC8269CEE07001FF9D6 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F670BBCD269CF38C001FF9D6 /* Review.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		F670BBCE269CF38C001FF9D6 /* Review.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		F670BBD3269DFFC5001FF9D6 /* School.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = School.h; sourceTree = "<group>"; };
+		F670BBD4269DFFC5001FF9D6 /* School.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
+		F670BBD6269E0079001FF9D6 /* Professor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professor.h; sourceTree = "<group>"; };
+		F670BBD7269E0079001FF9D6 /* Professor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Professor.m; sourceTree = "<group>"; };
+		F670BBD9269E019C001FF9D6 /* Course.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		F670BBDA269E019C001FF9D6 /* Course.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		F670BBDC269E18EE001FF9D6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F670BBDD269E18EE001FF9D6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F670BBDF269E1FFD001FF9D6 /* OnboardingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
+		F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
+		F670BBE2269E32A3001FF9D6 /* Networker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networker.h; sourceTree = "<group>"; };
+		F670BBE3269E32A3001FF9D6 /* Networker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Networker.m; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +146,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F670BBE5269E32C2001FF9D6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F670BBE2269E32A3001FF9D6 /* Networker.h */,
+				F670BBE3269E32A3001FF9D6 /* Networker.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		F6BAD213269CAB140071C070 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				F6BAD256269CDA460071C070 /* Views */,
+				F670BBE5269E32C2001FF9D6 /* Networking */,
 				F6BAD255269CDA3E0071C070 /* Models */,
 				F6BAD254269CDA320071C070 /* View Controllers */,
 				F6BAD21F269CAB140071C070 /* AppDelegate.h */,
@@ -196,6 +224,8 @@
 				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
 				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
 				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
+				F670BBDF269E1FFD001FF9D6 /* OnboardingViewController.h */,
+				F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -205,6 +235,14 @@
 			children = (
 				F670BBCD269CF38C001FF9D6 /* Review.h */,
 				F670BBCE269CF38C001FF9D6 /* Review.m */,
+				F670BBD3269DFFC5001FF9D6 /* School.h */,
+				F670BBD4269DFFC5001FF9D6 /* School.m */,
+				F670BBD6269E0079001FF9D6 /* Professor.h */,
+				F670BBD7269E0079001FF9D6 /* Professor.m */,
+				F670BBD9269E019C001FF9D6 /* Course.h */,
+				F670BBDA269E019C001FF9D6 /* Course.m */,
+				F670BBDC269E18EE001FF9D6 /* User.h */,
+				F670BBDD269E18EE001FF9D6 /* User.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,8 +492,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F670BBC3269CE8C8001FF9D6 /* LoginViewController.m in Sources */,
+				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,
 				F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */,
+				F670BBE1269E1FFD001FF9D6 /* OnboardingViewController.m in Sources */,
+				F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */,
 				F6BAD232269CAB160071C070 /* main.m in Sources */,
+				F670BBDB269E019C001FF9D6 /* Course.m in Sources */,
+				F670BBD5269DFFC5001FF9D6 /* School.m in Sources */,
+				F670BBDE269E18EE001FF9D6 /* User.m in Sources */,
 				F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */,
 				F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */,
 				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,

@@ -1,6 +1,12 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "Networker.h"
+#import "User.h"
+#import "School.h"
+#import "Professor.h"
+#import "Course.h"
+#import "Review.h"
 
 @interface HomeViewController ()
 

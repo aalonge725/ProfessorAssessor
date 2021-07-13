@@ -1,17 +1,17 @@
+@class User;
+@class Professor;
+@class Course;
 #import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Review : PFObject /*<PFSubclassing>
+@interface Review : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSString *identifier;
-@property (nonatomic, strong) PFUser *reviewer;
-// TODO: add course property once Course class is set up
+@property (nonatomic, strong) User *reviewer;
+@property (nonatomic, weak) Course *course;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic, strong) NSString *content;
-// TODO: add professor property once Professor class is set up
-
-// TODO: make postReview method*/
+@property (nonatomic, weak) Professor *professor;
 
 @end
 
