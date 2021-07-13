@@ -114,7 +114,6 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | name        | String                      | School’s name                                    |
    | professors  | Array<Pointer to Professor> | List of school’s professors                      |
    | address     | String                      | School’s address                                 |
-   | programs    | Array<String>               | Programs of study available at the school        |
    
 #### Professor
 
