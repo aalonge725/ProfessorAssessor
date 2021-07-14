@@ -1,0 +1,833 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3666DC4151A1F17356DC2127 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA8F0481F0D90EBCD797DF9 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */; };
+		46CDCAD413F323BCCE07050E /* Pods_ProfessorAssessorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */; };
+		E9404FC20FDE58C7F4A31A12 /* Pods_ProfessorAssessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */; };
+		F670BBC3269CE8C8001FF9D6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC2269CE8C8001FF9D6 /* LoginViewController.m */; };
+		F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */; };
+		F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC8269CEE07001FF9D6 /* HomeViewController.m */; };
+		F670BBCF269CF38C001FF9D6 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBCE269CF38C001FF9D6 /* Review.m */; };
+		F670BBD5269DFFC5001FF9D6 /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBD4269DFFC5001FF9D6 /* School.m */; };
+		F670BBD8269E0079001FF9D6 /* Professor.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBD7269E0079001FF9D6 /* Professor.m */; };
+		F670BBDB269E019C001FF9D6 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBDA269E019C001FF9D6 /* Course.m */; };
+		F670BBDE269E18EE001FF9D6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBDD269E18EE001FF9D6 /* User.m */; };
+		F670BBE1269E1FFD001FF9D6 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */; };
+		F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBE3269E32A3001FF9D6 /* Networker.m */; };
+		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
+		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
+		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
+		F6BAD22C269CAB160071C070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD22B269CAB160071C070 /* Assets.xcassets */; };
+		F6BAD22F269CAB160071C070 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */; };
+		F6BAD232269CAB160071C070 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD231269CAB160071C070 /* main.m */; };
+		F6BAD23C269CAB160071C070 /* ProfessorAssessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD23B269CAB160071C070 /* ProfessorAssessorTests.m */; };
+		F6BAD247269CAB160071C070 /* ProfessorAssessorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6BAD238269CAB160071C070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6BAD214269CAB140071C070 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6BAD21B269CAB140071C070;
+			remoteInfo = ProfessorAssessor;
+		};
+		F6BAD243269CAB160071C070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6BAD214269CAB140071C070 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6BAD21B269CAB140071C070;
+			remoteInfo = ProfessorAssessor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		062FA9BAFBDC6C4A2431EB29 /* Pods-ProfessorAssessorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessorTests.debug.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessorTests/Pods-ProfessorAssessorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		515E246A787D677D89740068 /* Pods-ProfessorAssessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessor.debug.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor.debug.xcconfig"; sourceTree = "<group>"; };
+		63158E9454690C6B9E95E52F /* Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessor-ProfessorAssessorUITests/Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8DA8F0481F0D90EBCD797DF9 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfessorAssessorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE879BC280B9BF9E8D026A0E /* Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessor-ProfessorAssessorUITests/Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfessorAssessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4D26FCE344A0BB93C9F83C0 /* Pods-ProfessorAssessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessor.release.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor.release.xcconfig"; sourceTree = "<group>"; };
+		D0C08B80C2BE1B8477728EBF /* Pods-ProfessorAssessorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessorTests.release.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessorTests/Pods-ProfessorAssessorTests.release.xcconfig"; sourceTree = "<group>"; };
+		F670BBC1269CE8C8001FF9D6 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F670BBC2269CE8C8001FF9D6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F670BBC7269CEE07001FF9D6 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		F670BBC8269CEE07001FF9D6 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		F670BBCD269CF38C001FF9D6 /* Review.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		F670BBCE269CF38C001FF9D6 /* Review.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		F670BBD3269DFFC5001FF9D6 /* School.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = School.h; sourceTree = "<group>"; };
+		F670BBD4269DFFC5001FF9D6 /* School.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
+		F670BBD6269E0079001FF9D6 /* Professor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professor.h; sourceTree = "<group>"; };
+		F670BBD7269E0079001FF9D6 /* Professor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Professor.m; sourceTree = "<group>"; };
+		F670BBD9269E019C001FF9D6 /* Course.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		F670BBDA269E019C001FF9D6 /* Course.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		F670BBDC269E18EE001FF9D6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F670BBDD269E18EE001FF9D6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F670BBDF269E1FFD001FF9D6 /* OnboardingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
+		F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
+		F670BBE2269E32A3001FF9D6 /* Networker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networker.h; sourceTree = "<group>"; };
+		F670BBE3269E32A3001FF9D6 /* Networker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Networker.m; sourceTree = "<group>"; };
+		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F6BAD222269CAB140071C070 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		F6BAD223269CAB140071C070 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		F6BAD229269CAB140071C070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F6BAD22B269CAB160071C070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6BAD22E269CAB160071C070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F6BAD230269CAB160071C070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6BAD231269CAB160071C070 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F6BAD237269CAB160071C070 /* ProfessorAssessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfessorAssessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6BAD23B269CAB160071C070 /* ProfessorAssessorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorAssessorTests.m; sourceTree = "<group>"; };
+		F6BAD23D269CAB160071C070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6BAD242269CAB160071C070 /* ProfessorAssessorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfessorAssessorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorAssessorUITests.m; sourceTree = "<group>"; };
+		F6BAD248269CAB160071C070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6BAD219269CAB140071C070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9404FC20FDE58C7F4A31A12 /* Pods_ProfessorAssessor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD234269CAB160071C070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46CDCAD413F323BCCE07050E /* Pods_ProfessorAssessorTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD23F269CAB160071C070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3666DC4151A1F17356DC2127 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B30936C7323534A1C371B38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				515E246A787D677D89740068 /* Pods-ProfessorAssessor.debug.xcconfig */,
+				C4D26FCE344A0BB93C9F83C0 /* Pods-ProfessorAssessor.release.xcconfig */,
+				BE879BC280B9BF9E8D026A0E /* Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig */,
+				63158E9454690C6B9E95E52F /* Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig */,
+				062FA9BAFBDC6C4A2431EB29 /* Pods-ProfessorAssessorTests.debug.xcconfig */,
+				D0C08B80C2BE1B8477728EBF /* Pods-ProfessorAssessorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		682D7363946A2F903A444F77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */,
+				8DA8F0481F0D90EBCD797DF9 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */,
+				B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F670BBE5269E32C2001FF9D6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F670BBE2269E32A3001FF9D6 /* Networker.h */,
+				F670BBE3269E32A3001FF9D6 /* Networker.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F6BAD213269CAB140071C070 = {
+			isa = PBXGroup;
+			children = (
+				F6BAD21E269CAB140071C070 /* ProfessorAssessor */,
+				F6BAD23A269CAB160071C070 /* ProfessorAssessorTests */,
+				F6BAD245269CAB160071C070 /* ProfessorAssessorUITests */,
+				F6BAD21D269CAB140071C070 /* Products */,
+				3B30936C7323534A1C371B38 /* Pods */,
+				682D7363946A2F903A444F77 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F6BAD21D269CAB140071C070 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */,
+				F6BAD237269CAB160071C070 /* ProfessorAssessorTests.xctest */,
+				F6BAD242269CAB160071C070 /* ProfessorAssessorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6BAD21E269CAB140071C070 /* ProfessorAssessor */ = {
+			isa = PBXGroup;
+			children = (
+				F6BAD256269CDA460071C070 /* Views */,
+				F670BBE5269E32C2001FF9D6 /* Networking */,
+				F6BAD255269CDA3E0071C070 /* Models */,
+				F6BAD254269CDA320071C070 /* View Controllers */,
+				F6BAD21F269CAB140071C070 /* AppDelegate.h */,
+				F6BAD220269CAB140071C070 /* AppDelegate.m */,
+				F6BAD222269CAB140071C070 /* SceneDelegate.h */,
+				F6BAD223269CAB140071C070 /* SceneDelegate.m */,
+				F6BAD228269CAB140071C070 /* Main.storyboard */,
+				F6BAD22B269CAB160071C070 /* Assets.xcassets */,
+				F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */,
+				F6BAD230269CAB160071C070 /* Info.plist */,
+				F6BAD231269CAB160071C070 /* main.m */,
+			);
+			path = ProfessorAssessor;
+			sourceTree = "<group>";
+		};
+		F6BAD23A269CAB160071C070 /* ProfessorAssessorTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6BAD23B269CAB160071C070 /* ProfessorAssessorTests.m */,
+				F6BAD23D269CAB160071C070 /* Info.plist */,
+			);
+			path = ProfessorAssessorTests;
+			sourceTree = "<group>";
+		};
+		F6BAD245269CAB160071C070 /* ProfessorAssessorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */,
+				F6BAD248269CAB160071C070 /* Info.plist */,
+			);
+			path = ProfessorAssessorUITests;
+			sourceTree = "<group>";
+		};
+		F6BAD254269CDA320071C070 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F670BBC1269CE8C8001FF9D6 /* LoginViewController.h */,
+				F670BBC2269CE8C8001FF9D6 /* LoginViewController.m */,
+				F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */,
+				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
+				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
+				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
+				F670BBDF269E1FFD001FF9D6 /* OnboardingViewController.h */,
+				F670BBE0269E1FFD001FF9D6 /* OnboardingViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F6BAD255269CDA3E0071C070 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F670BBCD269CF38C001FF9D6 /* Review.h */,
+				F670BBCE269CF38C001FF9D6 /* Review.m */,
+				F670BBD3269DFFC5001FF9D6 /* School.h */,
+				F670BBD4269DFFC5001FF9D6 /* School.m */,
+				F670BBD6269E0079001FF9D6 /* Professor.h */,
+				F670BBD7269E0079001FF9D6 /* Professor.m */,
+				F670BBD9269E019C001FF9D6 /* Course.h */,
+				F670BBDA269E019C001FF9D6 /* Course.m */,
+				F670BBDC269E18EE001FF9D6 /* User.h */,
+				F670BBDD269E18EE001FF9D6 /* User.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6BAD256269CDA460071C070 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6BAD21B269CAB140071C070 /* ProfessorAssessor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6BAD24B269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessor" */;
+			buildPhases = (
+				70CEADF3B59F88C240A5A2A0 /* [CP] Check Pods Manifest.lock */,
+				F6BAD218269CAB140071C070 /* Sources */,
+				F6BAD219269CAB140071C070 /* Frameworks */,
+				F6BAD21A269CAB140071C070 /* Resources */,
+				61BD55E09A309E89D8B5A0DC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProfessorAssessor;
+			productName = ProfessorAssessor;
+			productReference = F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6BAD236269CAB160071C070 /* ProfessorAssessorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6BAD24E269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessorTests" */;
+			buildPhases = (
+				FD62D3689B6E1C428E686BF1 /* [CP] Check Pods Manifest.lock */,
+				F6BAD233269CAB160071C070 /* Sources */,
+				F6BAD234269CAB160071C070 /* Frameworks */,
+				F6BAD235269CAB160071C070 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6BAD239269CAB160071C070 /* PBXTargetDependency */,
+			);
+			name = ProfessorAssessorTests;
+			productName = ProfessorAssessorTests;
+			productReference = F6BAD237269CAB160071C070 /* ProfessorAssessorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F6BAD241269CAB160071C070 /* ProfessorAssessorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6BAD251269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessorUITests" */;
+			buildPhases = (
+				5B48EA01AB9CE74CC3CC51C8 /* [CP] Check Pods Manifest.lock */,
+				F6BAD23E269CAB160071C070 /* Sources */,
+				F6BAD23F269CAB160071C070 /* Frameworks */,
+				F6BAD240269CAB160071C070 /* Resources */,
+				E3927347CFDA70EEB5434219 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6BAD244269CAB160071C070 /* PBXTargetDependency */,
+			);
+			name = ProfessorAssessorUITests;
+			productName = ProfessorAssessorUITests;
+			productReference = F6BAD242269CAB160071C070 /* ProfessorAssessorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6BAD214269CAB140071C070 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					F6BAD21B269CAB140071C070 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					F6BAD236269CAB160071C070 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = F6BAD21B269CAB140071C070;
+					};
+					F6BAD241269CAB160071C070 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = F6BAD21B269CAB140071C070;
+					};
+				};
+			};
+			buildConfigurationList = F6BAD217269CAB140071C070 /* Build configuration list for PBXProject "ProfessorAssessor" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6BAD213269CAB140071C070;
+			productRefGroup = F6BAD21D269CAB140071C070 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6BAD21B269CAB140071C070 /* ProfessorAssessor */,
+				F6BAD236269CAB160071C070 /* ProfessorAssessorTests */,
+				F6BAD241269CAB160071C070 /* ProfessorAssessorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6BAD21A269CAB140071C070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6BAD22F269CAB160071C070 /* LaunchScreen.storyboard in Resources */,
+				F6BAD22C269CAB160071C070 /* Assets.xcassets in Resources */,
+				F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD235269CAB160071C070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD240269CAB160071C070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B48EA01AB9CE74CC3CC51C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProfessorAssessor-ProfessorAssessorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61BD55E09A309E89D8B5A0DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70CEADF3B59F88C240A5A2A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProfessorAssessor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3927347CFDA70EEB5434219 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor-ProfessorAssessorUITests/Pods-ProfessorAssessor-ProfessorAssessorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor-ProfessorAssessorUITests/Pods-ProfessorAssessor-ProfessorAssessorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor-ProfessorAssessorUITests/Pods-ProfessorAssessor-ProfessorAssessorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD62D3689B6E1C428E686BF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProfessorAssessorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6BAD218269CAB140071C070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F670BBC3269CE8C8001FF9D6 /* LoginViewController.m in Sources */,
+				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,
+				F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */,
+				F670BBE1269E1FFD001FF9D6 /* OnboardingViewController.m in Sources */,
+				F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */,
+				F6BAD232269CAB160071C070 /* main.m in Sources */,
+				F670BBDB269E019C001FF9D6 /* Course.m in Sources */,
+				F670BBD5269DFFC5001FF9D6 /* School.m in Sources */,
+				F670BBDE269E18EE001FF9D6 /* User.m in Sources */,
+				F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */,
+				F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */,
+				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,
+				F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD233269CAB160071C070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6BAD23C269CAB160071C070 /* ProfessorAssessorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAD23E269CAB160071C070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6BAD247269CAB160071C070 /* ProfessorAssessorUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6BAD239269CAB160071C070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6BAD21B269CAB140071C070 /* ProfessorAssessor */;
+			targetProxy = F6BAD238269CAB160071C070 /* PBXContainerItemProxy */;
+		};
+		F6BAD244269CAB160071C070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6BAD21B269CAB140071C070 /* ProfessorAssessor */;
+			targetProxy = F6BAD243269CAB160071C070 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6BAD228269CAB140071C070 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6BAD229269CAB140071C070 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6BAD22E269CAB160071C070 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6BAD249269CAB160071C070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F6BAD24A269CAB160071C070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6BAD24C269CAB160071C070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 515E246A787D677D89740068 /* Pods-ProfessorAssessor.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6BAD24D269CAB160071C070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4D26FCE344A0BB93C9F83C0 /* Pods-ProfessorAssessor.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F6BAD24F269CAB160071C070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 062FA9BAFBDC6C4A2431EB29 /* Pods-ProfessorAssessorTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProfessorAssessor.app/ProfessorAssessor";
+			};
+			name = Debug;
+		};
+		F6BAD250269CAB160071C070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0C08B80C2BE1B8477728EBF /* Pods-ProfessorAssessorTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProfessorAssessor.app/ProfessorAssessor";
+			};
+			name = Release;
+		};
+		F6BAD252269CAB160071C070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE879BC280B9BF9E8D026A0E /* Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProfessorAssessor;
+			};
+			name = Debug;
+		};
+		F6BAD253269CAB160071C070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63158E9454690C6B9E95E52F /* Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XU4A9HU47G;
+				INFOPLIST_FILE = ProfessorAssessorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProfessorAssessor;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6BAD217269CAB140071C070 /* Build configuration list for PBXProject "ProfessorAssessor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6BAD249269CAB160071C070 /* Debug */,
+				F6BAD24A269CAB160071C070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6BAD24B269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6BAD24C269CAB160071C070 /* Debug */,
+				F6BAD24D269CAB160071C070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6BAD24E269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6BAD24F269CAB160071C070 /* Debug */,
+				F6BAD250269CAB160071C070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6BAD251269CAB160071C070 /* Build configuration list for PBXNativeTarget "ProfessorAssessorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6BAD252269CAB160071C070 /* Debug */,
+				F6BAD253269CAB160071C070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6BAD214269CAB140071C070 /* Project object */;
+}
