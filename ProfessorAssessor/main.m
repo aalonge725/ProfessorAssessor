@@ -1,10 +1,3 @@
-//
-//  main.m
-//  ProfessorAssessor
-//
-//  Created by Abraham Alonge on 7/12/21.
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 

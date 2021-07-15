@@ -7,7 +7,9 @@
 
 @implementation Networker
 
-+ (void)createSchoolWithName:(NSString *)name withAddress:(NSString *)address withCompletion:(PFBooleanResultBlock)completion {
++ (void)createSchoolWithName:(NSString *)name
+                 withAddress:(NSString *)address
+              withCompletion:(PFBooleanResultBlock)completion {
     School *newSchool = [School new];
     
     newSchool.name = name;
@@ -16,7 +18,9 @@
     [newSchool saveInBackgroundWithBlock:completion];
 }
 
-+ (void)createProfessorWithName:(NSString *)name withDepartmentName:(NSString *)departmentName withCompletion:(PFBooleanResultBlock)completion {
++ (void)createProfessorWithName:(NSString *)name
+             withDepartmentName:(NSString *)departmentName
+                 withCompletion:(PFBooleanResultBlock)completion {
     Professor *newProfessor = [Professor new];
 
     newProfessor.name = name;
@@ -24,7 +28,8 @@
 
     [newProfessor saveInBackgroundWithBlock:completion];
 }
-+ (void)createCourseWithName:(NSString *)name withCompletion:(PFBooleanResultBlock)completion {
++ (void)createCourseWithName:(NSString *)name
+              withCompletion:(PFBooleanResultBlock)completion {
     Course *newCourse = [Course new];
 
     newCourse.name = name;
@@ -32,7 +37,11 @@
     [newCourse saveInBackgroundWithBlock:completion];
 }
 
-+ (void)buildReview:(Professor *)professor withCourse:(Course *)course withContent:(NSString *)content withRating:(NSNumber *)rating withCompletion:(PFBooleanResultBlock)completion {
++ (void)buildReview:(Professor *)professor
+         withCourse:(Course *)course
+        withContent:(NSString *)content
+         withRating:(NSNumber *)rating
+     withCompletion:(PFBooleanResultBlock)completion {
     // TODO: check if you can create a professor
     // TODO: check if you can create a course
     // TODO: make sure content isn't empty
@@ -46,19 +55,10 @@
     newReview.professor = professor;
 
     [newReview saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error != nil) {
-            NSLog(@"Error posting new review: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully posted new review!");
+        if (error == nil) {
             PFRelation *reviews = [course relationForKey:@"reviews"];
             [reviews addObject:newReview];
-            [course saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error != nil) {
-                    NSLog(@"Error added new review to a course list: %@", error.localizedDescription);
-                } else {
-                    NSLog(@"Successfully added new review to a course list");
-                }
-            }];
+            [course saveInBackground];
         }
     }];
 }
