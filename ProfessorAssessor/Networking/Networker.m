@@ -7,6 +7,31 @@
 
 @implementation Networker
 
++ (void)createSchoolWithName:(NSString *)name withAddress:(NSString *)address withCompletion:(PFBooleanResultBlock)completion {
+    School *newSchool = [School new];
+    
+    newSchool.name = name;
+    newSchool.address = address;
+
+    [newSchool saveInBackgroundWithBlock:completion];
+}
+
++ (void)createProfessorWithName:(NSString *)name withDepartmentName:(NSString *)departmentName withCompletion:(PFBooleanResultBlock)completion {
+    Professor *newProfessor = [Professor new];
+
+    newProfessor.name = name;
+    newProfessor.departmentName = departmentName;
+
+    [newProfessor saveInBackgroundWithBlock:completion];
+}
++ (void)createCourseWithName:(NSString *)name withCompletion:(PFBooleanResultBlock)completion {
+    Course *newCourse = [Course new];
+
+    newCourse.name = name;
+
+    [newCourse saveInBackgroundWithBlock:completion];
+}
+
 + (void)buildReview:(Professor *)professor withCourse:(Course *)course withContent:(NSString *)content withRating:(NSNumber *)rating withCompletion:(PFBooleanResultBlock)completion {
     // TODO: check if you can create a professor
     // TODO: check if you can create a course
