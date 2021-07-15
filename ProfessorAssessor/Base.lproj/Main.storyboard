@@ -56,19 +56,13 @@
                         <viewLayoutGuide key="safeArea" id="mto-ba-eIp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select a School" id="rhd-bs-jR1">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="dSA-1u-Dlz">
-                            <connections>
-                                <segue destination="Y3h-3x-bWJ" kind="show" identifier="" id="cTP-fm-aZE"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Select a School" id="rhd-bs-jR1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fm-qw-XCI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2652" y="151"/>
         </scene>
-        <!--Professor Selection View Controller-->
+        <!--Select Professors-->
         <scene sceneID="cu3-bS-j2N">
             <objects>
                 <viewController storyboardIdentifier="ProfessorSelectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y3h-3x-bWJ" customClass="ProfessorSelectionViewController" sceneMemberID="viewController">
@@ -80,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="D6P-E6-0so">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for professors" id="D6P-E6-0so">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -116,7 +110,7 @@
                         <viewLayoutGuide key="safeArea" id="Z5Y-TZ-zrn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="91m-0A-ekD">
+                    <navigationItem key="navigationItem" title="Select Professors" id="91m-0A-ekD">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="27A-O3-DMe"/>
                     </navigationItem>
                 </viewController>
@@ -165,7 +159,6 @@
                                 <state key="normal" title="Sign up"/>
                                 <connections>
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1GD-5l-f6f"/>
-                                    <segue destination="ldn-Rn-XWI" kind="show" identifier="" id="fuS-b6-YIa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S03-c2-Dnb">
@@ -181,6 +174,7 @@
                     <connections>
                         <outlet property="password" destination="gDb-y6-x4G" id="ebr-S7-aaT"/>
                         <outlet property="username" destination="Tdl-2g-r4x" id="kLg-y1-dUt"/>
+                        <segue destination="ldn-Rn-XWI" kind="show" identifier="schoolSelectionSegue" id="vMz-Hi-gcy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -206,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="1189" y="825"/>
         </scene>
-        <!--View Controller-->
+        <!--Compose Review-->
         <scene sceneID="VnB-rQ-v0M">
             <objects>
-                <viewController id="Jis-hl-jas" sceneMemberID="viewController">
+                <viewController id="Jis-hl-jas" customClass="ComposeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="abY-lh-YgJ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,13 +278,13 @@
                         <viewLayoutGuide key="safeArea" id="Fkd-t5-rwB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="thl-i9-d73"/>
+                    <navigationItem key="navigationItem" title="Compose Review" id="thl-i9-d73"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xx1-hN-pIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1091" y="2784"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="aij-Ut-JST">
             <objects>
                 <viewController id="ZGL-ls-Vob" customClass="HomeViewController" sceneMemberID="viewController">
@@ -351,6 +345,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hqV-NF-dWQ" kind="show" id="j2Y-9f-HIA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -377,7 +374,7 @@
                         <viewLayoutGuide key="safeArea" id="68s-VG-3wb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RQL-s3-jjT">
+                    <navigationItem key="navigationItem" title="Home" id="RQL-s3-jjT">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="1KT-Rc-kll">
                             <connections>
                                 <action selector="logout:" destination="ZGL-ls-Vob" id="5IS-iZ-4X1"/>
@@ -390,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="364.61538461538458" y="2127.7251184834122"/>
         </scene>
-        <!--View Controller-->
+        <!--Professor View Controller-->
         <scene sceneID="A35-nu-7tP">
             <objects>
-                <viewController id="hqV-NF-dWQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfessorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqV-NF-dWQ" customClass="ProfessorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EgI-UB-XT7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,37 +447,37 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Professor X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eL-Gq-OPa">
-                                <rect key="frame" x="114" y="44" width="163" height="36"/>
+                                <rect key="frame" x="114" y="93" width="163" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-27-SbT">
-                                <rect key="frame" x="143" y="88" width="105" height="24"/>
+                                <rect key="frame" x="143" y="137" width="105" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zu1-cY-4vy">
-                                <rect key="frame" x="92" y="119.66666666666652" width="35" height="35"/>
+                                <rect key="frame" x="92" y="168.66666666666652" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d54-vc-qGo">
-                                <rect key="frame" x="135" y="120.66666666666652" width="35" height="35"/>
+                                <rect key="frame" x="135" y="169.66666666666652" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4Tb-XC-nJ4">
-                                <rect key="frame" x="178" y="120.66666666666652" width="35" height="35"/>
+                                <rect key="frame" x="178" y="169.66666666666652" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LZj-4I-RPa">
-                                <rect key="frame" x="221" y="120.66666666666652" width="35" height="35"/>
+                                <rect key="frame" x="221" y="169.66666666666652" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MfU-gq-WyJ">
-                                <rect key="frame" x="264" y="120.66666666666652" width="35" height="35"/>
+                                <rect key="frame" x="264" y="169.66666666666652" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQI-uU-00V">
@@ -561,7 +558,7 @@
         <!--Navigation Controller-->
         <scene sceneID="A72-fc-w7V">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FAZ-QC-5MT" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ComposeViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FAZ-QC-5MT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y5f-7b-c8g">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
