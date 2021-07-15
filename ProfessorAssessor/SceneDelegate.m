@@ -7,12 +7,17 @@
 
 @implementation SceneDelegate
 
-
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-        configuration.applicationId = @"2qBLOkwaoPNgW3eM2jmwKdzCwxrCS1Vi0WMBiHwY";
-        configuration.clientKey = @"x14DUoLsbu24NCHBs6pUqZRYgQW2pBb5Ne6o21kf";
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"];
+        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+
+        NSString *applicationId = [dict objectForKey:@"applicationId"];
+        NSString *clientKey = [dict objectForKey:@"clientKey"];
+
+        configuration.applicationId = applicationId;
+        configuration.clientKey = clientKey;
         configuration.server = @"https://parseapi.back4app.com";
     }];
 

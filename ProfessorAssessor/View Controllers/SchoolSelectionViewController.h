@@ -2,7 +2,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OnboardingViewController : UIViewController
+@interface SchoolSelectionViewController : UIViewController
 
 @end
 
