@@ -26,6 +26,7 @@
 		F670BBF926A0A92D001FF9D6 /* ProfessorSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBF826A0A92D001FF9D6 /* ProfessorSelectionCell.m */; };
 		F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */; };
 		F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */; };
+		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -94,6 +95,8 @@
 		F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorViewController.m; sourceTree = "<group>"; };
 		F670BBFD26A0B65B001FF9D6 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 			children = (
 				F670BBC1269CE8C8001FF9D6 /* LoginViewController.h */,
 				F670BBC2269CE8C8001FF9D6 /* LoginViewController.m */,
+				F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */,
+				F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */,
 				F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */,
 				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
 				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
@@ -524,6 +529,7 @@
 				F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */,
 				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,
 				F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */,
+				F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */,
 				F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */,
 				F670BBE9269F966D001FF9D6 /* SchoolSelectionViewController.m in Sources */,
 				F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */,

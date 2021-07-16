@@ -8,7 +8,6 @@
 @interface LoginViewController ()
 
 - (IBAction)login:(UIButton *)sender;
-- (IBAction)signUp:(UIButton *)sender;
 
 @end
 
@@ -29,21 +28,6 @@
                 [sceneDelegate changeRootViewController:viewController];
             }
         }];
-    }
-}
-
-- (IBAction)signUp:(UIButton *)sender {
-    User *newUser = (User *)[PFUser user];
-
-    newUser.username = self.username.text;
-    newUser.password = self.password.text;
-    // TODO: set school after selected from table view
-
-    // TODO: set professors after selected from table view
-
-    // TODO: check if username is taken; decide which vc users will be registered in
-    if ([self validCredentials]) {
-        [self performSegueWithIdentifier:@"schoolSelectionSegue" sender:self];
     }
 }
 

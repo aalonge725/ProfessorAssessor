@@ -1,5 +1,4 @@
 #import "SchoolSelectionViewController.h"
-#import "Networker.h"
 #import "SchoolSelectionCell.h"
 #import "School.h"
 
@@ -56,12 +55,17 @@
         self.filteredSchools = [self.schools filteredArrayUsingPredicate:predicate];
 
         for (School *school in self.filteredSchools) {
-            NSLog(@"%@ :- %@", school.name, school.address);
         }
     } else {
         self.filteredSchools = self.schools;
     }
     [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    School *school = self.filteredSchools[indexPath.row];
+
+    [self.delegate didSelectSchool:school];
 }
 
 @end
