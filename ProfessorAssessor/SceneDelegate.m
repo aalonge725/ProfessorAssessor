@@ -23,11 +23,19 @@
 
     [Parse initializeWithConfiguration:config];
 
-    if (PFUser.currentUser) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
+    if (PFUser.currentUser) {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    } else {
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }
+}
+
+- (void)changeRootViewController:(UIViewController *)viewController {
+    self.window.rootViewController = viewController;
+
+    [UIView transitionWithView:self.window duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:nil completion:nil];
 }
 
 @end

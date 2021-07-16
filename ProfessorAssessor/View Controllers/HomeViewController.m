@@ -1,6 +1,7 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "SceneDelegate.h"
 
 @interface HomeViewController ()
 
@@ -19,7 +20,9 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 
-        [[UIApplication sharedApplication].keyWindow setRootViewController:loginViewController];
+        SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+        
+        [sceneDelegate changeRootViewController:loginViewController];
     }];
 }
 

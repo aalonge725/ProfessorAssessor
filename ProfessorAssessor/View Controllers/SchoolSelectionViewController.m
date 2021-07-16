@@ -1,6 +1,13 @@
 #import "SchoolSelectionViewController.h"
+#import "SchoolSelectionCell.h"
+#import "School.h"
 
-@interface SchoolSelectionViewController ()
+@interface SchoolSelectionViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray<School *> *schools;
+@property (strong, nonatomic) NSArray<School *> *filteredSchools;
 
 @end
 
@@ -9,7 +16,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // TODO: fetch schools
+    [self fetchSchools];
+}
+
+- (void)fetchSchools {
+    PFQuery *schoolQuery = [School query];
+
+    [schoolQuery orderByAscending:@"name"];
+    [schoolQuery includeKey:@"professors"];
+
+    [schoolQuery findObjectsInBackgroundWithBlock:^(NSArray<School *> *_Nullable schools, NSError *_Nullable error) {
+        if (schools) {
+            self.schools = schools;
+            self.filteredSchools = self.schools;
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.filteredSchools.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SchoolSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SchoolSelectionCell" forIndexPath:indexPath];
+
+    School *school = self.filteredSchools[indexPath.row];
+    [cell setSchool:school];
+
+    return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id _Nullable evaluatedObject, NSDictionary<NSString *,id> *_Nullable bindings) {
+            return [((School *)evaluatedObject).name containsString:searchText];
+        }];
+        self.filteredSchools = [self.schools filteredArrayUsingPredicate:predicate];
+    } else {
+        self.filteredSchools = self.schools;
+    }
+    [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    School *school = self.filteredSchools[indexPath.row];
+
+    [self.delegate didSelectSchool:school];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
 }
 
 @end
