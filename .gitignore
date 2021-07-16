@@ -92,3 +92,5 @@ iOSInjectionProject/
 
 Keys.plist
 ProfessorAssessor.xcworkspace/xcuserdata/aalonge.xcuserdatad/UserInterfaceState.xcuserstate
+*.plist
+
