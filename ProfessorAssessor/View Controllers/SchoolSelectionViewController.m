@@ -53,9 +53,6 @@
             return [((School *)evaluatedObject).name containsString:searchText];
         }];
         self.filteredSchools = [self.schools filteredArrayUsingPredicate:predicate];
-
-        for (School *school in self.filteredSchools) {
-        }
     } else {
         self.filteredSchools = self.schools;
     }
@@ -66,6 +63,10 @@
     School *school = self.filteredSchools[indexPath.row];
 
     [self.delegate didSelectSchool:school];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
 }
 
 @end

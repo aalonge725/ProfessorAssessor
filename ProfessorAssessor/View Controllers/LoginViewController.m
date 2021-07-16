@@ -52,4 +52,8 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
+
 @end

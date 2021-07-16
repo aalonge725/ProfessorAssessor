@@ -1,9 +1,14 @@
 #import "SignUpViewController.h"
+#import "SceneDelegate.h"
 #import "SchoolSelectionViewController.h"
+#import "HomeViewController.h"
 #import "User.h"
 #import "School.h"
 
 @interface SignUpViewController () <SchoolSelectionViewControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *signUpWithFacebookButton;
 
 - (IBAction)signUp:(UIButton *)sender;
 
@@ -13,22 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self disableSignUpFieldsAndButtons];
 }
-
-
 
 - (IBAction)signUp:(UIButton *)sender {
     User *newUser = (User *)[PFUser user];
 
     newUser.username = self.username.text;
     newUser.password = self.password.text;
-    // TODO: set school after selected from table view
+    newUser.school = self.school;
 
-    // TODO: set professors after selected from table view
-
-    // TODO: check if username is taken; decide which vc users will be registered in
     if ([self validCredentials]) {
-        [self performSegueWithIdentifier:@"schoolSelectionSegue" sender:self];
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+
+                SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+                [sceneDelegate changeRootViewController:viewController];
+            } else {
+                [self presentAlertWithTitle:nil withMessage:error.localizedDescription];
+            }
+        }];
     }
 }
 
@@ -55,10 +68,29 @@
 
 - (void)didSelectSchool:(School *)school {
     self.school = school;
-
     self.schoolSelection.text = school.name;
 
+    [self enableSignUpFieldsAndButtons];
+
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)disableSignUpFieldsAndButtons {
+    self.username.enabled = NO;
+    self.password.enabled = NO;
+    self.signUpButton.enabled = NO;
+    self.signUpWithFacebookButton.enabled = NO;
+}
+
+- (void)enableSignUpFieldsAndButtons {
+    self.username.enabled = YES;
+    self.password.enabled = YES;
+    self.signUpButton.enabled = YES;
+    self.signUpWithFacebookButton.enabled = YES;
+}
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Navigation

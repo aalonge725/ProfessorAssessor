@@ -68,13 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="mto-ba-eIp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select a School" id="rhd-bs-jR1">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="0q3-4F-6wX">
-                            <connections>
-                                <action selector="tappedSelect:" destination="ldn-Rn-XWI" id="zM0-SO-dO8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Select a School" id="rhd-bs-jR1"/>
                     <connections>
                         <outlet property="searchBar" destination="ZPF-k0-mWC" id="w8j-Ec-RXh"/>
                         <outlet property="tableView" destination="2iw-63-DLO" id="gRK-OM-H4W"/>
@@ -156,16 +150,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdl-2g-r4x">
-                                <rect key="frame" x="147" y="315" width="97" height="34"/>
+                                <rect key="frame" x="16" y="315" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-y6-x4G">
-                                <rect key="frame" x="147" y="378" width="97" height="34"/>
+                                <rect key="frame" x="16" y="378" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-p6-Heq">
                                 <rect key="frame" x="176" y="461" width="38" height="30"/>
@@ -186,6 +180,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Mtv-4a-RoC" appends="YES" id="jXc-WB-Tcg"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="Tn5-jR-TzD"/>
                     <connections>
@@ -194,8 +192,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Mtv-4a-RoC">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="jUU-JZ-MBb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1906" y="151"/>
+            <point key="canvasLocation" x="1904.6153846153845" y="150.71090047393363"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wEV-kc-2TN">
@@ -224,18 +227,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03u-Wr-Mpv">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03u-Wr-Mpv">
                                 <rect key="frame" x="168" y="518" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="signUp:" destination="1e1-WV-KoD" eventType="touchUpInside" id="1e5-pL-A67"/>
+                                    <action selector="signUp:" destination="1e1-WV-KoD" eventType="touchUpInside" id="bhg-1P-i28"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S03-c2-Dnb">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S03-c2-Dnb">
                                 <rect key="frame" x="117" y="556" width="158" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up with Facebook"/>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProfessorAssessor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaC-OC-1DG">
                                 <rect key="frame" x="95" y="120" width="200" height="30"/>
@@ -266,14 +275,14 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxz-5u-Xrx">
-                                <rect key="frame" x="148" y="371" width="97" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxz-5u-Xrx">
+                                <rect key="frame" x="16" y="371" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCs-gy-fRj">
-                                <rect key="frame" x="147" y="432" width="97" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCs-gy-fRj">
+                                <rect key="frame" x="16" y="432" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -281,17 +290,28 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="axC-Kq-hEh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="tR7-ze-F2z" appends="YES" id="tFo-VK-wAj"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="lYP-vT-aaa"/>
                     <connections>
                         <outlet property="password" destination="YCs-gy-fRj" id="Hr0-ia-jGS"/>
                         <outlet property="schoolSelection" destination="Ai1-E9-DmG" id="HRw-Qb-c2d"/>
+                        <outlet property="signUpButton" destination="03u-Wr-Mpv" id="BNI-Lj-th0"/>
+                        <outlet property="signUpWithFacebookButton" destination="S03-c2-Dnb" id="kUK-t3-Mcb"/>
                         <outlet property="username" destination="uxz-5u-Xrx" id="hyJ-uX-1Yw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hyw-RC-ZI5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tR7-ze-F2z">
+                    <connections>
+                        <action selector="onTap:" destination="1e1-WV-KoD" id="oUf-hh-ypa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2618" y="151"/>
+            <point key="canvasLocation" x="2616.9230769230767" y="150.71090047393363"/>
         </scene>
         <!--Compose Review-->
         <scene sceneID="VnB-rQ-v0M">
