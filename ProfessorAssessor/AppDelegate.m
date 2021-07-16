@@ -1,3 +1,4 @@
+@import FBSDKLoginKit;
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -7,6 +8,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication didFinishLaunchingWithOptions:launchOptions];
+
     return YES;
 }
 

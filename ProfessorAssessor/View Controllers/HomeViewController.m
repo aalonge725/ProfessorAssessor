@@ -16,7 +16,7 @@
 }
 
 - (IBAction)logout:(UIBarButtonItem *)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    [PFUser logOutInBackgroundWithBlock:^(NSError *_Nullable error) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
 

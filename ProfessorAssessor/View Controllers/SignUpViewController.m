@@ -8,7 +8,6 @@
 @interface SignUpViewController () <SchoolSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
-@property (strong, nonatomic) IBOutlet UIButton *signUpWithFacebookButton;
 
 - (IBAction)signUp:(UIButton *)sender;
 
@@ -30,7 +29,7 @@
     newUser.school = self.school;
 
     if ([self validCredentials]) {
-        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
             if (succeeded) {
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
@@ -79,14 +78,12 @@
     self.username.enabled = NO;
     self.password.enabled = NO;
     self.signUpButton.enabled = NO;
-    self.signUpWithFacebookButton.enabled = NO;
 }
 
 - (void)enableSignUpFieldsAndButtons {
     self.username.enabled = YES;
     self.password.enabled = YES;
     self.signUpButton.enabled = YES;
-    self.signUpWithFacebookButton.enabled = YES;
 }
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {

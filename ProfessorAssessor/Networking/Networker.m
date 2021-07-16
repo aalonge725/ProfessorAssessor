@@ -54,7 +54,7 @@
     newReview.content = content;
     newReview.professor = professor;
 
-    [newReview saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    [newReview saveInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
         if (error == nil) {
             PFRelation *reviews = [course relationForKey:@"reviews"];
             [reviews addObject:newReview];

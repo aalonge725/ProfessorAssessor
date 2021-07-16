@@ -1,3 +1,4 @@
+@import FBSDKLoginKit;
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
@@ -8,6 +9,7 @@
 @interface LoginViewController ()
 
 - (IBAction)login:(UIButton *)sender;
+- (IBAction)continueWithFacebook:(UIButton *)sender;
 
 @end
 
@@ -29,6 +31,18 @@
             }
         }];
     }
+}
+
+- (IBAction)continueWithFacebook:(UIButton *)sender {
+    FBSDKLoginManager *manager = [FBSDKLoginManager new];
+    FBSDKLoginConfiguration *config = [[FBSDKLoginConfiguration alloc] initWithPermissions:@[@"public_profile"] tracking:FBSDKLoginTrackingEnabled];
+
+    [manager logInFromViewController:self configuration:config completion:^(FBSDKLoginManagerLoginResult *_Nullable result, NSError *_Nullable error) {
+        if (error == nil && !result.isCancelled) {
+            // TODO: check if user is already registered in Parse; if so, display home page
+            [self performSegueWithIdentifier:@"schoolSelectionSegue" sender:self];
+        }
+    }];
 }
 
 - (BOOL)validCredentials {

@@ -1,3 +1,4 @@
+@import FBSDKLoginKit;
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
 
@@ -25,11 +26,19 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-    if (PFUser.currentUser) {
+    if (PFUser.currentUser || [FBSDKAccessToken currentAccessToken]) {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     } else {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }
+}
+
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+  UIOpenURLContext *context = URLContexts.allObjects.firstObject;
+  [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication
+                                               openURL:context.URL
+                                     sourceApplication:context.options.sourceApplication
+                                            annotation:context.options.annotation];
 }
 
 - (void)changeRootViewController:(UIViewController *)viewController {

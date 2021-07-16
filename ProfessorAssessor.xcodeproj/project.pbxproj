@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0073B887665CC91B5DE3E3 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */; };
 		3666DC4151A1F17356DC2127 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA8F0481F0D90EBCD797DF9 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */; };
 		46CDCAD413F323BCCE07050E /* Pods_ProfessorAssessorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */; };
 		E9404FC20FDE58C7F4A31A12 /* Pods_ProfessorAssessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */; };
@@ -27,6 +28,8 @@
 		F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */; };
 		F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */; };
 		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
+		F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */; };
+		F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0E26A1FF0E001FF9D6 /* FacebookCore */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -98,6 +101,7 @@
 		F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		F670BC0326A1B899001FF9D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */,
+				F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */,
 				E9404FC20FDE58C7F4A31A12 /* Pods_ProfessorAssessor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3666DC4151A1F17356DC2127 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */,
+				2D0073B887665CC91B5DE3E3 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +166,7 @@
 		682D7363946A2F903A444F77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */,
 				BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */,
 				8DA8F0481F0D90EBCD797DF9 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */,
 				B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */,
@@ -305,6 +313,10 @@
 			dependencies = (
 			);
 			name = ProfessorAssessor;
+			packageProductDependencies = (
+				F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */,
+				F670BC0E26A1FF0E001FF9D6 /* FacebookCore */,
+			);
 			productName = ProfessorAssessor;
 			productReference = F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */;
 			productType = "com.apple.product-type.application";
@@ -358,6 +370,7 @@
 				TargetAttributes = {
 					F6BAD21B269CAB140071C070 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					F6BAD236269CAB160071C070 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -378,6 +391,9 @@
 				Base,
 			);
 			mainGroup = F6BAD213269CAB140071C070;
+			packageReferences = (
+				F670BC0B26A1FF0E001FF9D6 /* XCRemoteSwiftPackageReference "Facebook-iOS-SDK" */,
+			);
 			productRefGroup = F6BAD21D269CAB140071C070 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -653,6 +669,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -705,6 +722,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -716,6 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
@@ -723,8 +742,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -735,6 +761,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
@@ -742,8 +769,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -868,6 +901,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F670BC0B26A1FF0E001FF9D6 /* XCRemoteSwiftPackageReference "Facebook-iOS-SDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Facebook/Facebook-iOS-SDK";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F670BC0B26A1FF0E001FF9D6 /* XCRemoteSwiftPackageReference "Facebook-iOS-SDK" */;
+			productName = FacebookLogin;
+		};
+		F670BC0E26A1FF0E001FF9D6 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F670BC0B26A1FF0E001FF9D6 /* XCRemoteSwiftPackageReference "Facebook-iOS-SDK" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F6BAD214269CAB140071C070 /* Project object */;
 }
