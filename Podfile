@@ -7,6 +7,7 @@ target 'ProfessorAssessor' do
 
   # Pods for ProfessorAssessor
     pod 'Parse'
+    pod 'FBSDKLoginKit'
 
   target 'ProfessorAssessorTests' do
     inherit! :search_paths

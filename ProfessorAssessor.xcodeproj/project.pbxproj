@@ -27,7 +27,6 @@
 		F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */; };
 		F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */; };
 		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
-		F670BC0426A1B899001FF9D6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F670BC0326A1B899001FF9D6 /* Info.plist */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -398,7 +397,6 @@
 				F670BBF0269FAB56001FF9D6 /* Keys.plist in Resources */,
 				F6BAD22F269CAB160071C070 /* LaunchScreen.storyboard in Resources */,
 				F6BAD22C269CAB160071C070 /* Assets.xcassets in Resources */,
-				F670BC0426A1B899001FF9D6 /* Info.plist in Resources */,
 				F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
