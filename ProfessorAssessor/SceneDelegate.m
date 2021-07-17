@@ -1,3 +1,4 @@
+@import FBSDKLoginKit;
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
 
@@ -30,6 +31,14 @@
     } else {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }
+}
+
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+  UIOpenURLContext *context = URLContexts.allObjects.firstObject;
+  [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication
+                                               openURL:context.URL
+                                     sourceApplication:context.options.sourceApplication
+                                            annotation:context.options.annotation];
 }
 
 - (void)changeRootViewController:(UIViewController *)viewController {

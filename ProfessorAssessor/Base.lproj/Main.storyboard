@@ -150,19 +150,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdl-2g-r4x">
-                                <rect key="frame" x="16" y="315" width="358" height="34"/>
+                                <rect key="frame" x="16" y="266" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-y6-x4G">
-                                <rect key="frame" x="16" y="378" width="358" height="34"/>
+                                <rect key="frame" x="16" y="329" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-p6-Heq">
-                                <rect key="frame" x="176" y="461" width="38" height="30"/>
+                                <rect key="frame" x="176" y="371" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
@@ -170,11 +170,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSK-e1-i9H">
-                                <rect key="frame" x="83" y="559" width="224" height="30"/>
+                                <rect key="frame" x="83" y="498" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Don't have an account? Sign Up!"/>
                                 <connections>
-                                    <segue destination="1e1-WV-KoD" kind="show" id="QNl-71-fmh"/>
+                                    <segue destination="1e1-WV-KoD" kind="show" identifier="signUpSegue" id="QNl-71-fmh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-cB-nvV">
+                                <rect key="frame" x="113" y="407" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue with Facebook"/>
+                                <connections>
+                                    <action selector="continueWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fdg-p4-TR4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -238,14 +246,6 @@
                                     <action selector="signUp:" destination="1e1-WV-KoD" eventType="touchUpInside" id="bhg-1P-i28"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S03-c2-Dnb">
-                                <rect key="frame" x="117" y="556" width="158" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Up with Facebook"/>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProfessorAssessor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaC-OC-1DG">
                                 <rect key="frame" x="95" y="120" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -285,7 +285,7 @@
                                 <rect key="frame" x="16" y="432" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="axC-Kq-hEh"/>
@@ -300,7 +300,6 @@
                         <outlet property="password" destination="YCs-gy-fRj" id="Hr0-ia-jGS"/>
                         <outlet property="schoolSelection" destination="Ai1-E9-DmG" id="HRw-Qb-c2d"/>
                         <outlet property="signUpButton" destination="03u-Wr-Mpv" id="BNI-Lj-th0"/>
-                        <outlet property="signUpWithFacebookButton" destination="S03-c2-Dnb" id="kUK-t3-Mcb"/>
                         <outlet property="username" destination="uxz-5u-Xrx" id="hyJ-uX-1Yw"/>
                     </connections>
                 </viewController>

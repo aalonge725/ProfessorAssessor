@@ -1,13 +1,18 @@
+@import FBSDKLoginKit;
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
-#import "User.h"
 #import "HomeViewController.h"
 #import "SchoolSelectionViewController.h"
+#import "SignUpViewController.h"
+#import "User.h"
 
 @interface LoginViewController ()
 
+@property (strong, nonatomic) NSDictionary *requestResult;
+
 - (IBAction)login:(UIButton *)sender;
+- (IBAction)continueWithFacebook:(UIButton *)sender;
 
 @end
 
@@ -18,17 +23,75 @@
     NSString *password = self.password.text;
 
     if ([self validCredentials]) {
-        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+        [PFUser logInWithUsernameInBackground:username
+                                     password:password
+                                        block:^(PFUser *user, NSError *error) {
             if (error == nil) {
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-
-                SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-
-                [sceneDelegate changeRootViewController:viewController];
+                [self displayHomePage];
             }
         }];
     }
+}
+
+- (IBAction)continueWithFacebook:(UIButton *)sender {
+    FBSDKLoginManager *manager = [FBSDKLoginManager new];
+    FBSDKLoginConfiguration *configuration = [[FBSDKLoginConfiguration alloc] initWithPermissions:@[@"public_profile", @"email"] tracking:FBSDKLoginTrackingEnabled];
+
+    [self displayFacebookLoginWithManager:manager withConfiguration:configuration];
+}
+
+- (void)displayFacebookLoginWithManager:(FBSDKLoginManager *)manager
+                      withConfiguration:(FBSDKLoginConfiguration *)configuration {
+    [manager logInFromViewController:self
+                       configuration:configuration
+                          completion:^(FBSDKLoginManagerLoginResult *_Nullable result, NSError *_Nullable error) {
+        if (error == nil && !result.isCancelled) {
+            FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                          initWithGraphPath:@"/me"
+                                          parameters:@{@"fields":@"first_name,last_name,email"}
+                                          HTTPMethod:@"GET"];
+
+            [self fetchUserInformationWithRequest:request];
+        }
+    }];
+}
+
+- (void)fetchUserInformationWithRequest:(FBSDKGraphRequest *)request {
+    [request startWithCompletion:^(id<FBSDKGraphRequestConnecting> _Nullable connection, id _Nullable result, NSError *_Nullable error) {
+        if (result) {
+            self.requestResult = @{@"first_name":result[@"first_name"], @"last_name":result[@"last_name"], @"email":result[@"email"]};
+            NSString *email = result[@"email"];
+
+            [self handleFacebookLoginWithEmail:email];
+        }
+    }];
+}
+
+- (void)handleFacebookLoginWithEmail:(NSString *)email {
+    PFQuery *userQuery = [User query];
+
+    [userQuery whereKey:@"email" equalTo:email];
+
+    [userQuery countObjectsInBackgroundWithBlock:^(int count, NSError *_Nullable error) {
+        if (count == 0) {
+            [self performSegueWithIdentifier:@"signUpSegue" sender:self];
+        } else {
+            [PFUser logInWithUsernameInBackground:email password:email block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+                if (error == nil) {
+                    [self displayHomePage];
+                }
+            }];
+        }
+    }];
+}
+
+- (void)displayHomePage {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+    [sceneDelegate changeRootViewController:viewController];
 }
 
 - (BOOL)validCredentials {
@@ -54,6 +117,14 @@
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    SignUpViewController *viewController = [segue destinationViewController];
+
+    viewController.requestResult = self.requestResult;
 }
 
 @end

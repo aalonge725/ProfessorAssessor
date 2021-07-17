@@ -8,6 +8,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // TODO: fetch reviews
 }
 
 @end

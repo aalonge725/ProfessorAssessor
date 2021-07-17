@@ -1,3 +1,4 @@
+@import FBSDKLoginKit;
 #import "SignUpViewController.h"
 #import "SceneDelegate.h"
 #import "SchoolSelectionViewController.h"
@@ -8,7 +9,9 @@
 @interface SignUpViewController () <SchoolSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
-@property (strong, nonatomic) IBOutlet UIButton *signUpWithFacebookButton;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSString *email;
 
 - (IBAction)signUp:(UIButton *)sender;
 
@@ -20,29 +23,64 @@
     [super viewDidLoad];
 
     [self disableSignUpFieldsAndButtons];
+
+    [self saveFacebookAccountInformation];
 }
 
 - (IBAction)signUp:(UIButton *)sender {
+    if (self.email != nil) {
+        User *newUser = [self createUserWithFacebookLogin];
+
+        [self signUpNewUser:newUser];
+    } else {
+        User *newUser = [self createUserWithUsernameAndPassword];
+
+        if ([self validCredentials]) {
+            [self signUpNewUser:newUser];
+        }
+    }
+}
+
+- (User *)createUserWithFacebookLogin {
+    User *newUser = (User *)[PFUser user];
+
+    newUser.username = self.email;
+    newUser.password = self.email;
+    newUser.firstName = self.firstName;
+    newUser.lastName = self.lastName;
+    newUser.email = self.email;
+    newUser.school = self.school;
+
+    return newUser;
+}
+
+- (User *)createUserWithUsernameAndPassword {
     User *newUser = (User *)[PFUser user];
 
     newUser.username = self.username.text;
     newUser.password = self.password.text;
     newUser.school = self.school;
 
-    if ([self validCredentials]) {
-        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    return newUser;
+}
 
-                SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+- (void)signUpNewUser:(User *)newUser {
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
+        if (succeeded) {
+            [self displayHomePage];
+        } else {
+            [self presentAlertWithTitle:nil withMessage:error.localizedDescription];
+        }
+    }];
+}
 
-                [sceneDelegate changeRootViewController:viewController];
-            } else {
-                [self presentAlertWithTitle:nil withMessage:error.localizedDescription];
-            }
-        }];
-    }
+- (void)displayHomePage {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomeViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+    [sceneDelegate changeRootViewController:viewController];
 }
 
 - (BOOL)validCredentials {
@@ -75,18 +113,27 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)saveFacebookAccountInformation {
+    self.firstName = self.requestResult[@"first_name"];
+    self.lastName = self.requestResult[@"last_name"];
+    self.email = self.requestResult[@"email"];
+}
+
 - (void)disableSignUpFieldsAndButtons {
+    if (FBSDKAccessToken.currentAccessTokenIsActive) {
+        [self.username setHidden:YES];
+        [self.password setHidden:YES];
+    }
+    
     self.username.enabled = NO;
     self.password.enabled = NO;
     self.signUpButton.enabled = NO;
-    self.signUpWithFacebookButton.enabled = NO;
 }
 
 - (void)enableSignUpFieldsAndButtons {
     self.username.enabled = YES;
     self.password.enabled = YES;
     self.signUpButton.enabled = YES;
-    self.signUpWithFacebookButton.enabled = YES;
 }
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {

@@ -8,6 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *schoolSelection;
 @property (strong, nonatomic) IBOutlet UITextField *username;
 @property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) NSDictionary *requestResult;
 @property (strong, nonatomic) School *school;
 
 @end
