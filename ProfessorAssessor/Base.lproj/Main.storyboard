@@ -174,7 +174,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Don't have an account? Sign Up!"/>
                                 <connections>
-                                    <segue destination="1e1-WV-KoD" kind="show" identifier="schoolSelectionSegue" id="QNl-71-fmh"/>
+                                    <segue destination="1e1-WV-KoD" kind="show" identifier="signUpSegue" id="QNl-71-fmh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-cB-nvV">
