@@ -44,8 +44,8 @@
 - (User *)createUserWithFacebookLogin {
     User *newUser = (User *)[PFUser user];
 
-    newUser.username = [[NSUUID UUID] UUIDString];
-    newUser.password = [[NSUUID UUID] UUIDString];
+    newUser.username = self.email;
+    newUser.password = self.email;
     newUser.firstName = self.firstName;
     newUser.lastName = self.lastName;
     newUser.email = self.email;

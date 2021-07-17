@@ -1,4 +1,5 @@
 @import Parse;
+@import FBSDKLoginKit;
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
@@ -13,6 +14,10 @@
 
 - (IBAction)logout:(UIBarButtonItem *)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError *_Nullable error) {
+        if (FBSDKAccessToken.currentAccessTokenIsActive) {
+            [[FBSDKLoginManager alloc] logOut];
+        }
+
         [self displayLoginPage];
     }];
 }

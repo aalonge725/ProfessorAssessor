@@ -26,7 +26,7 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-    if (PFUser.currentUser || FBSDKAccessToken.currentAccessTokenIsActive) {
+    if (PFUser.currentUser) {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     } else {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

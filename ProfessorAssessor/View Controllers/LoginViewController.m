@@ -76,7 +76,11 @@
         if (count == 0) {
             [self performSegueWithIdentifier:@"signUpSegue" sender:self];
         } else {
-            [self displayHomePage];
+            [PFUser logInWithUsernameInBackground:email password:email block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+                if (error == nil) {
+                    [self displayHomePage];
+                }
+            }];
         }
     }];
 }
