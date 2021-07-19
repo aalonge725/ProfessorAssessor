@@ -5,15 +5,16 @@
 #import "HomeViewController.h"
 #import "User.h"
 #import "School.h"
+#import "FacebookUser.h"
 
 @interface SignUpViewController () <SchoolSelectionViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
-@property (strong, nonatomic) NSString *firstName;
-@property (strong, nonatomic) NSString *lastName;
-@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) IBOutlet UIButton *signUpWithFacebookButton;
+@property (strong, nonatomic) FacebookUser *user;
 
 - (IBAction)signUp:(UIButton *)sender;
+- (IBAction)signUpWithFacebook:(UIButton *)sender;
 
 @end
 
@@ -23,32 +24,24 @@
     [super viewDidLoad];
 
     [self disableSignUpFieldsAndButtons];
-
-    [self saveFacebookAccountInformation];
 }
 
 - (IBAction)signUp:(UIButton *)sender {
-    if (self.email != nil) {
-        User *newUser = [self createUserWithFacebookLogin];
+    User *newUser = [self createUserWithUsernameAndPassword];
 
+    if ([self validCredentials]) {
         [self signUpNewUser:newUser];
-    } else {
-        User *newUser = [self createUserWithUsernameAndPassword];
-
-        if ([self validCredentials]) {
-            [self signUpNewUser:newUser];
-        }
     }
 }
 
 - (User *)createUserWithFacebookLogin {
     User *newUser = (User *)[PFUser user];
 
-    newUser.username = self.email;
-    newUser.password = self.email;
-    newUser.firstName = self.firstName;
-    newUser.lastName = self.lastName;
-    newUser.email = self.email;
+    newUser.username = self.user.email;
+    newUser.password = self.user.email;
+    newUser.firstName = self.user.firstName;
+    newUser.lastName = self.user.lastName;
+    newUser.email = self.user.email;
     newUser.school = self.school;
 
     return newUser;
@@ -65,11 +58,80 @@
 }
 
 - (void)signUpNewUser:(User *)newUser {
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
+    [newUser signUpInBackgroundWithBlock:^(
+                                           BOOL succeeded,
+                                           NSError *_Nullable error) {
         if (succeeded) {
             [self displayHomePage];
         } else {
             [self presentAlertWithTitle:nil withMessage:error.localizedDescription];
+        }
+    }];
+}
+
+- (IBAction)signUpWithFacebook:(UIButton *)sender {
+    FBSDKLoginManager *manager = [FBSDKLoginManager new];
+
+    [self displayFacebookLoginWithManager:manager];
+}
+
+- (void)displayFacebookLoginWithManager:(FBSDKLoginManager *)manager {
+    [manager logInWithPermissions:@[@"public_profile", @"email"]
+               fromViewController:self
+                          handler:^(FBSDKLoginManagerLoginResult *_Nullable result,
+                                    NSError *_Nullable error) {
+        if (error == nil && !result.isCancelled) {
+            FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                          initWithGraphPath:@"/me"
+                                          parameters:@{@"fields":@"first_name,last_name,email"}
+                                          HTTPMethod:@"GET"];
+
+            [self fetchUserInformationWithRequest:request];
+        }
+    }];
+}
+
+- (void)fetchUserInformationWithRequest:(FBSDKGraphRequest *)request {
+    [request
+     startWithCompletion:^(
+                           id<FBSDKGraphRequestConnecting> _Nullable connection,
+                           id _Nullable result,
+                           NSError *_Nullable error) {
+        if (result) {
+            FacebookUser *user = [FacebookUser
+                                  createUserWithFirstName:result[@"first_name"]
+                                  lastName:result[@"last_name"]
+                                  email:result[@"email"]];
+
+            self.user = user;
+
+            [self completeSignUpWithFacebookUser:user];
+        }
+    }];
+}
+
+- (void)completeSignUpWithFacebookUser:(FacebookUser *)user {
+    PFQuery *userQuery = [User query];
+
+    [userQuery whereKey:@"email" equalTo:user.email];
+
+    [userQuery
+     countObjectsInBackgroundWithBlock:^(
+                                         int count,
+                                         NSError *_Nullable error) {
+        if (count == 0) {
+            User *newUser = [self createUserWithFacebookLogin];
+
+            [self signUpNewUser:newUser];
+        } else {
+            [PFUser
+             logInWithUsernameInBackground:user.email
+             password:user.email
+             block:^(PFUser *_Nullable user, NSError *_Nullable error) {
+                if (error == nil) {
+                    [self displayHomePage];
+                }
+            }];
         }
     }];
 }
@@ -97,7 +159,10 @@
 - (void)presentAlertWithTitle:(NSString *)title withMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
 
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
     }];
     [alert addAction:okAction];
 
@@ -113,22 +178,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)saveFacebookAccountInformation {
-    self.firstName = self.user.firstName;
-    self.lastName = self.user.lastName;
-    self.email = self.user.email;
-}
-
 - (void)disableSignUpFieldsAndButtons {
     self.username.enabled = NO;
     self.password.enabled = NO;
     self.signUpButton.enabled = NO;
+    self.signUpWithFacebookButton.enabled = NO;
 }
 
 - (void)enableSignUpFieldsAndButtons {
     self.username.enabled = YES;
     self.password.enabled = YES;
     self.signUpButton.enabled = YES;
+    self.signUpWithFacebookButton.enabled = YES;
 }
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {

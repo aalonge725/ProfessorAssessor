@@ -1,7 +1,7 @@
 @import Parse;
 @import FBSDKLoginKit;
 #import "ProfileViewController.h"
-#import "LoginViewController.h"
+#import "LogInOrSignUpViewController.h"
 #import "SceneDelegate.h"
 
 @interface ProfileViewController ()
@@ -22,10 +22,11 @@
 
 - (void)displayLoginPage {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    LogInOrSignUpViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"LogInOrSignUpViewController"];
 
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-    [sceneDelegate changeRootViewController:loginViewController];
+    
+    [sceneDelegate changeRootViewController:viewController];
 }
 
 @end

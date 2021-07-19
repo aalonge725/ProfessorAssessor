@@ -1,6 +1,7 @@
 @import FBSDKLoginKit;
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
+#import "LogInOrSignUpViewController.h"
 
 @interface SceneDelegate ()
 
@@ -29,7 +30,7 @@
     if (PFUser.currentUser) {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     } else {
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LogInOrSignUpViewController"];
     }
 }
 

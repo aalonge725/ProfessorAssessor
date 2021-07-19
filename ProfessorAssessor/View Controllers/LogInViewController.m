@@ -1,5 +1,5 @@
 @import FBSDKLoginKit;
-#import "LoginViewController.h"
+#import "LogInViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "HomeViewController.h"
@@ -8,25 +8,24 @@
 #import "FacebookUser.h"
 #import "User.h"
 
-@interface LoginViewController ()
+@interface LogInViewController ()
 
-@property (strong, nonatomic) FacebookUser *user;
-
-- (IBAction)login:(UIButton *)sender;
-- (IBAction)continueWithFacebook:(UIButton *)sender;
+- (IBAction)logIn:(UIButton *)sender;
+- (IBAction)logInWithFacebook:(UIButton *)sender;
 
 @end
 
-@implementation LoginViewController
+@implementation LogInViewController
 
-- (IBAction)login:(UIButton *)sender {
+- (IBAction)logIn:(UIButton *)sender {
     NSString *username = self.username.text;
     NSString *password = self.password.text;
 
     if ([self validCredentials]) {
         [PFUser logInWithUsernameInBackground:username
                                      password:password
-                                        block:^(PFUser *user, NSError *error) {
+                                        block:^(PFUser *user,
+                                                NSError *error) {
             if (error == nil) {
                 [self displayHomePage];
             }
@@ -34,7 +33,7 @@
     }
 }
 
-- (IBAction)continueWithFacebook:(UIButton *)sender {
+- (IBAction)logInWithFacebook:(UIButton *)sender {
     FBSDKLoginManager *manager = [FBSDKLoginManager new];
 
     [self displayFacebookLoginWithManager:manager];
@@ -43,7 +42,9 @@
 - (void)displayFacebookLoginWithManager:(FBSDKLoginManager *)manager {
     [manager logInWithPermissions:@[@"public_profile", @"email"]
                fromViewController:self
-                          handler:^(FBSDKLoginManagerLoginResult * _Nullable result, NSError * _Nullable error) {
+                          handler:^(
+                                    FBSDKLoginManagerLoginResult *_Nullable result,
+                                    NSError *_Nullable error) {
         if (error == nil && !result.isCancelled) {
             FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
                                           initWithGraphPath:@"/me"
@@ -56,11 +57,16 @@
 }
 
 - (void)fetchUserInformationWithRequest:(FBSDKGraphRequest *)request {
-    [request startWithCompletion:^(id<FBSDKGraphRequestConnecting> _Nullable connection, id _Nullable result, NSError *_Nullable error) {
+    [request
+     startWithCompletion:^(
+                           id<FBSDKGraphRequestConnecting> _Nullable connection,
+                           id _Nullable result,
+                           NSError *_Nullable error) {
         if (result) {
-            FacebookUser *user = [FacebookUser createUserWithFirstName:result[@"first_name"] lastName:result[@"last_name"] email:result[@"email"]];
-
-            self.user = user;
+            FacebookUser *user = [FacebookUser
+                                  createUserWithFirstName:result[@"first_name"]
+                                  lastName:result[@"last_name"]
+                                  email:result[@"email"]];
 
             [self completeLoginWithFacebookUser:user];
         }
@@ -72,11 +78,17 @@
 
     [userQuery whereKey:@"email" equalTo:user.email];
 
-    [userQuery countObjectsInBackgroundWithBlock:^(int count, NSError *_Nullable error) {
+    [userQuery
+     countObjectsInBackgroundWithBlock:^(
+                                         int count,
+                                         NSError *_Nullable error) {
         if (count == 0) {
-            [self performSegueWithIdentifier:@"signUpSegue" sender:self];
+            [self presentAlertWithTitle:nil withMessage:@"No account associated with this Facebook login. Please click 'Back' to sign up."];
         } else {
-            [PFUser logInWithUsernameInBackground:user.email password:user.email block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+            [PFUser
+             logInWithUsernameInBackground:user.email
+             password:user.email
+             block:^(PFUser *_Nullable user, NSError *_Nullable error) {
                 if (error == nil) {
                     [self displayHomePage];
                 }
@@ -108,7 +120,10 @@
 - (void)presentAlertWithTitle:(NSString *)title withMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
 
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
     }];
     [alert addAction:okAction];
 
@@ -117,14 +132,6 @@
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SignUpViewController *viewController = [segue destinationViewController];
-
-    viewController.user = self.user;
 }
 
 @end
