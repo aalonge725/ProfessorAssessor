@@ -114,17 +114,12 @@
 }
 
 - (void)saveFacebookAccountInformation {
-    self.firstName = self.requestResult[@"first_name"];
-    self.lastName = self.requestResult[@"last_name"];
-    self.email = self.requestResult[@"email"];
+    self.firstName = self.user.firstName;
+    self.lastName = self.user.lastName;
+    self.email = self.user.email;
 }
 
 - (void)disableSignUpFieldsAndButtons {
-    if (FBSDKAccessToken.currentAccessTokenIsActive) {
-        [self.username setHidden:YES];
-        [self.password setHidden:YES];
-    }
-    
     self.username.enabled = NO;
     self.password.enabled = NO;
     self.signUpButton.enabled = NO;

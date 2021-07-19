@@ -30,6 +30,7 @@
 		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
 		F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */; };
 		F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0E26A1FF0E001FF9D6 /* FacebookCore */; };
+		F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -100,8 +101,10 @@
 		F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		F670BC0326A1B899001FF9D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookUser.h; sourceTree = "<group>"; };
+		F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUser.m; sourceTree = "<group>"; };
+		F6B8405926A2AA55004007AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -221,7 +224,7 @@
 				F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */,
 				F6BAD231269CAB160071C070 /* main.m */,
 				F670BBEF269FAB56001FF9D6 /* Keys.plist */,
-				F670BC0326A1B899001FF9D6 /* Info.plist */,
+				F6B8405926A2AA55004007AB /* Info.plist */,
 			);
 			path = ProfessorAssessor;
 			sourceTree = "<group>";
@@ -280,6 +283,8 @@
 				F670BBDA269E019C001FF9D6 /* Course.m */,
 				F670BBDC269E18EE001FF9D6 /* User.h */,
 				F670BBDD269E18EE001FF9D6 /* User.m */,
+				F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */,
+				F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -543,6 +548,7 @@
 			files = (
 				F670BBC3269CE8C8001FF9D6 /* LoginViewController.m in Sources */,
 				F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */,
+				F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */,
 				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,
 				F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */,
 				F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */,
