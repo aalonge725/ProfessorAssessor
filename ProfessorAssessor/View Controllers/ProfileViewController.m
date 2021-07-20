@@ -12,7 +12,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *username;
 @property (strong, nonatomic) User *user;
 
-
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
 @end

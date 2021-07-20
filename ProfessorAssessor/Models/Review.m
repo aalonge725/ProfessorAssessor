@@ -5,6 +5,9 @@
 
 @implementation Review
 
+@dynamic identifier;
+@dynamic createdAt;
+@dynamic updatedAt;
 @dynamic reviewer;
 @dynamic course;
 @dynamic rating;
@@ -13,6 +16,23 @@
 
 + (nonnull NSString *)parseClassName {
     return @"Review";
+}
+
++ (Review *)reviewFromPFObject:(PFObject *)object {
+    Review *review = [Review new];
+
+    if (object) {
+        review.identifier = object[@"objectId"];
+        review.createdAt = object[@"createdAt"];
+        review.updatedAt = object[@"updatedAt"];
+        review.reviewer = object[@"reviewer"];
+        review.course = object[@"course"];
+        review.rating = object[@"rating"];
+        review.content = object[@"content"];
+        review.professor = object[@"professor"];
+    }
+
+    return review;
 }
 
 @end

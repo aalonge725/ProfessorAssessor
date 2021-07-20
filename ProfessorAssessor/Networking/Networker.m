@@ -58,9 +58,22 @@
         if (error == nil) {
             PFRelation *reviews = [course relationForKey:@"reviews"];
             [reviews addObject:newReview];
-            [course saveInBackground];
+            [course saveInBackgroundWithBlock:completion];
         }
     }];
+}
+
++ (void)fetchSchoolAndProfessorsWithCompletion:(
+                                                void(^)
+                                                (PFObject *_Nullable,
+                                                 NSError *_Nullable))completion {
+    PFQuery *query = [School query];
+
+    [query includeKey:@"professors"];
+
+    [query
+     getObjectInBackgroundWithId:[User currentUser].school.objectId
+     block:completion];
 }
 
 @end

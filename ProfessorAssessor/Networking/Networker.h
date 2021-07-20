@@ -24,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
          withRating:(NSNumber *)rating
      withCompletion:(PFBooleanResultBlock)completion;
 
++ (void)fetchSchoolAndProfessorsWithCompletion:(
+                                                void(^)
+                                                (PFObject *_Nullable object,
+                                                 NSError *_Nullable error))completion;
+
 // TODO: add method for fetching all reviews for a professor
 
 // TODO: add method for fetching reviews for a professor for a specific course
