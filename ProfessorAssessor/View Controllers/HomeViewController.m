@@ -2,6 +2,7 @@
 @import HCSStarRatingView;
 #import "HomeViewController.h"
 #import "LogInOrSignUpViewController.h"
+#import "ProfessorViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
@@ -12,13 +13,14 @@
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *filteredTableView;
-@property (strong, nonatomic) IBOutlet UITableView *sortedTableView;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) School *school;
-@property (strong, nonatomic) NSArray<Professor *> *professors;
-@property (strong, nonatomic) NSArray<Professor *> *filteredProfessors;
-@property (strong, nonatomic) NSArray<Professor *> *sortedProfessors;
+@property (nonatomic, strong) IBOutlet UITableView *filteredTableView;
+@property (nonatomic, strong) IBOutlet UITableView *sortedTableView;
+@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) IBOutlet UILabel *schoolName;
+@property (nonatomic, strong) School *school;
+@property (nonatomic, strong) NSArray<Professor *> *professors;
+@property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
+@property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
 
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
@@ -54,6 +56,7 @@
                                               NSError *_Nonnull error) {
         if (object) {
             weakSelf.school = [School schoolFromPFObject:object];
+            self.schoolName.text = self.school.name;
             
             NSArray<Professor *> *professors = weakSelf.school.professors;
             weakSelf.professors = [professors
@@ -70,7 +73,6 @@
         }
     }];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return tableView == self.filteredTableView ? self.filteredProfessors.count : self.sortedProfessors.count;
@@ -115,6 +117,10 @@
     [self.filteredTableView reloadData];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
 - (IBAction)logout:(UIBarButtonItem *)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError *_Nullable error) {
         [[FBSDKLoginManager alloc] logOut];
@@ -132,6 +138,21 @@
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
 
     [sceneDelegate changeRootViewController:viewController];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UITableViewCell *tappedCell = sender;
+
+    if ([segue.identifier isEqual:@"filteredSegue"]) {
+        NSIndexPath *indexPath = [self.filteredTableView indexPathForCell:tappedCell];
+        Professor *professor = self.filteredProfessors[indexPath.row];
+    } else if ([segue.identifier isEqual:@"sortedSegue"]) {
+        NSIndexPath *indexPath = [self.filteredTableView indexPathForCell:tappedCell];
+        Professor *professor = self.sortedProfessors[indexPath.row];
+    }
+
+    ProfessorViewController *viewController = [segue destinationViewController];
+    viewController.professor = professor;
 }
 
 @end

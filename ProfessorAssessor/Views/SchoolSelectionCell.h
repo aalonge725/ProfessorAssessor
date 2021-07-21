@@ -5,8 +5,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SchoolSelectionCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UILabel *address;
+@property (nonatomic, strong) IBOutlet UILabel *name;
+@property (nonatomic, strong) IBOutlet UILabel *address;
 
 - (void)setSchool:(School *)school;
 

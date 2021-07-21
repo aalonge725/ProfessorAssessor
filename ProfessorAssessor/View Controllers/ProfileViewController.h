@@ -4,7 +4,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *schoolName;
+@property (nonatomic, strong) IBOutlet UILabel *schoolName;
 
 @end
 

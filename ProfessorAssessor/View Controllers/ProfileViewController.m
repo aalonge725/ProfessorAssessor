@@ -9,8 +9,8 @@
 
 @interface ProfileViewController () <SchoolSelectionViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *username;
-@property (strong, nonatomic) User *user;
+@property (nonatomic, strong) IBOutlet UILabel *username;
+@property (nonatomic, strong) User *user;
 
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
