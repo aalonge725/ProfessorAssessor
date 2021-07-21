@@ -1,3 +1,4 @@
+@import HCSStarRatingView;
 #import <UIKit/UIKit.h>
 #import "Professor.h"
 
@@ -7,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutlet UILabel *professorName;
 @property (strong, nonatomic) IBOutlet UILabel *departmentName;
-@property (strong, nonatomic) IBOutlet UIView *averageRating;
+@property (strong, nonatomic) IBOutlet HCSStarRatingView *averageRating;
 
 - (void)setProfessor:(Professor *)professor;
 

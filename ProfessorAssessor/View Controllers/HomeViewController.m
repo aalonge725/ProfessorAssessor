@@ -1,4 +1,5 @@
 @import FBSDKLoginKit;
+@import HCSStarRatingView;
 #import "HomeViewController.h"
 #import "LogInOrSignUpViewController.h"
 #import "Parse/Parse.h"

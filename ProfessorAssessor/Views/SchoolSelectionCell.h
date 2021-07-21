@@ -1,4 +1,3 @@
-@import Parse;
 #import <UIKit/UIKit.h>
 #import "School.h"
 
