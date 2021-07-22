@@ -69,4 +69,8 @@
     [self.view endEditing:YES];
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.view endEditing:YES];
+}
+
 @end

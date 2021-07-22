@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) Professor *professor;
 
-- (void)setProfessor:(Professor *)professor;
+- (void)setProfessorDetails:(Professor *)professor;
 
 @end
 

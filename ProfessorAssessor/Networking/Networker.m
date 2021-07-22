@@ -70,6 +70,8 @@
     PFQuery *query = [School query];
 
     [query includeKey:@"professors"];
+    [query includeKey:@"professors.courses"];
+    [query includeKey:@"professors.courses.reviews"];
 
     [query
      getObjectInBackgroundWithId:[User currentUser].school.objectId

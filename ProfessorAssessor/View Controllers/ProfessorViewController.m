@@ -15,12 +15,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setProfessor:self.professor];
+    [self setProfessorDetails:self.professor];
+
+    // TODO: fetch and display courses and reviews
 }
 
-- (void)setProfessor:(Professor *)professor {
+- (void)setProfessorDetails:(Professor *)professor {
     self.professor = professor;
 
+    self.professorName.text = self.professor.name;
+    self.departmentName.text = self.professor.departmentName;
+    self.averageRating.value = [self.professor.averageRating doubleValue];
 }
 
 @end

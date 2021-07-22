@@ -22,8 +22,6 @@
 @property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
 
-- (IBAction)logout:(UIBarButtonItem *)sender;
-
 @end
 
 @implementation HomeViewController
@@ -32,6 +30,8 @@
     [super viewDidLoad];
 
     [self fetchProfessors];
+
+    [self setUpRefreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,8 +70,17 @@
 
             [self.filteredTableView reloadData];
             [self.sortedTableView reloadData];
+            [self.sortedTableView.refreshControl endRefreshing];
         }
     }];
+}
+
+- (void)setUpRefreshControl {
+    self.sortedTableView.refreshControl = [[UIRefreshControl alloc] init];
+
+    [self.sortedTableView.refreshControl addTarget:self action:@selector(fetchProfessors) forControlEvents:UIControlEventValueChanged];
+
+    [self.sortedTableView insertSubview:self.sortedTableView.refreshControl atIndex:0];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,27 +126,33 @@
     [self.filteredTableView reloadData];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+
+    // TODO: adjust constraints to show filteredTableView
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar endEditing:YES];
+    self.searchBar.showsCancelButton = NO;
+
+    // TODO: adjust constraints to hide filteredTableView
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.view endEditing:YES];
+    [self endEditingForScrollOrSearch];
 }
 
-- (IBAction)logout:(UIBarButtonItem *)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError *_Nullable error) {
-        [[FBSDKLoginManager alloc] logOut];
-
-        [self displayLoginPage];
-    }];
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self endEditingForScrollOrSearch];
 }
 
-- (void)displayLoginPage {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LogInOrSignUpViewController *viewController = [storyboard
-                                                   instantiateViewControllerWithIdentifier:
-                                                   @"LogInOrSignUpViewController"];
+- (void)endEditingForScrollOrSearch {
+    [self.searchBar endEditing:YES];
 
-    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-
-    [sceneDelegate changeRootViewController:viewController];
+    if (self.searchBar.text.length == 0) {
+        self.searchBar.showsCancelButton = NO;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -146,13 +161,16 @@
     if ([segue.identifier isEqual:@"filteredSegue"]) {
         NSIndexPath *indexPath = [self.filteredTableView indexPathForCell:tappedCell];
         Professor *professor = self.filteredProfessors[indexPath.row];
-    } else if ([segue.identifier isEqual:@"sortedSegue"]) {
-        NSIndexPath *indexPath = [self.filteredTableView indexPathForCell:tappedCell];
-        Professor *professor = self.sortedProfessors[indexPath.row];
-    }
 
-    ProfessorViewController *viewController = [segue destinationViewController];
-    viewController.professor = professor;
+        ProfessorViewController *viewController = [segue destinationViewController];
+        viewController.professor = professor;
+    } else if ([segue.identifier isEqual:@"sortedSegue"]) {
+        NSIndexPath *indexPath = [self.sortedTableView indexPathForCell:tappedCell];
+        Professor *professor = self.sortedProfessors[indexPath.row];
+
+        ProfessorViewController *viewController = [segue destinationViewController];
+        viewController.professor = professor;
+    }
 }
 
 @end
