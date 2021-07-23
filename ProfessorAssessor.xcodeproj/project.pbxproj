@@ -78,6 +78,7 @@
 		F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilteredProfessorsCell.m; sourceTree = "<group>"; };
 		F616F7FC26A78B2000E366D0 /* SortedProfessorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedProfessorsCell.h; sourceTree = "<group>"; };
 		F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedProfessorsCell.m; sourceTree = "<group>"; };
+		F63305BD26AB1DF2002EDF74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F670BBC1269CE8C8001FF9D6 /* LogInOrSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInOrSignUpViewController.h; sourceTree = "<group>"; };
 		F670BBC2269CE8C8001FF9D6 /* LogInOrSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInOrSignUpViewController.m; sourceTree = "<group>"; };
 		F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		F67EF92626AA11C500334C2A /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookUser.h; sourceTree = "<group>"; };
 		F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUser.m; sourceTree = "<group>"; };
-		F6B8405926A2AA55004007AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 				F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */,
 				F6BAD231269CAB160071C070 /* main.m */,
 				F670BBEF269FAB56001FF9D6 /* Keys.plist */,
-				F6B8405926A2AA55004007AB /* Info.plist */,
+				F63305BD26AB1DF2002EDF74 /* Info.plist */,
 			);
 			path = ProfessorAssessor;
 			sourceTree = "<group>";
