@@ -56,7 +56,7 @@
                                               NSError *_Nonnull error) {
         if (object) {
             weakSelf.school = [School schoolFromPFObject:object];
-            self.schoolName.text = self.school.name;
+            weakSelf.schoolName.text = weakSelf.school.name;
             
             NSArray<Professor *> *professors = weakSelf.school.professors;
             weakSelf.professors = [professors
@@ -68,9 +68,9 @@
             weakSelf.filteredProfessors = weakSelf.professors;
             weakSelf.sortedProfessors = weakSelf.professors;
 
-            [self.filteredTableView reloadData];
-            [self.sortedTableView reloadData];
-            [self.sortedTableView.refreshControl endRefreshing];
+            [weakSelf.filteredTableView reloadData];
+            [weakSelf.sortedTableView reloadData];
+            [weakSelf.sortedTableView.refreshControl endRefreshing];
         }
     }];
 }

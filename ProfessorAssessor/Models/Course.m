@@ -1,4 +1,5 @@
 #import "Course.h"
+#import "Networker.h"
 
 @implementation Course
 
@@ -13,17 +14,15 @@
 }
 
 + (Course *)courseFromPFObject:(PFObject *)object {
-    Course *course = [Course new];
-
     if (object) {
-        course.identifier = object[@"objectId"];
-        course.createdAt = object[@"createdAt"];
-        course.updatedAt = object[@"updatedAt"];
-        course.name = object[@"name"];
-        course.reviews = object[@"reviews"];
+        return [Networker courseFromObject:object
+                            withCompletion:^
+                (NSArray<Review *> *_Nullable objects,
+                 NSError *_Nullable error) {
+        }];
     }
 
-    return course;
+    return [Course new];
 }
 
 @end

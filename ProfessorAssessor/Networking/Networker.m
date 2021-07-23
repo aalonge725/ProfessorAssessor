@@ -69,13 +69,53 @@
                                                  NSError *_Nullable))completion {
     PFQuery *query = [School query];
 
-    [query includeKey:@"professors"];
-    [query includeKey:@"professors.courses"];
-    [query includeKey:@"professors.courses.reviews"];
+    [query includeKeys:@[@"professors",
+                         @"professors.courses",
+                         @"professors.courses.reviews"]];
 
     [query
      getObjectInBackgroundWithId:[User currentUser].school.objectId
      block:completion];
+}
+
++ (void)fetchReviewsForProfessor:(Professor *)professor
+                      forCourses:(NSArray<Course *> *)courses
+                  withCompletion:(
+                                  void(^)
+                                  (NSArray<Review *> *_Nullable objects,
+                                   NSError *_Nullable error))completion {
+    PFQuery *query = [Review query];
+
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"professor" equalTo:professor];
+    [query whereKey:@"course" containedIn:courses];
+
+    [query findObjectsInBackgroundWithBlock:completion];
+}
+
+
++ (Course *)courseFromObject:(PFObject *)object
+              withCompletion:(
+                              void(^)(NSArray<Review *> *_Nullable objects,
+                                      NSError *_Nullable error))completion {
+    if (object) {
+        Course *course = [Course new];
+        course.identifier = object[@"objectId"];
+        course.createdAt = object[@"createdAt"];
+        course.updatedAt = object[@"updatedAt"];
+        course.name = object[@"name"];
+
+        PFQuery *reviewQuery = [Review query];
+
+        [reviewQuery orderByDescending:@"createdAt"];
+        [reviewQuery includeKey:@"course"];
+        [reviewQuery whereKey:@"course" equalTo:object];
+
+        [reviewQuery findObjectsInBackgroundWithBlock:completion];
+
+        return course;
+    }
+    return [Course new];
 }
 
 @end

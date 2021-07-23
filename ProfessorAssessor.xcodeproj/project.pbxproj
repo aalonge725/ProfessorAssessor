@@ -33,6 +33,7 @@
 		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
 		F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */; };
 		F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0E26A1FF0E001FF9D6 /* FacebookCore */; };
+		F67EF92726AA11C500334C2A /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F67EF92626AA11C500334C2A /* ReviewCell.m */; };
 		F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
@@ -111,6 +112,8 @@
 		F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F67EF92526AA11C500334C2A /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		F67EF92626AA11C500334C2A /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookUser.h; sourceTree = "<group>"; };
 		F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUser.m; sourceTree = "<group>"; };
 		F6B8405926A2AA55004007AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */,
 				F616F7FC26A78B2000E366D0 /* SortedProfessorsCell.h */,
 				F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */,
+				F67EF92526AA11C500334C2A /* ReviewCell.h */,
+				F67EF92626AA11C500334C2A /* ReviewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				F616F7EF26A6265A00E366D0 /* LogInViewController.m in Sources */,
 				F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */,
 				F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */,
+				F67EF92726AA11C500334C2A /* ReviewCell.m in Sources */,
 				F670BBF926A0A92D001FF9D6 /* ProfessorSelectionCell.m in Sources */,
 				F616F7FE26A78B2000E366D0 /* SortedProfessorsCell.m in Sources */,
 				F616F7FB26A78B0F00E366D0 /* FilteredProfessorsCell.m in Sources */,

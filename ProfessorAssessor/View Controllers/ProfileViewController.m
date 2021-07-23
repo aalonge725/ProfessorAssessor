@@ -41,7 +41,7 @@
     [self.user
      saveInBackgroundWithBlock:^(
                                  BOOL succeeded,
-                                 NSError * _Nullable error) {
+                                 NSError *_Nullable error) {
         if (succeeded) {
             self.schoolName.text = school.name;
         }
