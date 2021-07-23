@@ -3,15 +3,15 @@
 #import "ProfileViewController.h"
 #import "LogInOrSignUpViewController.h"
 #import "SchoolSelectionViewController.h"
+#import "HomeViewController.h"
 #import "SceneDelegate.h"
 #import "User.h"
 #import "School.h"
 
 @interface ProfileViewController () <SchoolSelectionViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *username;
-@property (strong, nonatomic) User *user;
-
+@property (nonatomic, strong) IBOutlet UILabel *username;
+@property (nonatomic, strong) User *user;
 
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
@@ -36,19 +36,24 @@
 }
 
 - (void)didSelectSchool:(School *)school {
-    // TODO: show alert asking user to confirm they want to change schools
     self.user.school = school;
 
     [self.user
      saveInBackgroundWithBlock:^(
                                  BOOL succeeded,
-                                 NSError * _Nullable error) {
+                                 NSError *_Nullable error) {
         if (succeeded) {
             self.schoolName.text = school.name;
-        }
-    }];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+            UINavigationController *navigationController =
+            self.tabBarController.viewControllers[0];
+            HomeViewController *viewController = (HomeViewController *)navigationController.viewControllers[0];
+            
+            viewController.school = school;
+            [viewController fetchSchoolAndProfessors];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (IBAction)logout:(UIBarButtonItem *)sender {

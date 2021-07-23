@@ -2,7 +2,7 @@
 
 @interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
 
-@property (strong, nonatomic) UIWindow * window;
+@property (nonatomic, strong) UIWindow * window;
 
 - (void)changeRootViewController:(UIViewController *)viewController;
 

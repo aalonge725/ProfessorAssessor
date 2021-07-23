@@ -7,6 +7,8 @@ target 'ProfessorAssessor' do
 
   # Pods for ProfessorAssessor
     pod 'Parse'
+    pod 'HCSStarRatingView'
+    pod "TTGTagCollectionView"
 
   target 'ProfessorAssessorTests' do
     inherit! :search_paths

@@ -4,10 +4,10 @@
 
 @interface SchoolSelectionViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray<School *> *schools;
-@property (strong, nonatomic) NSArray<School *> *filteredSchools;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSArray<School *> *schools;
+@property (nonatomic, strong) NSArray<School *> *filteredSchools;
 
 @end
 
@@ -66,6 +66,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.view endEditing:YES];
 }
 

@@ -6,10 +6,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SignUpViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *schoolSelection;
-@property (strong, nonatomic) IBOutlet UITextField *username;
-@property (strong, nonatomic) IBOutlet UITextField *password;
-@property (strong, nonatomic) School *school;
+@property (nonatomic, strong) IBOutlet UILabel *schoolSelection;
+@property (nonatomic, strong) IBOutlet UITextField *username;
+@property (nonatomic, strong) IBOutlet UITextField *password;
+@property (nonatomic, strong) School *school;
 
 @end
 

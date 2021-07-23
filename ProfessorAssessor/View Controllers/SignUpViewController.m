@@ -9,9 +9,9 @@
 
 @interface SignUpViewController () <SchoolSelectionViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
-@property (strong, nonatomic) IBOutlet UIButton *signUpWithFacebookButton;
-@property (strong, nonatomic) FacebookUser *user;
+@property (nonatomic, strong) IBOutlet UIButton *signUpButton;
+@property (nonatomic, strong) IBOutlet UIButton *signUpWithFacebookButton;
+@property (nonatomic, strong) FacebookUser *user;
 
 - (IBAction)signUp:(UIButton *)sender;
 - (IBAction)signUpWithFacebook:(UIButton *)sender;

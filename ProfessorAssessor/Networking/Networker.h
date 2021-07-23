@@ -2,6 +2,7 @@
 #import "School.h"
 #import "Professor.h"
 #import "Course.h"
+#import "Review.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,9 +25,22 @@ NS_ASSUME_NONNULL_BEGIN
          withRating:(NSNumber *)rating
      withCompletion:(PFBooleanResultBlock)completion;
 
-// TODO: add method for fetching all reviews for a professor
++ (void)fetchSchoolAndProfessorsWithCompletion:(
+                                                void(^)
+                                                (PFObject *_Nullable object,
+                                                 NSError *_Nullable error))completion;
 
-// TODO: add method for fetching reviews for a professor for a specific course
++ (void)fetchReviewsForProfessor:(Professor *)professor
+                      forCourses:(NSArray<Course *> *)courses
+                  withCompletion:(
+                                  void(^)
+                                  (NSArray<Review *> *_Nullable objects,
+                                   NSError *_Nullable error))completion;
+
++ (Course *)courseFromObject:(PFObject *)object
+              withCompletion:(
+                              void(^)(NSArray<Review *> *_Nullable objects,
+                                      NSError *_Nullable error))completion;
 
 @end
 

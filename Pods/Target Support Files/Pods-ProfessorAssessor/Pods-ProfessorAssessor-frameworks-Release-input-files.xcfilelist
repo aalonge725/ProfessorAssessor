@@ -1,3 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-ProfessorAssessor/Pods-ProfessorAssessor-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/HCSStarRatingView/HCSStarRatingView.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework
