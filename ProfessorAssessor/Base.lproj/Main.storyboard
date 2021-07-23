@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="-1048" y="2784"/>
         </scene>
-        <!--Log In Or Sign Up View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInOrSignUpViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AuthenticationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -933,7 +933,7 @@
         <!--Navigation Controller-->
         <scene sceneID="JbN-A5-2OV">
             <objects>
-                <navigationController storyboardIdentifier="LogInOrSignUpViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pae-TR-P3O" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthenticationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pae-TR-P3O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uBS-A2-1ZW">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

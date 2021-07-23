@@ -63,8 +63,16 @@
     }];
 }
 
++ (void)fetchSchool:(School *)school
+     withCompletion:(void (^)(PFObject *_Nullable object,
+                             NSError *_Nullable error))completion {
+    User *user = [User currentUser];
+
+    [user.school fetchIfNeededInBackgroundWithBlock:completion];
+}
+
 + (void)fetchSchoolAndProfessorsWithCompletion:(
-                                                void(^)
+                                                void (^)
                                                 (PFObject *_Nullable,
                                                  NSError *_Nullable))completion {
     PFQuery *query = [School query];
@@ -81,7 +89,7 @@
 + (void)fetchReviewsForProfessor:(Professor *)professor
                       forCourses:(NSArray<Course *> *)courses
                   withCompletion:(
-                                  void(^)
+                                  void (^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion {
     PFQuery *query = [Review query];
@@ -96,7 +104,7 @@
 
 + (Course *)courseFromObject:(PFObject *)object
               withCompletion:(
-                              void(^)(NSArray<Review *> *_Nullable objects,
+                              void (^)(NSArray<Review *> *_Nullable objects,
                                       NSError *_Nullable error))completion {
     if (object) {
         Course *course = [Course new];

@@ -14,7 +14,7 @@
 		F616F7EF26A6265A00E366D0 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7EE26A6265A00E366D0 /* LogInViewController.m */; };
 		F616F7FB26A78B0F00E366D0 /* FilteredProfessorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */; };
 		F616F7FE26A78B2000E366D0 /* SortedProfessorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */; };
-		F670BBC3269CE8C8001FF9D6 /* LogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC2269CE8C8001FF9D6 /* LogInOrSignUpViewController.m */; };
+		F670BBC3269CE8C8001FF9D6 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC2269CE8C8001FF9D6 /* AuthenticationViewController.m */; };
 		F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */; };
 		F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC8269CEE07001FF9D6 /* HomeViewController.m */; };
 		F670BBCF269CF38C001FF9D6 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBCE269CF38C001FF9D6 /* Review.m */; };
@@ -79,8 +79,8 @@
 		F616F7FC26A78B2000E366D0 /* SortedProfessorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedProfessorsCell.h; sourceTree = "<group>"; };
 		F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedProfessorsCell.m; sourceTree = "<group>"; };
 		F63305BD26AB1DF2002EDF74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F670BBC1269CE8C8001FF9D6 /* LogInOrSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInOrSignUpViewController.h; sourceTree = "<group>"; };
-		F670BBC2269CE8C8001FF9D6 /* LogInOrSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInOrSignUpViewController.m; sourceTree = "<group>"; };
+		F670BBC1269CE8C8001FF9D6 /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		F670BBC2269CE8C8001FF9D6 /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F670BBC7269CEE07001FF9D6 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -262,24 +262,24 @@
 		F6BAD254269CDA320071C070 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F670BBC1269CE8C8001FF9D6 /* LogInOrSignUpViewController.h */,
-				F670BBC2269CE8C8001FF9D6 /* LogInOrSignUpViewController.m */,
+				F670BBC1269CE8C8001FF9D6 /* AuthenticationViewController.h */,
+				F670BBC2269CE8C8001FF9D6 /* AuthenticationViewController.m */,
 				F616F7ED26A6265A00E366D0 /* LogInViewController.h */,
 				F616F7EE26A6265A00E366D0 /* LogInViewController.m */,
 				F670BC0026A0DC04001FF9D6 /* SignUpViewController.h */,
 				F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */,
-				F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */,
-				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
-				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
-				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
 				F670BBE7269F966D001FF9D6 /* SchoolSelectionViewController.h */,
 				F670BBE8269F966D001FF9D6 /* SchoolSelectionViewController.m */,
-				F670BBF126A001D5001FF9D6 /* ProfessorSelectionViewController.h */,
-				F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */,
+				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
+				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
 				F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */,
 				F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */,
 				F670BBFD26A0B65B001FF9D6 /* ComposeViewController.h */,
 				F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */,
+				F670BBF126A001D5001FF9D6 /* ProfessorSelectionViewController.h */,
+				F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */,
+				F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */,
+				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -566,7 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F670BBC3269CE8C8001FF9D6 /* LogInOrSignUpViewController.m in Sources */,
+				F670BBC3269CE8C8001FF9D6 /* AuthenticationViewController.m in Sources */,
 				F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */,
 				F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */,
 				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,

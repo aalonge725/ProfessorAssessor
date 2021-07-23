@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
          withRating:(NSNumber *)rating
      withCompletion:(PFBooleanResultBlock)completion;
 
++ (void)fetchSchool:(School *)school
+     withCompletion:(void(^)(PFObject *_Nullable object,
+                             NSError *_Nullable error))completion;
+
 + (void)fetchSchoolAndProfessorsWithCompletion:(
                                                 void(^)
                                                 (PFObject *_Nullable object,

@@ -1,10 +1,11 @@
 @import Parse;
 @import FBSDKLoginKit;
 #import "ProfileViewController.h"
-#import "LogInOrSignUpViewController.h"
+#import "AuthenticationViewController.h"
 #import "SchoolSelectionViewController.h"
 #import "HomeViewController.h"
 #import "SceneDelegate.h"
+#import "Networker.h"
 #import "User.h"
 #import "School.h"
 
@@ -20,19 +21,29 @@
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
-    [self updateLabels];
+    [super viewDidLoad];
+
+    [self fetchSchoolWithCompletion:^(School *school) {
+        [self updateLabelsWithSchool:school];
+    }];
 }
 
-- (void)updateLabels {
+- (void)fetchSchoolWithCompletion:(void (^)(School *))completion {
     self.user = [User currentUser];
 
-    [self.user.school fetchIfNeededInBackgroundWithBlock:^(PFObject *_Nullable object, NSError *_Nullable error) {
+    [Networker fetchSchool:self.user.school
+            withCompletion:^(PFObject *_Nullable object,
+                             NSError *_Nullable error) {
         if (object) {
-            self.username.text = self.user.username;
-            School *school = (School *)object;
-            self.schoolName.text = school.name;
+            School *school = [School schoolFromPFObject:object];
+            completion(school);
         }
     }];
+}
+
+- (void)updateLabelsWithSchool:(School *)school {
+    self.username.text = self.user.username;
+    self.schoolName.text = school.name;
 }
 
 - (void)didSelectSchool:(School *)school {
@@ -43,7 +54,7 @@
                                  BOOL succeeded,
                                  NSError *_Nullable error) {
         if (succeeded) {
-            self.schoolName.text = school.name;
+            [self updateLabelsWithSchool:school];
 
             UINavigationController *navigationController =
             self.tabBarController.viewControllers[0];
@@ -66,7 +77,7 @@
 
 - (void)displayLoginPage {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LogInOrSignUpViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"LogInOrSignUpViewController"];
+    AuthenticationViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticationViewController"];
 
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     
