@@ -3,6 +3,7 @@
 #import "ProfileViewController.h"
 #import "LogInOrSignUpViewController.h"
 #import "SchoolSelectionViewController.h"
+#import "HomeViewController.h"
 #import "SceneDelegate.h"
 #import "User.h"
 #import "School.h"
@@ -35,7 +36,6 @@
 }
 
 - (void)didSelectSchool:(School *)school {
-    // TODO: show alert asking user to confirm they want to change schools
     self.user.school = school;
 
     [self.user
@@ -44,10 +44,16 @@
                                  NSError *_Nullable error) {
         if (succeeded) {
             self.schoolName.text = school.name;
-        }
-    }];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+            UINavigationController *navigationController =
+            self.tabBarController.viewControllers[0];
+            HomeViewController *viewController = (HomeViewController *)navigationController.viewControllers[0];
+            
+            viewController.school = school;
+            [viewController fetchSchoolAndProfessors];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (IBAction)logout:(UIBarButtonItem *)sender {

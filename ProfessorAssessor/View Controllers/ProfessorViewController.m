@@ -3,7 +3,6 @@
 #import "ProfessorViewController.h"
 #import "Networker.h"
 #import "ReviewCell.h"
-#import "Professor.h"
 #import "Course.h"
 #import "Review.h"
 

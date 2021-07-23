@@ -8,7 +8,6 @@
 #import "Networker.h"
 #import "FilteredProfessorsCell.h"
 #import "SortedProfessorsCell.h"
-#import "School.h"
 #import "Professor.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -17,7 +16,6 @@
 @property (nonatomic, strong) IBOutlet UITableView *sortedTableView;
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) IBOutlet UILabel *schoolName;
-@property (nonatomic, strong) School *school;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
 @property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
@@ -29,25 +27,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self fetchProfessors];
+    [self fetchSchoolAndProfessors];
 
     [self setUpRefreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath *selectedFromFiltered = self.filteredTableView.indexPathForSelectedRow;
-    NSIndexPath *selectedFromSorted = self.sortedTableView.indexPathForSelectedRow;
+    [super viewWillAppear:animated];
 
-    if (selectedFromFiltered) {
-        [self.filteredTableView deselectRowAtIndexPath:selectedFromFiltered animated:YES];
-    }
-
-    if (selectedFromSorted) {
-        [self.sortedTableView deselectRowAtIndexPath:selectedFromSorted animated:YES];
-    }
+    [self deselectTableViewRow];
 }
 
-- (void)fetchProfessors {
+- (void)fetchSchoolAndProfessors {
     __weak typeof(self) weakSelf = self;
 
     [Networker
@@ -78,7 +69,7 @@
 - (void)setUpRefreshControl {
     self.sortedTableView.refreshControl = [[UIRefreshControl alloc] init];
 
-    [self.sortedTableView.refreshControl addTarget:self action:@selector(fetchProfessors) forControlEvents:UIControlEventValueChanged];
+    [self.sortedTableView.refreshControl addTarget:self action:@selector(fetchSchoolAndProfessors) forControlEvents:UIControlEventValueChanged];
 
     [self.sortedTableView insertSubview:self.sortedTableView.refreshControl atIndex:0];
 }
@@ -109,6 +100,19 @@
         return cell;
     }
     return [UITableViewCell new];
+}
+
+- (void)deselectTableViewRow {
+    NSIndexPath *selectedFromFiltered = self.filteredTableView.indexPathForSelectedRow;
+    NSIndexPath *selectedFromSorted = self.sortedTableView.indexPathForSelectedRow;
+
+    if (selectedFromFiltered) {
+        [self.filteredTableView deselectRowAtIndexPath:selectedFromFiltered animated:YES];
+    }
+
+    if (selectedFromSorted) {
+        [self.sortedTableView deselectRowAtIndexPath:selectedFromSorted animated:YES];
+    }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
