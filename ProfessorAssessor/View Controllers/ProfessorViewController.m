@@ -1,6 +1,7 @@
 @import HCSStarRatingView;
 @import TTGTagCollectionView;
 #import "ProfessorViewController.h"
+#import "ComposeViewController.h"
 #import "Networker.h"
 #import "ReviewCell.h"
 #import "Course.h"
@@ -8,7 +9,7 @@
 
 @interface ProfessorViewController () <UITableViewDataSource, UITableViewDelegate, TTGTextTagCollectionViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *professorName;
 @property (nonatomic, strong) IBOutlet UILabel *departmentName;
 @property (nonatomic, strong) IBOutlet HCSStarRatingView *averageRating;
@@ -158,6 +159,13 @@
                                        Course *_Nonnull course2) {
         return [course1.name compare:course2.name];
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
+
+    viewController.professor = self.professor;
 }
 
 @end

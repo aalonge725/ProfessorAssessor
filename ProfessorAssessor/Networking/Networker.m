@@ -37,17 +37,17 @@
     [newCourse saveInBackgroundWithBlock:completion];
 }
 
-+ (void)buildReview:(Professor *)professor
-         withCourse:(Course *)course
-        withContent:(NSString *)content
-         withRating:(NSNumber *)rating
-     withCompletion:(PFBooleanResultBlock)completion {
-    // TODO: check if you can create a professor
-    // TODO: check if you can create a course
-    // TODO: make sure content isn't empty
++ (void)createReview:(Professor *)professor
+          withCourse:(Course *)course
+         withContent:(NSString *)content
+          withRating:(NSNumber *)rating
+      withCompletion:(PFBooleanResultBlock)completion {
     // TODO: if all the validation passes, create a new Review object
+    // TODO: add review to course list
+    // TODO: update professor's average rating
     
     Review *newReview = [Review new];
+    
     newReview.reviewer = (User *)[PFUser currentUser];
     newReview.course = course;
     newReview.rating = rating;

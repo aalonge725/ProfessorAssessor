@@ -52,9 +52,9 @@
             NSArray<Professor *> *professors = weakSelf.school.professors;
             weakSelf.professors = [professors
                                    sortedArrayUsingComparator:
-                                   ^NSComparisonResult(School *_Nonnull school1,
-                                                       School *_Nonnull school2) {
-                return [school1.name compare:school2.name];
+                                   ^NSComparisonResult(Professor *_Nonnull professor1,
+                                                       Professor *_Nonnull professor2) {
+                return [professor1.name compare:professor2.name];
             }];
             weakSelf.filteredProfessors = weakSelf.professors;
             weakSelf.sortedProfessors = weakSelf.professors;
@@ -118,9 +118,10 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate
-                                  predicateWithBlock:
-                                  ^BOOL(id _Nullable evaluatedObject,
-                                        NSDictionary<NSString *,id> *_Nullable bindings) {
+                                  predicateWithBlock:^
+                                  BOOL(id _Nullable evaluatedObject,
+                                       NSDictionary<NSString *,id>
+                                       *_Nullable bindings) {
             return [((Professor *)evaluatedObject).name containsString:searchText];
         }];
         self.filteredProfessors = [self.professors filteredArrayUsingPredicate:predicate];

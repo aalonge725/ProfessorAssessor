@@ -1,6 +1,5 @@
 #import "SchoolSelectionViewController.h"
 #import "SchoolSelectionCell.h"
-#import "School.h"
 
 @interface SchoolSelectionViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -19,7 +18,7 @@
     [self fetchSchools];
 }
 
-- (void)fetchSchools {
+- (void)fetchSchools { // TODO: move to Networker
     PFQuery *schoolQuery = [School query];
 
     [schoolQuery orderByAscending:@"name"];
@@ -49,7 +48,10 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id _Nullable evaluatedObject, NSDictionary<NSString *,id> *_Nullable bindings) {
+        NSPredicate *predicate = [NSPredicate
+                                  predicateWithBlock:^
+                                  BOOL(id _Nullable evaluatedObject, NSDictionary<NSString *,id>
+                                       *_Nullable bindings) {
             return [((School *)evaluatedObject).name containsString:searchText];
         }];
         self.filteredSchools = [self.schools filteredArrayUsingPredicate:predicate];

@@ -19,11 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)createCourseWithName:(NSString *)name
               withCompletion:(PFBooleanResultBlock _Nullable)completion;
 
-+ (void)buildReview:(Professor *)professor
-         withCourse:(Course *)course
-        withContent:(NSString *)content
-         withRating:(NSNumber *)rating
-     withCompletion:(PFBooleanResultBlock)completion;
++ (void)createReview:(Professor *)professor
+          withCourse:(Course *)course
+         withContent:(NSString *)content
+          withRating:(NSNumber *)rating
+      withCompletion:(PFBooleanResultBlock)completion;
 
 + (void)fetchSchool:(School *)school
      withCompletion:(void(^)(PFObject *_Nullable object,
