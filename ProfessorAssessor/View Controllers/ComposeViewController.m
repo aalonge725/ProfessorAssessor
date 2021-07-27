@@ -36,14 +36,24 @@ static NSNumberFormatter *numberFormatter = nil;
 
 - (IBAction)submitReview:(UIBarButtonItem *)sender {
     if (self.course == nil) {
-        [self presentAlertWithTitle:nil withMessage:@"Please selected a course"];
+        [self presentAlertWithTitle:nil withMessage:@"Please select a course"];
     } else if (self.ratingField.text.length == 0) {
         [self presentAlertWithTitle:nil withMessage:@"Please enter a rating"];
     } else if (self.content.text.length == 0) {
         [self presentAlertWithTitle:nil withMessage:@"Please type your review of this professor"];
     } else {
-        // TODO: create and save review
-        // TODO: reload respective table view(s)
+        NSNumber *ratingValue = [NSNumber numberWithDouble:[self.ratingField.text doubleValue]];
+
+        [Networker
+         updateDatabaseForNewReviewWithProfessor:self.professor
+         course:self.course
+         content:self.content.text
+         rating:ratingValue
+         completion:^(BOOL succeeded, NSError *_Nullable error) {
+            // TODO: if succeeded, reload professor detail page and home page
+
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
         // TODO: optional - add to user's profile page
     }
 }
