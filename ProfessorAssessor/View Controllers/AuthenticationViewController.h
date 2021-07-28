@@ -2,7 +2,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LogInOrSignUpViewController : UIViewController
+@interface AuthenticationViewController : UIViewController
 
 @end
 

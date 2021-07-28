@@ -19,11 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)createCourseWithName:(NSString *)name
               withCompletion:(PFBooleanResultBlock _Nullable)completion;
 
-+ (void)buildReview:(Professor *)professor
-         withCourse:(Course *)course
-        withContent:(NSString *)content
-         withRating:(NSNumber *)rating
-     withCompletion:(PFBooleanResultBlock)completion;
++ (void)updateDatabaseForNewReviewWithProfessor:(Professor *)professor
+                                         course:(Course *)course
+                                        content:(NSString *)content
+                                         rating:(NSNumber *)rating
+                                     completion:(void(^)(BOOL succeeded,
+                                                         NSError *_Nullable error))completion;
+
++ (void)fetchSchool:(School *)school
+     withCompletion:(void(^)(PFObject *_Nullable object,
+                             NSError *_Nullable error))completion;
 
 + (void)fetchSchoolAndProfessorsWithCompletion:(
                                                 void(^)
@@ -36,11 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
                                   void(^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion;
-
-+ (Course *)courseFromObject:(PFObject *)object
-              withCompletion:(
-                              void(^)(NSArray<Review *> *_Nullable objects,
-                                      NSError *_Nullable error))completion;
 
 @end
 

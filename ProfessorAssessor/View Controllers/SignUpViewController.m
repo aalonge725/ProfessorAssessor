@@ -192,7 +192,7 @@
     self.signUpWithFacebookButton.enabled = YES;
 }
 
-- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+- (IBAction)dismissKeyboard:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
 

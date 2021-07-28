@@ -9,9 +9,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ProfessorSelectionViewController : UIViewController
+@interface ProfessorSearchViewController : UIViewController
 
 @property (nonatomic, weak) id<ProfessorSelectionViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSArray<Professor *> *professors;
 
 @end
 

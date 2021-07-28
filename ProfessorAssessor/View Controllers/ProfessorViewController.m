@@ -1,14 +1,15 @@
 @import HCSStarRatingView;
 @import TTGTagCollectionView;
 #import "ProfessorViewController.h"
+#import "ComposeViewController.h"
 #import "Networker.h"
 #import "ReviewCell.h"
 #import "Course.h"
 #import "Review.h"
 
-@interface ProfessorViewController () <UITableViewDataSource, UITableViewDelegate, TTGTextTagCollectionViewDelegate>
+@interface ProfessorViewController () <UITableViewDataSource, UITableViewDelegate, TTGTextTagCollectionViewDelegate, ComposeViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *professorName;
 @property (nonatomic, strong) IBOutlet UILabel *departmentName;
 @property (nonatomic, strong) IBOutlet HCSStarRatingView *averageRating;
@@ -54,10 +55,14 @@
      withCompletion:^(NSArray<Review *> *_Nullable objects,
                       NSError *_Nullable error) {
         if (objects) {
-            weakSelf.reviews = objects;
+            __strong __typeof(self) strongSelf = weakSelf;
 
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView.refreshControl endRefreshing];
+            strongSelf.reviews = objects;
+
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.refreshControl endRefreshing];
+
+            strongSelf.averageRating.value = [strongSelf.professor.averageRating doubleValue];
         }
     }];
 }
@@ -126,6 +131,10 @@
     }
 }
 
+- (void)didTapSubmit {
+    [self fetchReviews];
+}
+
 - (void)setUpRefreshControl {
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
 
@@ -158,6 +167,14 @@
                                        Course *_Nonnull course2) {
         return [course1.name compare:course2.name];
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
+
+    viewController.delegate = self;
+    viewController.professor = self.professor;
 }
 
 @end
