@@ -21,6 +21,8 @@
 
     self.filteredProfessors = self.professors;
     [self.tableView reloadData];
+
+    [self.searchBar becomeFirstResponder];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

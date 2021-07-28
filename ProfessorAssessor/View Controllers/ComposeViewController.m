@@ -50,9 +50,11 @@ static NSNumberFormatter *numberFormatter = nil;
          content:self.content.text
          rating:ratingValue
          completion:^(BOOL succeeded, NSError *_Nullable error) {
-            // TODO: if succeeded, reload professor detail page and home page
+            if (error == nil) {
+                [self.delegate didTapSubmit];
 
-            [self dismissViewControllerAnimated:YES completion:nil];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
         }];
         // TODO: optional - add to user's profile page
     }
@@ -73,6 +75,10 @@ static NSNumberFormatter *numberFormatter = nil;
     self.course = course;
     self.courseName.text = course.name;
 
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)close:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

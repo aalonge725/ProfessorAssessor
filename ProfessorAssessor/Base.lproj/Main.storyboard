@@ -565,8 +565,12 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Write a Review" id="thl-i9-d73">
-                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="rGm-Ej-zMI"/>
-                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="iMY-s4-jU0">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="rGm-Ej-zMI">
+                            <connections>
+                                <action selector="close:" destination="Jis-hl-jas" id="OrP-N7-yoo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="iMY-s4-jU0">
                             <connections>
                                 <action selector="submitReview:" destination="Jis-hl-jas" id="fXm-68-dK4"/>
                             </connections>

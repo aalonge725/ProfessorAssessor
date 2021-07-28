@@ -5,8 +5,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ComposeViewControllerDelegate
+
+- (void)didTapSubmit;
+
+@end
+
 @interface ComposeViewController : UIViewController
 
+@property (nonatomic, weak) id<ComposeViewControllerDelegate> delegate;
 @property (nonatomic, strong) IBOutlet UILabel *professorName;
 @property (nonatomic, strong) IBOutlet UILabel *courseName;
 @property (nonatomic, strong) IBOutlet HCSStarRatingView *rating;

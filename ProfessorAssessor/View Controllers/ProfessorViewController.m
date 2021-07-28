@@ -7,7 +7,7 @@
 #import "Course.h"
 #import "Review.h"
 
-@interface ProfessorViewController () <UITableViewDataSource, UITableViewDelegate, TTGTextTagCollectionViewDelegate>
+@interface ProfessorViewController () <UITableViewDataSource, UITableViewDelegate, TTGTextTagCollectionViewDelegate, ComposeViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *professorName;
@@ -61,6 +61,8 @@
 
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
+
+            strongSelf.averageRating.value = [strongSelf.professor.averageRating doubleValue];
         }
     }];
 }
@@ -129,6 +131,10 @@
     }
 }
 
+- (void)didTapSubmit {
+    [self fetchReviews];
+}
+
 - (void)setUpRefreshControl {
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
 
@@ -167,6 +173,7 @@
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
 
+    viewController.delegate = self;
     viewController.professor = self.professor;
 }
 
