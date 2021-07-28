@@ -30,19 +30,21 @@
                                               PFObject *_Nullable object,
                                               NSError *_Nonnull error) {
         if (object) {
+            __strong __typeof(self) strongSelf = weakSelf;
+
             School *school = [School schoolFromPFObject:object];
 
             NSArray<Professor *> *professors = school.professors;
-            weakSelf.professors = [professors
+            strongSelf.professors = [professors
                                    sortedArrayUsingComparator:
                                    ^NSComparisonResult(Professor *_Nonnull professor1,
                                                        Professor *_Nonnull professor2) {
                 return [professor1.name compare:professor2.name];
             }];
-            weakSelf.filteredProfessors = weakSelf.professors;
+            strongSelf.filteredProfessors = strongSelf.professors;
 
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView.refreshControl endRefreshing];
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.refreshControl endRefreshing];
         }
     }];
 

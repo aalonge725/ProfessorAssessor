@@ -55,10 +55,12 @@
      withCompletion:^(NSArray<Review *> *_Nullable objects,
                       NSError *_Nullable error) {
         if (objects) {
-            weakSelf.reviews = objects;
+            __strong __typeof(self) strongSelf = weakSelf;
 
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView.refreshControl endRefreshing];
+            strongSelf.reviews = objects;
+
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.refreshControl endRefreshing];
         }
     }];
 }

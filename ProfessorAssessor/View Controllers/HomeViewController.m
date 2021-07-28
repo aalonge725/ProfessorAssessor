@@ -3,21 +3,17 @@
 #import "HomeViewController.h"
 #import "AuthenticationViewController.h"
 #import "ProfessorViewController.h"
+#import "ProfessorSearchViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
-#import "FilteredProfessorsCell.h"
 #import "SortedProfessorsCell.h"
-#import "Professor.h"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, ProfessorSelectionViewControllerDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *filteredTableView;
-@property (nonatomic, strong) IBOutlet UITableView *sortedTableView;
-@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *schoolName;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
-@property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
 
 @end
@@ -35,7 +31,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self deselectTableViewRow];
+    NSIndexPath *selected = self.tableView.indexPathForSelectedRow;
+
+    if (selected) {
+        [self.tableView deselectRowAtIndexPath:selected animated:animated];
+    }
 }
 
 - (void)fetchSchoolAndProfessors {
@@ -46,135 +46,74 @@
                                               PFObject *_Nullable object,
                                               NSError *_Nonnull error) {
         if (object) {
-            weakSelf.school = [School schoolFromPFObject:object];
-            weakSelf.schoolName.text = weakSelf.school.name;
+            __strong __typeof(self) strongSelf = weakSelf;
+
+            strongSelf.school = [School schoolFromPFObject:object];
+            strongSelf.schoolName.text = strongSelf.school.name;
             
-            NSArray<Professor *> *professors = weakSelf.school.professors;
-            weakSelf.professors = [professors
+            NSArray<Professor *> *professors = strongSelf.school.professors;
+            strongSelf.professors = [professors
                                    sortedArrayUsingComparator:
                                    ^NSComparisonResult(Professor *_Nonnull professor1,
                                                        Professor *_Nonnull professor2) {
                 return [professor1.name compare:professor2.name];
             }];
-            weakSelf.filteredProfessors = weakSelf.professors;
-            weakSelf.sortedProfessors = weakSelf.professors;
+            strongSelf.sortedProfessors = strongSelf.professors;
 
-            [weakSelf.filteredTableView reloadData];
-            [weakSelf.sortedTableView reloadData];
-            [weakSelf.sortedTableView.refreshControl endRefreshing];
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.refreshControl endRefreshing];
         }
     }];
 }
 
+- (void)didSelectProfessor:(id)professor {
+    self.searchedProfessor = professor;
+
+    [self performSegueWithIdentifier:@"professorDetailSegue" sender:self];
+}
+
 - (void)setUpRefreshControl {
-    self.sortedTableView.refreshControl = [[UIRefreshControl alloc] init];
+    self.tableView.refreshControl = [[UIRefreshControl alloc] init];
 
-    [self.sortedTableView.refreshControl addTarget:self action:@selector(fetchSchoolAndProfessors) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.refreshControl addTarget:self action:@selector(fetchSchoolAndProfessors) forControlEvents:UIControlEventValueChanged];
 
-    [self.sortedTableView insertSubview:self.sortedTableView.refreshControl atIndex:0];
+    [self.tableView insertSubview:self.tableView.refreshControl atIndex:0];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return tableView == self.filteredTableView ? self.filteredProfessors.count : self.sortedProfessors.count;
+    return self.sortedProfessors.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.filteredTableView) {
-        FilteredProfessorsCell *cell = [tableView
-                                        dequeueReusableCellWithIdentifier:@"FilteredProfessorsCell"
-                                        forIndexPath:indexPath];
+    SortedProfessorsCell *cell = [
+                                  tableView
+                                  dequeueReusableCellWithIdentifier:@"SortedProfessorsCell"
+                                  forIndexPath:indexPath];
 
-        Professor *professor = self.filteredProfessors[indexPath.row];
-        [cell setProfessor:professor];
+    Professor *professor = self.sortedProfessors[indexPath.row];
+    [cell setProfessor:professor];
 
-        return cell;
-    } else if (tableView == self.sortedTableView) {
-        SortedProfessorsCell *cell = [
-                                      tableView
-                                      dequeueReusableCellWithIdentifier:@"SortedProfessorsCell"
-                                      forIndexPath:indexPath];
-
-        Professor *professor = self.sortedProfessors[indexPath.row];
-        [cell setProfessor:professor];
-
-        return cell;
-    }
-    return [UITableViewCell new];
-}
-
-- (void)deselectTableViewRow {
-    NSIndexPath *selectedFromFiltered = self.filteredTableView.indexPathForSelectedRow;
-    NSIndexPath *selectedFromSorted = self.sortedTableView.indexPathForSelectedRow;
-
-    if (selectedFromFiltered) {
-        [self.filteredTableView deselectRowAtIndexPath:selectedFromFiltered animated:YES];
-    }
-
-    if (selectedFromSorted) {
-        [self.sortedTableView deselectRowAtIndexPath:selectedFromSorted animated:YES];
-    }
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchText.length != 0) {
-        NSPredicate *predicate = [NSPredicate
-                                  predicateWithBlock:^
-                                  BOOL(id _Nullable evaluatedObject,
-                                       NSDictionary<NSString *,id>
-                                       *_Nullable bindings) {
-            return [((Professor *)evaluatedObject).name containsString:searchText];
-        }];
-        self.filteredProfessors = [self.professors filteredArrayUsingPredicate:predicate];
-    } else {
-        self.filteredProfessors = self.professors;
-    }
-    [self.filteredTableView reloadData];
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    self.searchBar.showsCancelButton = YES;
-
-    // TODO: adjust constraints to show filteredTableView
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [self.searchBar endEditing:YES];
-    self.searchBar.showsCancelButton = NO;
-
-    // TODO: adjust constraints to hide filteredTableView
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self endEditingForScrollOrSearch];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self endEditingForScrollOrSearch];
-}
-
-- (void)endEditingForScrollOrSearch {
-    [self.searchBar endEditing:YES];
-
-    if (self.searchBar.text.length == 0) {
-        self.searchBar.showsCancelButton = NO;
-    }
+    return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UITableViewCell *tappedCell = sender;
+    if ([segue.identifier isEqual:@"professorSearchSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ProfessorSearchViewController *viewController = (ProfessorSearchViewController *)navigationController.topViewController;
 
-    if ([segue.identifier isEqual:@"filteredSegue"]) {
-        NSIndexPath *indexPath = [self.filteredTableView indexPathForCell:tappedCell];
-        Professor *professor = self.filteredProfessors[indexPath.row];
-
-        ProfessorViewController *viewController = [segue destinationViewController];
-        viewController.professor = professor;
+        viewController.delegate = self;
+        viewController.professors = self.professors;
     } else if ([segue.identifier isEqual:@"sortedSegue"]) {
-        NSIndexPath *indexPath = [self.sortedTableView indexPathForCell:tappedCell];
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Professor *professor = self.sortedProfessors[indexPath.row];
 
         ProfessorViewController *viewController = [segue destinationViewController];
         viewController.professor = professor;
+    } else if ([segue.identifier isEqual:@"professorDetailSegue"]) {
+        ProfessorViewController *viewController = [segue destinationViewController];
+
+        viewController.professor = self.searchedProfessor;
     }
 }
 

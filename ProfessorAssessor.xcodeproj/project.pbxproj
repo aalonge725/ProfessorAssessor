@@ -45,6 +45,7 @@
 		F6BAD247269CAB160071C070 /* ProfessorAssessorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */; };
 		F6EC926C26AF4B0B001767D9 /* CourseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */; };
 		F6EC926F26AF4BBB001767D9 /* CourseSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926E26AF4BBB001767D9 /* CourseSelectionCell.m */; };
+		F6EC927226B0BCC6001767D9 /* ProfessorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseSelectionViewController.m; sourceTree = "<group>"; };
 		F6EC926D26AF4BBB001767D9 /* CourseSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseSelectionCell.h; sourceTree = "<group>"; };
 		F6EC926E26AF4BBB001767D9 /* CourseSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseSelectionCell.m; sourceTree = "<group>"; };
+		F6EC927026B0BCC6001767D9 /* ProfessorSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessorSearchViewController.h; sourceTree = "<group>"; };
+		F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +283,8 @@
 				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
 				F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */,
 				F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */,
+				F6EC927026B0BCC6001767D9 /* ProfessorSearchViewController.h */,
+				F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */,
 				F670BBFD26A0B65B001FF9D6 /* ComposeViewController.h */,
 				F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */,
 				F670BBF126A001D5001FF9D6 /* ProfessorSelectionViewController.h */,
@@ -582,6 +587,7 @@
 				F670BBD8269E0079001FF9D6 /* Professor.m in Sources */,
 				F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */,
 				F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */,
+				F6EC927226B0BCC6001767D9 /* ProfessorSearchViewController.m in Sources */,
 				F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */,
 				F670BBE9269F966D001FF9D6 /* SchoolSelectionViewController.m in Sources */,
 				F670BBE4269E32A3001FF9D6 /* Networker.m in Sources */,
