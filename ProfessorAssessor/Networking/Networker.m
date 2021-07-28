@@ -155,35 +155,11 @@ static NSNumberFormatter *numberFormatter = nil;
     PFQuery *query = [Review query];
 
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"course"];
     [query whereKey:@"professor" equalTo:professor];
     [query whereKey:@"course" containedIn:courses];
 
     [query findObjectsInBackgroundWithBlock:completion];
-}
-
-
-+ (Course *)courseFromObject:(PFObject *)object
-              withCompletion:(
-                              void (^)(NSArray<Review *> *_Nullable objects,
-                                      NSError *_Nullable error))completion {
-    if (object) {
-        Course *course = [Course new];
-        course.identifier = object[@"objectId"];
-        course.createdAt = object[@"createdAt"];
-        course.updatedAt = object[@"updatedAt"];
-        course.name = object[@"name"];
-
-        PFQuery *reviewQuery = [Review query];
-
-        [reviewQuery orderByDescending:@"createdAt"];
-        [reviewQuery includeKey:@"course"];
-        [reviewQuery whereKey:@"course" equalTo:object];
-
-        [reviewQuery findObjectsInBackgroundWithBlock:completion];
-
-        return course;
-    }
-    return [Course new];
 }
 
 @end

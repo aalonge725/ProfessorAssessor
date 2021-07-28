@@ -5,7 +5,7 @@
 @interface ProfessorSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
 
 - (IBAction)cancel:(UIBarButtonItem *)sender;

@@ -42,11 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion;
 
-+ (Course *)courseFromObject:(PFObject *)object
-              withCompletion:(
-                              void(^)(NSArray<Review *> *_Nullable objects,
-                                      NSError *_Nullable error))completion;
-
 @end
 
 NS_ASSUME_NONNULL_END

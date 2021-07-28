@@ -14,15 +14,27 @@
 }
 
 + (Course *)courseFromPFObject:(PFObject *)object {
+    Course *course = [Course new];
+
     if (object) {
-        return [Networker courseFromObject:object
-                            withCompletion:^
-                (NSArray<Review *> *_Nullable objects,
-                 NSError *_Nullable error) {
-        }];
+        course.identifier = object.objectId;
+        course.createdAt = object.createdAt;
+        course.updatedAt = object.updatedAt;
+        course.name = object[@"name"];
+        course.reviews = [Course reviewsForCourseObject:object];
     }
 
-    return [Course new];
+    return course;
+}
+
++ (NSArray<Review *> *)reviewsForCourseObject:(PFObject *)object {
+    PFQuery *reviewQuery = [Review query];
+
+    [reviewQuery orderByDescending:@"createdAt"];
+    [reviewQuery includeKeys:@[@"course", @"professor"]];
+    [reviewQuery whereKey:@"course" equalTo:object];
+
+    return [reviewQuery findObjects];
 }
 
 @end

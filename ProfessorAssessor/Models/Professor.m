@@ -18,9 +18,9 @@
     Professor *professor = [Professor new];
 
     if (object) {
-        professor.identifier = object[@"objectId"];
-        professor.createdAt = object[@"createdAt"];
-        professor.updatedAt = object[@"updatedAt"];
+        professor.identifier = object.objectId;
+        professor.createdAt = object.createdAt;
+        professor.updatedAt = object.updatedAt;
         professor.name = object[@"name"];
         professor.courses = object[@"courses"];
         professor.departmentName = object[@"departmentName"];

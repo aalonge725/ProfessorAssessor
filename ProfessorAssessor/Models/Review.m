@@ -22,9 +22,9 @@
     Review *review = [Review new];
 
     if (object) {
-        review.identifier = object[@"objectId"];
-        review.createdAt = object[@"createdAt"];
-        review.updatedAt = object[@"updatedAt"];
+        review.identifier = object.objectId;
+        review.createdAt = object.createdAt;
+        review.updatedAt = object.updatedAt;
         review.reviewer = object[@"reviewer"];
         review.course = object[@"course"];
         review.rating = object[@"rating"];
