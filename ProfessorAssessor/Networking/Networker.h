@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)fetchReviewsForProfessor:(Professor *)professor
                       forCourses:(NSArray<Course *> *)courses
+                           limit:(int)limit
                   withCompletion:(
                                   void(^)
                                   (NSArray<Review *> *_Nullable objects,

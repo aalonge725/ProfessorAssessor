@@ -148,12 +148,14 @@ static NSNumberFormatter *numberFormatter = nil;
 
 + (void)fetchReviewsForProfessor:(Professor *)professor
                       forCourses:(NSArray<Course *> *)courses
+                           limit:(int)limit
                   withCompletion:(
                                   void (^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion {
     PFQuery *query = [Review query];
 
+    query.limit = limit;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"course"];
     [query whereKey:@"professor" equalTo:professor];
