@@ -5,8 +5,6 @@
 #import "InfiniteScrollActivityView.h"
 #import "Networker.h"
 #import "ReviewCell.h"
-#import "Course.h"
-#import "Review.h"
 
 static int queryLimitIncrement = 10;
 
@@ -17,11 +15,12 @@ static int queryLimitIncrement = 10;
 @property (nonatomic, strong) IBOutlet UILabel *departmentName;
 @property (nonatomic, strong) IBOutlet HCSStarRatingView *averageRating;
 @property (nonatomic, strong) NSArray<Course *> *courses;
-@property (nonatomic, strong) NSMutableArray<Course *> *selectedCourses;
+@property (nonatomic, strong) NSMutableSet<Course *> *selectedCourses;
 @property (nonatomic, strong) NSArray<Review *> *reviews;
 @property (nonatomic, strong) InfiniteScrollActivityView *loadingMoreView;
 @property (nonatomic, assign) BOOL loadingMoreReviews;
 @property (nonatomic, assign) int queryLimit;
+@property (nonatomic) PFQuery *query;
 
 @end
 
@@ -31,6 +30,7 @@ static int queryLimitIncrement = 10;
     [super viewDidLoad];
 
     self.queryLimit = queryLimitIncrement;
+    self.reviewCache = [NSCache new];
 
     [self setUpInfiniteScrollView];
 
@@ -49,50 +49,151 @@ static int queryLimitIncrement = 10;
 
 - (void)fetchCoursesAndReviews {
     self.courses = [self sortedCourses];
-    self.selectedCourses = [NSMutableArray new];
+    self.selectedCourses = [NSMutableSet new];
 
     [self displayCourseTags];
 
-    [self fetchReviews];
+    [self fetchReviewsForTagChange]; // TODO: show activity indicator
 }
 
-- (void)fetchReviews { // TODO: use CacheElseNetwork cache policy
+- (void)fetchReviewsWithLimit:(int)limit
+               withCompletion:(void (^)(NSArray<Review *> *_Nullable objects,
+                                        NSError *_Nullable error))completion {
+    self.query = [Networker fetchReviewsForProfessor:self.professor
+                                          forCourses:self.selectedCourses
+                                               limit:limit
+                                      withCompletion:completion];
+}
+
+- (void)fetchReviewsForRefresh {
+    if (self.query) {
+        [self cancelQuery];
+    }
+
     __weak typeof(self) weakSelf = self;
 
-    [Networker
-     fetchReviewsForProfessor:weakSelf.professor
-     forCourses:weakSelf.selectedCourses
-     limit:weakSelf.queryLimit
-     withCompletion:^(NSArray<Review *> *_Nullable objects,
-                      NSError *_Nullable error) {
-        if (objects) {
+    [self fetchReviewsWithLimit:self.queryLimit
+                 withCompletion:^(NSArray<Review *> *_Nullable objects,
+                                  NSError *_Nullable error) {
+        __strong __typeof(self) strongSelf = weakSelf;
+
+        strongSelf.reviews = objects;
+
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.refreshControl endRefreshing];
+
+        strongSelf.averageRating.value = [strongSelf.professor.averageRating doubleValue];
+
+        strongSelf.query = nil;
+    }];
+}
+
+- (void)fetchReviewsForInfiniteScroll {
+    if (self.query) {
+        [self cancelQuery];
+    }
+
+    NSArray<Review *> *reviews = [self.reviewCache objectForKey:self.selectedCourses];
+
+    if (reviews.count >= self.queryLimit) {
+        self.reviews = reviews;
+
+        [self.tableView reloadData];
+        [self.loadingMoreView stopAnimating];
+
+        self.queryLimit = (int)reviews.count + queryLimitIncrement;
+        self.loadingMoreReviews = NO;
+    } else {
+        __weak typeof(self) weakSelf = self;
+
+        [self fetchReviewsWithLimit:self.queryLimit
+                     withCompletion:^(NSArray<Review *> *_Nullable objects,
+                                      NSError *_Nullable error) {
             __strong __typeof(self) strongSelf = weakSelf;
 
-            strongSelf.loadingMoreReviews = NO;
+            strongSelf.reviews = objects;
+
+            [strongSelf.tableView reloadData];
             [strongSelf.loadingMoreView stopAnimating];
+
+            strongSelf.loadingMoreReviews = NO;
+
+            strongSelf.query = nil;
+        }];
+    }
+}
+
+- (void)fetchReviewsForTagChange {
+    if (self.query) {
+        [self cancelQuery];
+    }
+
+    NSArray<Review *> *reviews = [self.reviewCache objectForKey:self.selectedCourses];
+
+    if (self.selectedCourses.count == 0) {
+        self.reviews = @[];
+        [self.tableView reloadData];
+    } else if (reviews) {
+        self.reviews = reviews;
+        [self.tableView reloadData];
+    } else {
+        __weak typeof(self) weakSelf = self;
+        NSMutableSet<Course *> *selectedCourses = [self.selectedCourses copy];
+
+        [self fetchReviewsWithLimit:50
+                     withCompletion:^(NSArray<Review *> *_Nullable objects,
+                                      NSError *_Nullable error) {
+            __strong __typeof(self) strongSelf = weakSelf;
+            NSArray<Review *> *reviews = [objects mutableCopy];
 
             strongSelf.reviews = objects;
 
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
 
-            strongSelf.averageRating.value = [strongSelf.professor.averageRating doubleValue];
-        }
-    }];
+            [strongSelf.reviewCache setObject:reviews forKey:selectedCourses];
+
+            strongSelf.query = nil;
+        }];
+    }
+}
+
+- (NSArray<NSString *> *)courseNames:(NSSet *)courses {
+    NSMutableArray<NSString *> *courseNames = [NSMutableArray new];
+    for (Course *course in courses) {
+        [courseNames addObject:course.name];
+    }
+    return courseNames;
+}
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    didTapTag:(TTGTextTag *)tag
+                      atIndex:(NSUInteger)index {
+    Course *course = self.courses[index];
+
+    if ([self.selectedCourses containsObject:course]) {
+        [self.selectedCourses removeObject:course];
+    } else {
+        [self.selectedCourses addObject:course];
+    }
+
+    [self fetchReviewsForTagChange];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.loadingMoreReviews) {
          int scrollViewContentHeight = self.tableView.contentSize.height;
-         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height * 2;
+         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height * 1.5;
 
-         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+         if(scrollView.contentOffset.y > scrollOffsetThreshold &&
+            self.tableView.isDragging &&
+            self.selectedCourses.count > 0) {
              self.loadingMoreReviews = YES;
              self.queryLimit += queryLimitIncrement;
 
-             [self displayUpdateInfiniteScrollView];
+             [self displayInfiniteScrollView];
 
-             [self fetchReviews];
+             [self fetchReviewsForInfiniteScroll];
          }
     }
 }
@@ -111,7 +212,7 @@ static int queryLimitIncrement = 10;
         self.tableView.contentInset = insets;
 }
 
-- (void)displayUpdateInfiniteScrollView {
+- (void)displayInfiniteScrollView {
     CGRect frame = CGRectMake(0,
                               self.tableView.contentSize.height,
                               self.tableView.bounds.size.width,
@@ -120,7 +221,7 @@ static int queryLimitIncrement = 10;
     [self.loadingMoreView startAnimating];
 }
 
-- (void)displayCourseTags { // TODO: make clear tags button
+- (void)displayCourseTags {
     TTGTextTagCollectionView *courseSelectionView = [self setUpTagCollectionView];
     [self.tableView addSubview:courseSelectionView];
 
@@ -168,31 +269,15 @@ static int queryLimitIncrement = 10;
     return style;
 }
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-                    didTapTag:(TTGTextTag *)tag
-                      atIndex:(NSUInteger)index { // TODO: consider not fetching new reviews unless user refreshes (selecting/unselecting tag update tableView only, not reviews)
-    Course *course = self.courses[index];
-
-    if ([self.selectedCourses containsObject:course]) {
-        [self.selectedCourses removeObject:course];
-
-        [self fetchReviews];
-    } else {
-        [self.selectedCourses addObject:course];
-
-        [self fetchReviews];
-    }
-}
-
 - (void)didTapSubmit {
-    [self fetchReviews];
+    [self fetchReviewsForRefresh];
 }
 
 - (void)setUpRefreshControl {
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
 
     [self.tableView.refreshControl addTarget:self
-                                      action:@selector(fetchReviews)
+                                      action:@selector(fetchReviewsForRefresh)
                             forControlEvents:UIControlEventValueChanged];
 
     [self.tableView insertSubview:self.tableView.refreshControl atIndex:0];
@@ -228,6 +313,14 @@ static int queryLimitIncrement = 10;
 
     viewController.delegate = self;
     viewController.professor = self.professor;
+}
+
+- (void)cancelQuery {
+    [self.query cancel];
+    self.query = nil;
+    [self.tableView.refreshControl endRefreshing];
+    [self.loadingMoreView stopAnimating];
+    self.loadingMoreReviews = NO;
 }
 
 @end

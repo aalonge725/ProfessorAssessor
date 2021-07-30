@@ -1,5 +1,6 @@
 #import "SchoolSelectionViewController.h"
 #import "SchoolSelectionCell.h"
+#import "Networker.h"
 
 @interface SchoolSelectionViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -18,13 +19,10 @@
     [self fetchSchools];
 }
 
-- (void)fetchSchools { // TODO: move to Networker
-    PFQuery *schoolQuery = [School query];
-
-    [schoolQuery orderByAscending:@"name"];
-    [schoolQuery includeKey:@"professors"];
-
-    [schoolQuery findObjectsInBackgroundWithBlock:^(NSArray<School *> *_Nullable schools, NSError *_Nullable error) {
+- (void)fetchSchools {
+    [Networker
+     fetchSchoolsWithCompletion:^(NSArray<School *> *_Nullable schools,
+                                  NSError *_Nullable error) {
         if (schools) {
             self.schools = schools;
             self.filteredSchools = self.schools;
