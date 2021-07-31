@@ -1,5 +1,6 @@
 @import HCSStarRatingView;
 @import TTGTagCollectionView;
+@import DGActivityIndicatorView;
 #import "ProfessorViewController.h"
 #import "ComposeViewController.h"
 #import "InfiniteScrollActivityView.h"
@@ -18,6 +19,7 @@ static int queryLimitIncrement = 10;
 @property (nonatomic, strong) NSMutableSet<Course *> *selectedCourses;
 @property (nonatomic, strong) NSArray<Review *> *reviews;
 @property (nonatomic, strong) InfiniteScrollActivityView *loadingMoreView;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 @property (nonatomic, assign) BOOL loadingMoreReviews;
 @property (nonatomic, assign) int queryLimit;
 @property (nonatomic) PFQuery *query;
@@ -36,9 +38,10 @@ static int queryLimitIncrement = 10;
 
     [self setProfessorDetails];
 
-    [self fetchCoursesAndReviews];
-
+    [self setUpActivityIndicator];
     [self setUpRefreshControl];
+
+    [self fetchCoursesAndReviews];
 }
 
 - (void)setProfessorDetails {
@@ -70,6 +73,8 @@ static int queryLimitIncrement = 10;
         [self cancelQuery];
     }
 
+    [self.activityIndicator startAnimating];
+
     __weak typeof(self) weakSelf = self;
 
     [self fetchReviewsWithLimit:self.queryLimit
@@ -81,6 +86,7 @@ static int queryLimitIncrement = 10;
 
         [strongSelf.tableView reloadData];
         [strongSelf.tableView.refreshControl endRefreshing];
+        [strongSelf.activityIndicator stopAnimating];
 
         strongSelf.averageRating.value = [strongSelf.professor.averageRating doubleValue];
 
@@ -105,13 +111,17 @@ static int queryLimitIncrement = 10;
         self.loadingMoreReviews = NO;
     } else {
         __weak typeof(self) weakSelf = self;
+        NSMutableSet<Course *> *selectedCourses = [self.selectedCourses copy];
 
         [self fetchReviewsWithLimit:self.queryLimit
                      withCompletion:^(NSArray<Review *> *_Nullable objects,
                                       NSError *_Nullable error) {
             __strong __typeof(self) strongSelf = weakSelf;
+            NSArray<Review *> *reviews = [objects mutableCopy];
 
             strongSelf.reviews = objects;
+
+            [strongSelf.reviewCache setObject:reviews forKey:selectedCourses];
 
             [strongSelf.tableView reloadData];
             [strongSelf.loadingMoreView stopAnimating];
@@ -137,6 +147,8 @@ static int queryLimitIncrement = 10;
         self.reviews = reviews;
         [self.tableView reloadData];
     } else {
+        [self.activityIndicator startAnimating];
+
         __weak typeof(self) weakSelf = self;
         NSMutableSet<Course *> *selectedCourses = [self.selectedCourses copy];
 
@@ -150,6 +162,7 @@ static int queryLimitIncrement = 10;
 
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
+            [strongSelf.activityIndicator stopAnimating];
 
             [strongSelf.reviewCache setObject:reviews forKey:selectedCourses];
 
@@ -273,6 +286,15 @@ static int queryLimitIncrement = 10;
     [self fetchReviewsForRefresh];
 }
 
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
+}
+
 - (void)setUpRefreshControl {
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
 
@@ -320,6 +342,7 @@ static int queryLimitIncrement = 10;
     self.query = nil;
     [self.tableView.refreshControl endRefreshing];
     [self.loadingMoreView stopAnimating];
+    [self.activityIndicator stopAnimating];
     self.loadingMoreReviews = NO;
 }
 
