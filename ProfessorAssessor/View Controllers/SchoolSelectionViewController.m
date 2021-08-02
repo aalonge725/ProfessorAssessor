@@ -1,6 +1,6 @@
 @import DGActivityIndicatorView;
 #import "SchoolSelectionViewController.h"
-#import "SchoolSelectionCell.h"
+#import "SchoolCell.h"
 #import "Networker.h"
 
 @interface SchoolSelectionViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -45,7 +45,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SchoolSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SchoolSelectionCell" forIndexPath:indexPath];
+    SchoolCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SchoolCell" forIndexPath:indexPath];
 
     School *school = self.filteredSchools[indexPath.row];
     [cell setSchool:school];

@@ -1,10 +1,9 @@
-#import "SchoolSelectionCell.h"
+#import "CourseCell.h"
 
-@implementation SchoolSelectionCell
+@implementation CourseCell
 
-- (void)setSchool:(School *)school {
-    self.name.text = school.name;
-    self.address.text = school.address;
+- (void)setCourse:(Course *)course {
+    self.name.text = course.name;
 }
 
 - (void)configureBackground {
