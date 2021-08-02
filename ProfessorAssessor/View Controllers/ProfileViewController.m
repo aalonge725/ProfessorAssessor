@@ -1,18 +1,25 @@
 @import Parse;
 @import FBSDKLoginKit;
+@import DGActivityIndicatorView;
 #import "ProfileViewController.h"
 #import "AuthenticationViewController.h"
 #import "SchoolSelectionViewController.h"
 #import "HomeViewController.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
+#import "ReviewCell.h"
 #import "User.h"
 #import "School.h"
 
-@interface ProfileViewController () <SchoolSelectionViewControllerDelegate>
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, SchoolSelectionViewControllerDelegate>
 
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *username;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
+@property (nonatomic, strong) IBOutlet UIButton *changeSchoolButton;
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSArray<Review *> *reviews;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
@@ -22,23 +29,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.user = [User currentUser];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ReviewCell" bundle:nil] forCellReuseIdentifier:@"ReviewCell"];
 
-    [self fetchSchoolWithCompletion:^(School *school) {
-        [self updateLabelsWithSchool:school];
+    [self setUpActivityIndicator];
+    [self setUpRefreshControl];
+
+    [self updateLabelsWithSchool:self.school];
+
+    [self fetchReviewsForCurrentUser];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSIndexPath *selected = self.tableView.indexPathForSelectedRow;
+
+    if (selected) {
+        [self.tableView deselectRowAtIndexPath:selected animated:animated];
+    }
+}
+
+- (void)fetchReviewsForCurrentUser {
+    [self.activityIndicator startAnimating];
+
+    __weak typeof(self) weakSelf = self;
+
+    [Networker fetchReviewsForCurrentUserWithCompletion:^(NSArray<Review *> *_Nullable objects, NSError *_Nullable error) {
+        if (objects) {
+            __strong typeof(self) strongSelf = weakSelf;
+
+            strongSelf.reviews = objects;
+
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.refreshControl endRefreshing];
+            [strongSelf.activityIndicator stopAnimating];
+        }
     }];
 }
 
-- (void)fetchSchoolWithCompletion:(void (^)(School *))completion {
-    self.user = [User currentUser];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.reviews.count;
+}
 
-    [Networker fetchSchool:self.user.school
-            withCompletion:^(PFObject *_Nullable object,
-                             NSError *_Nullable error) {
-        if (object) {
-            School *school = [School schoolFromPFObject:object];
-            completion(school);
-        }
-    }];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ReviewCell *cell = [tableView
+                        dequeueReusableCellWithIdentifier:@"ReviewCell"
+                        forIndexPath:indexPath];
+
+    Review *review = self.reviews[indexPath.row];
+    [cell setReview:review];
+    [cell configureBackground];
+
+    return cell;
 }
 
 - (void)updateLabelsWithSchool:(School *)school {
@@ -48,6 +91,10 @@
 
 - (void)didSelectSchool:(School *)school {
     self.user.school = school;
+
+    [self buttonsEnabled:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.activityIndicator startAnimating];
 
     [self.user
      saveInBackgroundWithBlock:^(
@@ -62,17 +109,44 @@
             
             viewController.school = school;
             [viewController fetchSchoolAndProfessors];
+
+            [self.activityIndicator stopAnimating];
+            [self buttonsEnabled:YES];
         }
-        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
 - (IBAction)logout:(UIBarButtonItem *)sender {
+    [self.activityIndicator startAnimating];
+
+    [self buttonsEnabled:NO];
+
     [PFUser logOutInBackgroundWithBlock:^(NSError *_Nullable error) {
+        [self.activityIndicator stopAnimating];
+
         [[FBSDKLoginManager alloc] logOut];
 
         [self displayLoginPage];
     }];
+}
+
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
+}
+
+- (void)setUpRefreshControl {
+    self.tableView.refreshControl = [[UIRefreshControl alloc] init];
+
+    [self.tableView.refreshControl addTarget:self
+                                      action:@selector(fetchReviewsForCurrentUser)
+                            forControlEvents:UIControlEventValueChanged];
+
+    [self.tableView insertSubview:self.tableView.refreshControl atIndex:0];
 }
 
 - (void)displayLoginPage {
@@ -82,6 +156,12 @@
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     
     [sceneDelegate changeRootViewController:viewController];
+}
+
+- (void)buttonsEnabled:(BOOL)enabled {
+    self.logoutButton.enabled = enabled;
+    self.changeSchoolButton.enabled = enabled;
+    self.tabBarController.tabBar.userInteractionEnabled = enabled;
 }
 
 #pragma mark - Navigation

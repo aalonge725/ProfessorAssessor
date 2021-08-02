@@ -123,14 +123,6 @@ static NSNumberFormatter *numberFormatter = nil;
     [course saveInBackgroundWithBlock:completion];
 }
 
-+ (void)fetchSchool:(School *)school
-     withCompletion:(void (^)(PFObject *_Nullable object,
-                             NSError *_Nullable error))completion {
-    User *user = [User currentUser];
-
-    [user.school fetchIfNeededInBackgroundWithBlock:completion];
-}
-
 + (void)fetchSchoolsWithCompletion:(
                                     void (^)(NSArray<School *> *_Nullable schools,
                                              NSError *_Nullable error))completion {
@@ -175,6 +167,19 @@ static NSNumberFormatter *numberFormatter = nil;
     [query findObjectsInBackgroundWithBlock:completion];
 
     return query;
+}
+
++ (void)fetchReviewsForCurrentUserWithCompletion:(
+                                                  void (^)
+                                                  (NSArray<Review *> *_Nullable objects,
+                                                   NSError *_Nullable error))completion {
+    PFQuery *reviewQuery = [Review query];
+
+    [reviewQuery orderByDescending:@"createdAt"];
+    [reviewQuery includeKeys:@[@"professor", @"course"]];
+    [reviewQuery whereKey:@"reviewer" equalTo:[User currentUser]];
+
+    [reviewQuery findObjectsInBackgroundWithBlock:completion];
 }
 
 @end

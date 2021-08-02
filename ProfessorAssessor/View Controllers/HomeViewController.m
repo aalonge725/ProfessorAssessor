@@ -5,6 +5,7 @@
 #import "AuthenticationViewController.h"
 #import "ProfessorViewController.h"
 #import "ProfessorSearchViewController.h"
+#import "ProfileViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *schoolName;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *searchButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *composeButton;
+@property (nonatomic, strong) IBOutlet UIButton *sortButton;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
@@ -45,7 +48,7 @@
 
 - (void)fetchSchoolAndProfessors {
     [self.activityIndicator startAnimating];
-    self.searchButton.enabled = NO;
+    [self viewsEnabled:NO];
 
     __weak typeof(self) weakSelf = self;
 
@@ -58,6 +61,7 @@
 
             strongSelf.school = [School schoolFromPFObject:object];
             strongSelf.schoolName.text = strongSelf.school.name;
+            [self setSchoolInProfileTab];
             
             NSArray<Professor *> *professors = strongSelf.school.professors;
             strongSelf.professors = [professors
@@ -71,9 +75,17 @@
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
             [strongSelf.activityIndicator stopAnimating];
-            self.searchButton.enabled = YES;
+            [self viewsEnabled:YES];
         }
     }];
+}
+
+- (void)viewsEnabled:(BOOL)enabled {
+    self.searchButton.enabled = enabled;
+    self.composeButton.enabled = enabled;
+    self.sortButton.enabled = enabled;
+    self.tableView.userInteractionEnabled = enabled;
+    self.tabBarController.tabBar.userInteractionEnabled = enabled;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,6 +98,13 @@
     self.professor = professor;
 
     [self performSegueWithIdentifier:@"professorDetailSegue" sender:self];
+}
+
+- (void)setSchoolInProfileTab {
+    UINavigationController *navigationController = self.tabBarController.viewControllers[1];
+    ProfileViewController *viewController = (ProfileViewController *)navigationController.viewControllers[0];
+
+    viewController.school = self.school;
 }
 
 - (void)setUpRefreshControl {

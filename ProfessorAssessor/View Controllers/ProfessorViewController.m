@@ -30,6 +30,7 @@ static int queryLimitIncrement = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ReviewCell" bundle:nil] forCellReuseIdentifier:@"ReviewCell"];
 
     self.queryLimit = queryLimitIncrement;
     self.reviewCache = [NSCache new];
