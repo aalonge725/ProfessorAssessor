@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeViewController : UIViewController
 
 @property (nonatomic, strong) School *school;
-@property (nonatomic, strong) Professor *searchedProfessor;
+@property (nonatomic, strong) Professor *professor;
 
 - (void)fetchSchoolAndProfessors;
 

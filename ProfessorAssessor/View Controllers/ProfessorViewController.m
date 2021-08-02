@@ -56,7 +56,7 @@ static int queryLimitIncrement = 10;
 
     [self displayCourseTags];
 
-    [self fetchReviewsForTagChange]; // TODO: show activity indicator
+    [self fetchReviewsForTagChange];
 }
 
 - (void)fetchReviewsWithLimit:(int)limit

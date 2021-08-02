@@ -101,7 +101,7 @@ static NSNumberFormatter *numberFormatter = nil;
                          reviewCount:(int)number{
     double oldAverageRating = [professor.averageRating doubleValue];
     double newAverageRating = oldAverageRating + ((newRating - oldAverageRating) / (double)number);
-    NSNumber *averageRatingAsNumber = [NSNumber numberWithDouble:newAverageRating];
+    NSNumber *averageRating = [NSNumber numberWithDouble:newAverageRating];
 
     if (numberFormatter == nil) {
         numberFormatter = [[NSNumberFormatter alloc] init];
@@ -109,7 +109,7 @@ static NSNumberFormatter *numberFormatter = nil;
     }
 
     NSString *newRatingString = [numberFormatter
-                                 stringFromNumber:averageRatingAsNumber];
+                                 stringFromNumber:averageRating];
 
     return [numberFormatter numberFromString:newRatingString];
 }
