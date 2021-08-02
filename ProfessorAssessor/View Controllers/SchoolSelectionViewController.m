@@ -1,3 +1,4 @@
+@import DGActivityIndicatorView;
 #import "SchoolSelectionViewController.h"
 #import "SchoolSelectionCell.h"
 #import "Networker.h"
@@ -8,6 +9,7 @@
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray<School *> *schools;
 @property (nonatomic, strong) NSArray<School *> *filteredSchools;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -16,17 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setUpActivityIndicator];
+
     [self fetchSchools];
 }
 
 - (void)fetchSchools {
+    [self.activityIndicator startAnimating];
+
+    __weak typeof(self) weakSelf = self;
+
     [Networker
      fetchSchoolsWithCompletion:^(NSArray<School *> *_Nullable schools,
                                   NSError *_Nullable error) {
         if (schools) {
-            self.schools = schools;
-            self.filteredSchools = self.schools;
-            [self.tableView reloadData];
+            weakSelf.schools = schools;
+            weakSelf.filteredSchools = self.schools;
+            [weakSelf.tableView reloadData];
+            [weakSelf.activityIndicator stopAnimating];
         }
     }];
 }
@@ -63,6 +72,15 @@
     School *school = self.filteredSchools[indexPath.row];
 
     [self.delegate didSelectSchool:school];
+}
+
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

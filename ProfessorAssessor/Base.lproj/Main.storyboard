@@ -803,6 +803,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="schoolName" destination="fXi-ad-bDD" id="zfz-JY-F8G"/>
+                        <outlet property="searchButton" destination="7jF-70-Z1f" id="6Q7-MV-iVv"/>
                         <outlet property="tableView" destination="o7y-RP-hbq" id="6fd-gB-30Q"/>
                         <segue destination="hqV-NF-dWQ" kind="show" identifier="professorDetailSegue" id="IhG-PW-zIt"/>
                     </connections>
@@ -1187,7 +1188,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="Kcj-5a-zsC"/>
-        <segue reference="epF-ye-jTr"/>
+        <segue reference="BO3-nf-ruc"/>
         <segue reference="IhG-PW-zIt"/>
     </inferredMetricsTieBreakers>
     <resources>

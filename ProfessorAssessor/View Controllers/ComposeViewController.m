@@ -1,3 +1,4 @@
+@import DGActivityIndicatorView;
 #import "ComposeViewController.h"
 #import "ProfessorSelectionViewController.h"
 #import "CourseSelectionViewController.h"
@@ -15,6 +16,7 @@ static NSNumberFormatter *numberFormatter = nil;
 @property (nonatomic, strong) IBOutlet UILabel *characterCountLabel;
 @property (nonatomic, strong) IBOutlet UIButton *chooseCourseButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 - (IBAction)ratingViewChanged:(HCSStarRatingView *)sender;
 - (IBAction)ratingFieldChanged:(UITextField *)sender;
@@ -26,6 +28,8 @@ static NSNumberFormatter *numberFormatter = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self decorateContentView];
+
+    [self setUpActivityIndicator];
 
     if (self.professor) {
         self.professorName.text = self.professor.name;
@@ -42,6 +46,8 @@ static NSNumberFormatter *numberFormatter = nil;
     } else if (self.content.text.length == 0) {
         [self presentAlertWithTitle:nil withMessage:@"Please type your review of this professor"];
     } else {
+        [self.activityIndicator startAnimating];
+
         NSNumber *ratingValue = [NSNumber numberWithDouble:[self.ratingField.text doubleValue]];
 
         [Networker
@@ -52,6 +58,8 @@ static NSNumberFormatter *numberFormatter = nil;
          completion:^(BOOL succeeded, NSError *_Nullable error) {
             if (error == nil) {
                 [self.delegate didTapSubmit];
+
+                [self.activityIndicator stopAnimating];
 
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
@@ -92,6 +100,15 @@ static NSNumberFormatter *numberFormatter = nil;
     self.ratingField.enabled = enabled;
     self.content.userInteractionEnabled = enabled;
     self.submitButton.enabled = enabled;
+}
+
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
 }
 
 - (void)decorateContentView {

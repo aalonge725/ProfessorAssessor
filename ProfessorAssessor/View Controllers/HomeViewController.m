@@ -1,5 +1,6 @@
 @import FBSDKLoginKit;
 @import HCSStarRatingView;
+@import DGActivityIndicatorView;
 #import "HomeViewController.h"
 #import "AuthenticationViewController.h"
 #import "ProfessorViewController.h"
@@ -13,8 +14,10 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *schoolName;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *searchButton;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -23,9 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self fetchSchoolAndProfessors];
-
+    [self setUpActivityIndicator];
     [self setUpRefreshControl];
+
+    [self fetchSchoolAndProfessors];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,6 +43,9 @@
 }
 
 - (void)fetchSchoolAndProfessors {
+    [self.activityIndicator startAnimating];
+    self.searchButton.enabled = NO;
+
     __weak typeof(self) weakSelf = self;
 
     [Networker
@@ -62,6 +69,8 @@
 
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
+            [strongSelf.activityIndicator stopAnimating];
+            self.searchButton.enabled = YES;
         }
     }];
 }
@@ -78,6 +87,15 @@
     [self.tableView.refreshControl addTarget:self action:@selector(fetchSchoolAndProfessors) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView insertSubview:self.tableView.refreshControl atIndex:0];
+}
+
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
