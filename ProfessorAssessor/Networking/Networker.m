@@ -43,7 +43,7 @@ static NSNumberFormatter *numberFormatter = nil;
                                          course:(Course *)course
                                         content:(NSString *)content
                                          rating:(NSNumber *)rating
-                                     completion:(void(^)(BOOL succeeded,
+                                     completion:(void (^)(BOOL succeeded,
                                                          NSError *_Nullable error))completion {
     Review *newReview = [Networker createReviewWithCourse:course
                                                 professor:professor
@@ -101,7 +101,7 @@ static NSNumberFormatter *numberFormatter = nil;
                          reviewCount:(int)number{
     double oldAverageRating = [professor.averageRating doubleValue];
     double newAverageRating = oldAverageRating + ((newRating - oldAverageRating) / (double)number);
-    NSNumber *averageRatingAsNumber = [NSNumber numberWithDouble:newAverageRating];
+    NSNumber *averageRating = [NSNumber numberWithDouble:newAverageRating];
 
     if (numberFormatter == nil) {
         numberFormatter = [[NSNumberFormatter alloc] init];
@@ -109,14 +109,14 @@ static NSNumberFormatter *numberFormatter = nil;
     }
 
     NSString *newRatingString = [numberFormatter
-                                 stringFromNumber:averageRatingAsNumber];
+                                 stringFromNumber:averageRating];
 
     return [numberFormatter numberFromString:newRatingString];
 }
 
 + (void)addReview:(Review *)newReview
          toCourse:(Course *)course
-   withCompletion:(void(^)(BOOL succeeded,
+   withCompletion:(void (^)(BOOL succeeded,
                           NSError *_Nullable error))completion {
     PFRelation *reviews = [course relationForKey:@"reviews"];
     [reviews addObject:newReview];
@@ -129,6 +129,17 @@ static NSNumberFormatter *numberFormatter = nil;
     User *user = [User currentUser];
 
     [user.school fetchIfNeededInBackgroundWithBlock:completion];
+}
+
++ (void)fetchSchoolsWithCompletion:(
+                                    void (^)(NSArray<School *> *_Nullable schools,
+                                             NSError *_Nullable error))completion {
+    PFQuery *schoolQuery = [School query];
+
+    [schoolQuery orderByAscending:@"name"];
+    [schoolQuery includeKey:@"professors"];
+
+    [schoolQuery findObjectsInBackgroundWithBlock:completion];
 }
 
 + (void)fetchSchoolAndProfessorsWithCompletion:(
@@ -146,20 +157,24 @@ static NSNumberFormatter *numberFormatter = nil;
      block:completion];
 }
 
-+ (void)fetchReviewsForProfessor:(Professor *)professor
-                      forCourses:(NSArray<Course *> *)courses
++ (PFQuery *)fetchReviewsForProfessor:(Professor *)professor
+                      forCourses:(NSMutableSet<Course *> *)courses
+                           limit:(int)limit
                   withCompletion:(
                                   void (^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion {
     PFQuery *query = [Review query];
 
+    query.limit = limit;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"course"];
     [query whereKey:@"professor" equalTo:professor];
-    [query whereKey:@"course" containedIn:courses];
+    [query whereKey:@"course" containedIn:[courses allObjects]];
 
     [query findObjectsInBackgroundWithBlock:completion];
+
+    return query;
 }
 
 @end

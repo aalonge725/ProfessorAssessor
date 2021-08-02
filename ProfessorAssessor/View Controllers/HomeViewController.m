@@ -66,8 +66,8 @@
     }];
 }
 
-- (void)didSelectProfessor:(id)professor {
-    self.searchedProfessor = professor;
+- (void)didSelectProfessor:(Professor *)professor {
+    self.professor = professor;
 
     [self performSegueWithIdentifier:@"professorDetailSegue" sender:self];
 }
@@ -113,7 +113,7 @@
     } else if ([segue.identifier isEqual:@"professorDetailSegue"]) {
         ProfessorViewController *viewController = [segue destinationViewController];
 
-        viewController.professor = self.searchedProfessor;
+        viewController.professor = self.professor;
     }
 }
 

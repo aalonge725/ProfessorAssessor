@@ -23,22 +23,27 @@ NS_ASSUME_NONNULL_BEGIN
                                          course:(Course *)course
                                         content:(NSString *)content
                                          rating:(NSNumber *)rating
-                                     completion:(void(^)(BOOL succeeded,
+                                     completion:(void (^)(BOOL succeeded,
                                                          NSError *_Nullable error))completion;
 
 + (void)fetchSchool:(School *)school
-     withCompletion:(void(^)(PFObject *_Nullable object,
+     withCompletion:(void (^)(PFObject *_Nullable object,
                              NSError *_Nullable error))completion;
 
++ (void)fetchSchoolsWithCompletion:(
+                                    void (^)(NSArray<School *> *_Nullable schools,
+                                            NSError *_Nullable error))completion;
+
 + (void)fetchSchoolAndProfessorsWithCompletion:(
-                                                void(^)
+                                                void (^)
                                                 (PFObject *_Nullable object,
                                                  NSError *_Nullable error))completion;
 
-+ (void)fetchReviewsForProfessor:(Professor *)professor
-                      forCourses:(NSArray<Course *> *)courses
++ (PFQuery *)fetchReviewsForProfessor:(Professor *)professor
+                      forCourses:(NSMutableSet<Course *> *)courses
+                           limit:(int)limit
                   withCompletion:(
-                                  void(^)
+                                  void (^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion;
 
