@@ -1,6 +1,6 @@
 #import "ProfessorSearchViewController.h"
 #import "ProfessorViewController.h"
-#import "FilteredProfessorsCell.h"
+#import "ProfessorCell.h"
 
 @interface ProfessorSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProfessorCell" bundle:nil] forCellReuseIdentifier:@"ProfessorCell"];
 
     [self.navigationItem setHidesBackButton:YES];
 
@@ -30,9 +31,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FilteredProfessorsCell *cell = [tableView
-                                    dequeueReusableCellWithIdentifier:@"FilteredProfessorsCell"
-                                    forIndexPath:indexPath];
+    ProfessorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorCell" forIndexPath:indexPath];
 
     Professor *professor = self.filteredProfessors[indexPath.row];
     [cell setProfessor:professor];

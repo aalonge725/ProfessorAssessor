@@ -8,7 +8,7 @@
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
-#import "SortedProfessorsCell.h"
+#import "ProfessorCell.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, ProfessorSelectionViewControllerDelegate>
 
@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProfessorCell" bundle:nil] forCellReuseIdentifier:@"ProfessorCell"];
 
     [self setUpActivityIndicator];
     [self setUpRefreshControl];
@@ -75,6 +76,12 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.professor = self.sortedProfessors[indexPath.row];
+
+    [self performSegueWithIdentifier:@"professorDetailSegue" sender:self];
+}
+
 - (void)didSelectProfessor:(Professor *)professor {
     self.professor = professor;
 
@@ -103,10 +110,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SortedProfessorsCell *cell = [
-                                  tableView
-                                  dequeueReusableCellWithIdentifier:@"SortedProfessorsCell"
-                                  forIndexPath:indexPath];
+    ProfessorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorCell" forIndexPath:indexPath];
 
     Professor *professor = self.sortedProfessors[indexPath.row];
     [cell setProfessor:professor];
@@ -122,13 +126,6 @@
 
         viewController.delegate = self;
         viewController.professors = self.professors;
-    } else if ([segue.identifier isEqual:@"sortedSegue"]) {
-        UITableViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        Professor *professor = self.sortedProfessors[indexPath.row];
-
-        ProfessorViewController *viewController = [segue destinationViewController];
-        viewController.professor = professor;
     } else if ([segue.identifier isEqual:@"professorDetailSegue"]) {
         ProfessorViewController *viewController = [segue destinationViewController];
 

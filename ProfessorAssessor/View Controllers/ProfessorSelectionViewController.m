@@ -1,6 +1,6 @@
 @import DGActivityIndicatorView;
 #import "ProfessorSelectionViewController.h"
-#import "ProfessorSelectionCell.h"
+#import "ProfessorCell.h"
 #import "Networker.h"
 #import "School.h"
 
@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProfessorCell" bundle:nil] forCellReuseIdentifier:@"ProfessorCell"];
 
     [self setUpActivityIndicator];
     [self setUpRefreshControl];
@@ -80,7 +81,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProfessorSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorSelectionCell" forIndexPath:indexPath];
+    ProfessorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorCell" forIndexPath:indexPath];
 
     Professor *professor = self.filteredProfessors[indexPath.row];
     [cell setProfessor:professor];

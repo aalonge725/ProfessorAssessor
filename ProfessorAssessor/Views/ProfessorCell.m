@@ -1,6 +1,6 @@
-#import "FilteredProfessorsCell.h"
+#import "ProfessorCell.h"
 
-@implementation FilteredProfessorsCell
+@implementation ProfessorCell
 
 - (void)setProfessor:(Professor *)professor {
     self.professorName.text = professor.name;
@@ -9,7 +9,6 @@
 }
 
 - (void)configureBackground {
-    self.background.layer.masksToBounds = NO;
     self.background.layer.shadowOpacity = 0.25;
     self.background.layer.shadowRadius = 5;
     self.background.layer.shadowOffset = CGSizeMake(0, 0);

@@ -12,8 +12,6 @@
 		46CDCAD413F323BCCE07050E /* Pods_ProfessorAssessorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93CE9535CC0091D70753E24 /* Pods_ProfessorAssessorTests.framework */; };
 		E9404FC20FDE58C7F4A31A12 /* Pods_ProfessorAssessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF797E12EDDBCBBAFBAE9D1C /* Pods_ProfessorAssessor.framework */; };
 		F616F7EF26A6265A00E366D0 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7EE26A6265A00E366D0 /* LogInViewController.m */; };
-		F616F7FB26A78B0F00E366D0 /* FilteredProfessorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */; };
-		F616F7FE26A78B2000E366D0 /* SortedProfessorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */; };
 		F624BF8A26B2168F007309E6 /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F624BF8926B2168F007309E6 /* InfiniteScrollActivityView.m */; };
 		F670BBC3269CE8C8001FF9D6 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC2269CE8C8001FF9D6 /* AuthenticationViewController.m */; };
 		F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */; };
@@ -28,7 +26,6 @@
 		F670BBF0269FAB56001FF9D6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F670BBEF269FAB56001FF9D6 /* Keys.plist */; };
 		F670BBF326A001D5001FF9D6 /* ProfessorSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */; };
 		F670BBF626A0A917001FF9D6 /* SchoolSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBF526A0A917001FF9D6 /* SchoolSelectionCell.m */; };
-		F670BBF926A0A92D001FF9D6 /* ProfessorSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBF826A0A92D001FF9D6 /* ProfessorSelectionCell.m */; };
 		F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */; };
 		F670BBFF26A0B65B001FF9D6 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */; };
 		F670BC0226A0DC04001FF9D6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F670BC0126A0DC04001FF9D6 /* SignUpViewController.m */; };
@@ -47,6 +44,8 @@
 		F6EC926C26AF4B0B001767D9 /* CourseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */; };
 		F6EC926F26AF4BBB001767D9 /* CourseSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926E26AF4BBB001767D9 /* CourseSelectionCell.m */; };
 		F6EC927226B0BCC6001767D9 /* ProfessorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */; };
+		F6F0BB2426B885F50043E59C /* ProfessorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F0BB2226B885F50043E59C /* ProfessorCell.m */; };
+		F6F0BB2526B885F50043E59C /* ProfessorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2326B885F50043E59C /* ProfessorCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +77,6 @@
 		D0C08B80C2BE1B8477728EBF /* Pods-ProfessorAssessorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfessorAssessorTests.release.xcconfig"; path = "Target Support Files/Pods-ProfessorAssessorTests/Pods-ProfessorAssessorTests.release.xcconfig"; sourceTree = "<group>"; };
 		F616F7ED26A6265A00E366D0 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		F616F7EE26A6265A00E366D0 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
-		F616F7F926A78B0F00E366D0 /* FilteredProfessorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilteredProfessorsCell.h; sourceTree = "<group>"; };
-		F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilteredProfessorsCell.m; sourceTree = "<group>"; };
-		F616F7FC26A78B2000E366D0 /* SortedProfessorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedProfessorsCell.h; sourceTree = "<group>"; };
-		F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedProfessorsCell.m; sourceTree = "<group>"; };
 		F624BF8826B2168F007309E6 /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollActivityView.h; sourceTree = "<group>"; };
 		F624BF8926B2168F007309E6 /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollActivityView.m; sourceTree = "<group>"; };
 		F63305BD26AB1DF2002EDF74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,8 +105,6 @@
 		F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorSelectionViewController.m; sourceTree = "<group>"; };
 		F670BBF426A0A917001FF9D6 /* SchoolSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolSelectionCell.h; sourceTree = "<group>"; };
 		F670BBF526A0A917001FF9D6 /* SchoolSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolSelectionCell.m; sourceTree = "<group>"; };
-		F670BBF726A0A92D001FF9D6 /* ProfessorSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessorSelectionCell.h; sourceTree = "<group>"; };
-		F670BBF826A0A92D001FF9D6 /* ProfessorSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorSelectionCell.m; sourceTree = "<group>"; };
 		F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessorViewController.h; sourceTree = "<group>"; };
 		F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorViewController.m; sourceTree = "<group>"; };
 		F670BBFD26A0B65B001FF9D6 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
@@ -144,6 +137,9 @@
 		F6EC926E26AF4BBB001767D9 /* CourseSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseSelectionCell.m; sourceTree = "<group>"; };
 		F6EC927026B0BCC6001767D9 /* ProfessorSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessorSearchViewController.h; sourceTree = "<group>"; };
 		F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorSearchViewController.m; sourceTree = "<group>"; };
+		F6F0BB2126B885F50043E59C /* ProfessorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessorCell.h; sourceTree = "<group>"; };
+		F6F0BB2226B885F50043E59C /* ProfessorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorCell.m; sourceTree = "<group>"; };
+		F6F0BB2326B885F50043E59C /* ProfessorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfessorCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,12 +320,9 @@
 			children = (
 				F670BBF426A0A917001FF9D6 /* SchoolSelectionCell.h */,
 				F670BBF526A0A917001FF9D6 /* SchoolSelectionCell.m */,
-				F670BBF726A0A92D001FF9D6 /* ProfessorSelectionCell.h */,
-				F670BBF826A0A92D001FF9D6 /* ProfessorSelectionCell.m */,
-				F616F7F926A78B0F00E366D0 /* FilteredProfessorsCell.h */,
-				F616F7FA26A78B0F00E366D0 /* FilteredProfessorsCell.m */,
-				F616F7FC26A78B2000E366D0 /* SortedProfessorsCell.h */,
-				F616F7FD26A78B2000E366D0 /* SortedProfessorsCell.m */,
+				F6F0BB2126B885F50043E59C /* ProfessorCell.h */,
+				F6F0BB2226B885F50043E59C /* ProfessorCell.m */,
+				F6F0BB2326B885F50043E59C /* ProfessorCell.xib */,
 				F6EC926D26AF4BBB001767D9 /* CourseSelectionCell.h */,
 				F6EC926E26AF4BBB001767D9 /* CourseSelectionCell.m */,
 				F67EF92526AA11C500334C2A /* ReviewCell.h */,
@@ -455,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F0BB2526B885F50043E59C /* ProfessorCell.xib in Resources */,
 				F670BBF0269FAB56001FF9D6 /* Keys.plist in Resources */,
 				F6BAD22F269CAB160071C070 /* LaunchScreen.storyboard in Resources */,
 				F6BAD22C269CAB160071C070 /* Assets.xcassets in Resources */,
@@ -587,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F624BF8A26B2168F007309E6 /* InfiniteScrollActivityView.m in Sources */,
+				F6F0BB2426B885F50043E59C /* ProfessorCell.m in Sources */,
 				F670BBC3269CE8C8001FF9D6 /* AuthenticationViewController.m in Sources */,
 				F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */,
 				F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */,
@@ -608,9 +603,6 @@
 				F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */,
 				F670BBC6269CEDF2001FF9D6 /* ProfileViewController.m in Sources */,
 				F67EF92726AA11C500334C2A /* ReviewCell.m in Sources */,
-				F670BBF926A0A92D001FF9D6 /* ProfessorSelectionCell.m in Sources */,
-				F616F7FE26A78B2000E366D0 /* SortedProfessorsCell.m in Sources */,
-				F616F7FB26A78B0F00E366D0 /* FilteredProfessorsCell.m in Sources */,
 				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,
 				F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */,
 				F670BBF326A001D5001FF9D6 /* ProfessorSelectionViewController.m in Sources */,

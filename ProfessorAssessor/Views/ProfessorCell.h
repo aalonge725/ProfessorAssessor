@@ -4,11 +4,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FilteredProfessorsCell : UITableViewCell
+@interface ProfessorCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *professorName;
-@property (nonatomic, strong) IBOutlet UILabel *departmentName;
-@property (nonatomic, strong) IBOutlet HCSStarRatingView *averageRating;
+@property (strong, nonatomic) IBOutlet UILabel *professorName;
+@property (strong, nonatomic) IBOutlet UILabel *departmentName;
+@property (strong, nonatomic) IBOutlet HCSStarRatingView *averageRating;
 @property (strong, nonatomic) IBOutlet UIView *background;
 
 - (void)setProfessor:(Professor *)professor;
