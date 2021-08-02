@@ -51,6 +51,7 @@
 
     Course *course = self.courses[indexPath.row];
     [cell setCourse:course];
+    [cell configureBackground];
 
     return cell;
 }

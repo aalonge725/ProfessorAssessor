@@ -7,8 +7,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (nonatomic, strong) IBOutlet UILabel *departmentName;
+@property (strong, nonatomic) IBOutlet UIView *background;
 
 - (void)setProfessor:(Professor *)professor;
+- (void)configureBackground;
 
 @end
 

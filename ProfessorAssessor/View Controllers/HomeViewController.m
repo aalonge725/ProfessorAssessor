@@ -110,6 +110,7 @@
 
     Professor *professor = self.sortedProfessors[indexPath.row];
     [cell setProfessor:professor];
+    [cell configureBackground];
 
     return cell;
 }

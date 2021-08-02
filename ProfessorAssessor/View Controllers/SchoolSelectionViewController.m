@@ -49,6 +49,7 @@
 
     School *school = self.filteredSchools[indexPath.row];
     [cell setSchool:school];
+    [cell configureBackground];
 
     return cell;
 }

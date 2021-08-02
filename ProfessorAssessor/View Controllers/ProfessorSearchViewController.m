@@ -36,6 +36,7 @@
 
     Professor *professor = self.filteredProfessors[indexPath.row];
     [cell setProfessor:professor];
+    [cell configureBackground];
 
     return cell;
 }

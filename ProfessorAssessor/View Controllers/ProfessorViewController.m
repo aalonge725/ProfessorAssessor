@@ -317,6 +317,7 @@ static int queryLimitIncrement = 10;
 
     Review *review = self.reviews[indexPath.row];
     [cell setReview:review];
+    [cell configureBackground];
 
     return cell;
 }

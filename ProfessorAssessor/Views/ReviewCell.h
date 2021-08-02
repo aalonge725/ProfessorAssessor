@@ -10,8 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) IBOutlet UILabel *date;
 @property (nonatomic, strong) IBOutlet HCSStarRatingView *rating;
 @property (nonatomic, strong) IBOutlet UILabel *content;
+@property (strong, nonatomic) IBOutlet UIView *background;
 
 - (void)setReview:(Review *)review;
+- (void)configureBackground;
 
 @end
 
