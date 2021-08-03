@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSArray<Professor *> *sortedProfessors;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
+- (IBAction)presentSortMenu:(UIButton *)sender;
+
 @end
 
 @implementation HomeViewController
@@ -78,6 +80,75 @@
             [self viewsEnabled:YES];
         }
     }];
+}
+
+- (IBAction)presentSortMenu:(UIButton *)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sort" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *bestReviewed = [UIAlertAction
+                               actionWithTitle:@"Best Reviewed"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
+        self.sortedProfessors = self.professors;
+
+        self.sortedProfessors = [self.sortedProfessors sortedArrayUsingComparator:^NSComparisonResult(Professor *_Nonnull professor1, Professor *_Nonnull professor2) {
+            return [professor2.averageRating compare:professor1.averageRating];
+        }];
+
+        [self.tableView reloadData];
+    }];
+    [alert addAction:bestReviewed];
+
+    UIAlertAction *recentlyReviewed = [UIAlertAction
+                               actionWithTitle:@"Recently Reviewed"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
+        self.sortedProfessors = self.professors;
+
+        self.sortedProfessors = [self.sortedProfessors sortedArrayUsingComparator:^NSComparisonResult(Professor *_Nonnull professor1, Professor *_Nonnull professor2) {
+            return [professor2.updatedAt compare:professor1.updatedAt];
+        }];
+
+        [self.tableView reloadData];
+    }];
+    [alert addAction:recentlyReviewed];
+
+    UIAlertAction *alphabetical = [UIAlertAction
+                               actionWithTitle:@"Alphabetical (first name)"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
+        self.sortedProfessors = self.professors;
+
+        self.sortedProfessors = [self.sortedProfessors sortedArrayUsingComparator:^NSComparisonResult(Professor *_Nonnull professor1, Professor *_Nonnull professor2) {
+            return [professor1.name compare:professor2.name];
+        }];
+
+        [self.tableView reloadData];
+    }];
+    [alert addAction:alphabetical];
+
+    UIAlertAction *reverseAlphabetical = [UIAlertAction
+                               actionWithTitle:@"Reverse Alphabetical (first name)"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *_Nonnull action) {
+        self.sortedProfessors = self.professors;
+
+        self.sortedProfessors = [self.sortedProfessors sortedArrayUsingComparator:^NSComparisonResult(Professor *_Nonnull professor1, Professor *_Nonnull professor2) {
+            return [professor2.name compare:professor1.name];
+        }];
+
+        [self.tableView reloadData];
+    }];
+    [alert addAction:reverseAlphabetical];
+
+    UIAlertAction *cancel = [UIAlertAction
+                               actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction *_Nonnull action) {
+    }];
+    [alert addAction:cancel];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)viewsEnabled:(BOOL)enabled {
