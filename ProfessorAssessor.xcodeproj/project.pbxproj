@@ -32,6 +32,7 @@
 		F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */; };
 		F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0E26A1FF0E001FF9D6 /* FacebookCore */; };
 		F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */; };
+		F6A37DAE26B9FB37009CC692 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		F6BAD232269CAB160071C070 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD231269CAB160071C070 /* main.m */; };
 		F6BAD23C269CAB160071C070 /* ProfessorAssessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD23B269CAB160071C070 /* ProfessorAssessorTests.m */; };
 		F6BAD247269CAB160071C070 /* ProfessorAssessorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */; };
+		F6CEC59D26B9DBBA007D6B44 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6CEC59C26B9DBBA007D6B44 /* Colors.xcassets */; };
 		F6EC926C26AF4B0B001767D9 /* CourseSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */; };
 		F6EC926F26AF4BBB001767D9 /* CourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC926E26AF4BBB001767D9 /* CourseCell.m */; };
 		F6EC927226B0BCC6001767D9 /* ProfessorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */; };
@@ -47,6 +49,12 @@
 		F6F0BB2526B885F50043E59C /* ProfessorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2326B885F50043E59C /* ProfessorCell.xib */; };
 		F6F0BB2926B8A2600043E59C /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F0BB2726B8A2600043E59C /* ReviewCell.m */; };
 		F6F0BB2A26B8A2600043E59C /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2826B8A2600043E59C /* ReviewCell.xib */; };
+		F6F0BB3526B9B3B70043E59C /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2C26B9B3B70043E59C /* Montserrat-Medium.ttf */; };
+		F6F0BB3626B9B3B70043E59C /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2D26B9B3B70043E59C /* Montserrat-Light.ttf */; };
+		F6F0BB3726B9B3B70043E59C /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2E26B9B3B70043E59C /* Montserrat-ExtraLight.ttf */; };
+		F6F0BB3826B9B3B70043E59C /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB2F26B9B3B70043E59C /* Montserrat-Thin.ttf */; };
+		F6F0BB3A26B9B3B70043E59C /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB3126B9B3B70043E59C /* Montserrat-Regular.ttf */; };
+		F6F0BB3B26B9B3B70043E59C /* IndieFlower-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6F0BB3326B9B3B70043E59C /* IndieFlower-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +123,8 @@
 		F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookUser.h; sourceTree = "<group>"; };
 		F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUser.m; sourceTree = "<group>"; };
+		F6A37DAC26B9FB37009CC692 /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -130,6 +140,7 @@
 		F6BAD242269CAB160071C070 /* ProfessorAssessorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfessorAssessorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD246269CAB160071C070 /* ProfessorAssessorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessorAssessorUITests.m; sourceTree = "<group>"; };
 		F6BAD248269CAB160071C070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6CEC59C26B9DBBA007D6B44 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F6EC926A26AF4B0B001767D9 /* CourseSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseSelectionViewController.h; sourceTree = "<group>"; };
 		F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseSelectionViewController.m; sourceTree = "<group>"; };
 		F6EC926D26AF4BBB001767D9 /* CourseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseCell.h; sourceTree = "<group>"; };
@@ -142,6 +153,12 @@
 		F6F0BB2626B8A2600043E59C /* ReviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		F6F0BB2726B8A2600043E59C /* ReviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		F6F0BB2826B8A2600043E59C /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		F6F0BB2C26B9B3B70043E59C /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		F6F0BB2D26B9B3B70043E59C /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		F6F0BB2E26B9B3B70043E59C /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		F6F0BB2F26B9B3B70043E59C /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		F6F0BB3126B9B3B70043E59C /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		F6F0BB3326B9B3B70043E59C /* IndieFlower-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IndieFlower-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +250,8 @@
 		F6BAD21E269CAB140071C070 /* ProfessorAssessor */ = {
 			isa = PBXGroup;
 			children = (
+				F6F0BB3226B9B3B70043E59C /* Indie_Flower */,
+				F6F0BB2B26B9B3B70043E59C /* Montserrat */,
 				F6BAD256269CDA460071C070 /* Views */,
 				F670BBE5269E32C2001FF9D6 /* Networking */,
 				F6BAD255269CDA3E0071C070 /* Models */,
@@ -243,6 +262,7 @@
 				F6BAD223269CAB140071C070 /* SceneDelegate.m */,
 				F6BAD228269CAB140071C070 /* Main.storyboard */,
 				F6BAD22B269CAB160071C070 /* Assets.xcassets */,
+				F6CEC59C26B9DBBA007D6B44 /* Colors.xcassets */,
 				F6BAD22D269CAB160071C070 /* LaunchScreen.storyboard */,
 				F6BAD231269CAB160071C070 /* main.m */,
 				F670BBEF269FAB56001FF9D6 /* Keys.plist */,
@@ -282,12 +302,14 @@
 				F670BBE8269F966D001FF9D6 /* SchoolSelectionViewController.m */,
 				F670BBC7269CEE07001FF9D6 /* HomeViewController.h */,
 				F670BBC8269CEE07001FF9D6 /* HomeViewController.m */,
-				F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */,
-				F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */,
 				F6EC927026B0BCC6001767D9 /* ProfessorSearchViewController.h */,
 				F6EC927126B0BCC6001767D9 /* ProfessorSearchViewController.m */,
 				F670BBFD26A0B65B001FF9D6 /* ComposeViewController.h */,
 				F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */,
+				F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */,
+				F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */,
+				F6A37DAC26B9FB37009CC692 /* ReviewViewController.h */,
+				F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */,
 				F670BBF126A001D5001FF9D6 /* ProfessorSelectionViewController.h */,
 				F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */,
 				F6EC926A26AF4B0B001767D9 /* CourseSelectionViewController.h */,
@@ -334,6 +356,26 @@
 				F624BF8926B2168F007309E6 /* InfiniteScrollActivityView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F6F0BB2B26B9B3B70043E59C /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				F6F0BB2C26B9B3B70043E59C /* Montserrat-Medium.ttf */,
+				F6F0BB2D26B9B3B70043E59C /* Montserrat-Light.ttf */,
+				F6F0BB2E26B9B3B70043E59C /* Montserrat-ExtraLight.ttf */,
+				F6F0BB2F26B9B3B70043E59C /* Montserrat-Thin.ttf */,
+				F6F0BB3126B9B3B70043E59C /* Montserrat-Regular.ttf */,
+			);
+			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		F6F0BB3226B9B3B70043E59C /* Indie_Flower */ = {
+			isa = PBXGroup;
+			children = (
+				F6F0BB3326B9B3B70043E59C /* IndieFlower-Regular.ttf */,
+			);
+			path = Indie_Flower;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,9 +493,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F0BB3A26B9B3B70043E59C /* Montserrat-Regular.ttf in Resources */,
+				F6F0BB3826B9B3B70043E59C /* Montserrat-Thin.ttf in Resources */,
+				F6CEC59D26B9DBBA007D6B44 /* Colors.xcassets in Resources */,
 				F6F0BB2526B885F50043E59C /* ProfessorCell.xib in Resources */,
 				F670BBF0269FAB56001FF9D6 /* Keys.plist in Resources */,
 				F6BAD22F269CAB160071C070 /* LaunchScreen.storyboard in Resources */,
+				F6F0BB3B26B9B3B70043E59C /* IndieFlower-Regular.ttf in Resources */,
+				F6F0BB3526B9B3B70043E59C /* Montserrat-Medium.ttf in Resources */,
+				F6F0BB3726B9B3B70043E59C /* Montserrat-ExtraLight.ttf in Resources */,
+				F6F0BB3626B9B3B70043E59C /* Montserrat-Light.ttf in Resources */,
 				F6BAD22C269CAB160071C070 /* Assets.xcassets in Resources */,
 				F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */,
 				F6F0BB2A26B8A2600043E59C /* ReviewCell.xib in Resources */,
@@ -610,6 +659,7 @@
 				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,
 				F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */,
 				F670BBF326A001D5001FF9D6 /* ProfessorSelectionViewController.m in Sources */,
+				F6A37DAE26B9FB37009CC692 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

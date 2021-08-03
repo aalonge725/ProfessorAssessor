@@ -242,12 +242,12 @@ static int queryLimitIncrement = 10;
     TTGTextTagStyle *unselectedStyle = [self
                                         setUpTagStyleWithColor:[UIColor lightGrayColor]];
     TTGTextTagStyle *selectedStyle = [self
-                                      setUpTagStyleWithColor:[UIColor systemTealColor]];
+                                      setUpTagStyleWithColor:[UIColor colorNamed:@"Salmon"]];
 
     for (Course *course in self.courses) {
+        TTGTextTagStringContent *content = [TTGTextTagStringContent contentWithText:course.name textFont:[UIFont fontWithName:@"Montserrat-Medium" size:15] textColor:nil];
         TTGTextTag *courseTag = [TTGTextTag
-                                 tagWithContent:[TTGTextTagStringContent
-                                                 contentWithText:course.name]
+                                 tagWithContent:content
                                  style:unselectedStyle];
 
         [courseTag setSelectedStyle:selectedStyle];
@@ -289,7 +289,7 @@ static int queryLimitIncrement = 10;
 
 - (void)setUpActivityIndicator {
     CGFloat width = self.view.bounds.size.width / 5.0f;
-    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor colorNamed:@"DefaultBlue"] size:width];
 
     self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
 
