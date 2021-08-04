@@ -3,6 +3,7 @@
 @import DGActivityIndicatorView;
 #import "ProfessorViewController.h"
 #import "ComposeViewController.h"
+#import "ProfessorAssessor-Swift.h"
 #import "InfiniteScrollActivityView.h"
 #import "Networker.h"
 #import "ReviewCell.h"
@@ -20,6 +21,7 @@ static int queryLimitIncrement = 10;
 @property (nonatomic, strong) NSArray<Review *> *reviews;
 @property (nonatomic, strong) InfiniteScrollActivityView *loadingMoreView;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) Review *review;
 @property (nonatomic, assign) BOOL loadingMoreReviews;
 @property (nonatomic, assign) int queryLimit;
 @property (nonatomic) PFQuery *query;
@@ -43,6 +45,16 @@ static int queryLimitIncrement = 10;
     [self setUpRefreshControl];
 
     [self fetchCoursesAndReviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSIndexPath *selected = self.tableView.indexPathForSelectedRow;
+
+    if (selected) {
+        [self.tableView deselectRowAtIndexPath:selected animated:animated];
+    }
 }
 
 - (void)setProfessorDetails {
@@ -194,6 +206,12 @@ static int queryLimitIncrement = 10;
     [self fetchReviewsForTagChange];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.review = self.reviews[indexPath.row];
+
+    [self performSegueWithIdentifier:@"reviewDetailSegue" sender:self];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.loadingMoreReviews) {
          int scrollViewContentHeight = self.tableView.contentSize.height;
@@ -331,14 +349,6 @@ static int queryLimitIncrement = 10;
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
-
-    viewController.delegate = self;
-    viewController.professor = self.professor;
-}
-
 - (void)cancelQuery {
     [self.query cancel];
     self.query = nil;
@@ -346,6 +356,20 @@ static int queryLimitIncrement = 10;
     [self.loadingMoreView stopAnimating];
     [self.activityIndicator stopAnimating];
     self.loadingMoreReviews = NO;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:@"composeFromDetailSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
+
+        viewController.delegate = self;
+        viewController.professor = self.professor;
+    } else if ([segue.identifier isEqual:@"reviewDetailSegue"]) {
+        ReviewViewController *viewController = [segue destinationViewController];
+
+        viewController.review = self.review;
+    }
 }
 
 @end

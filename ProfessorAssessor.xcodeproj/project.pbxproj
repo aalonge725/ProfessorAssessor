@@ -32,7 +32,7 @@
 		F670BC0D26A1FF0E001FF9D6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0C26A1FF0E001FF9D6 /* FacebookLogin */; };
 		F670BC0F26A1FF0E001FF9D6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F670BC0E26A1FF0E001FF9D6 /* FacebookCore */; };
 		F69BEA1426A5E4BE00DE96B4 /* FacebookUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */; };
-		F6A37DAE26B9FB37009CC692 /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */; };
+		F6A37DB126BA0606009CC692 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A37DB026BA0606009CC692 /* ReviewViewController.swift */; };
 		F6BAD221269CAB140071C070 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD220269CAB140071C070 /* AppDelegate.m */; };
 		F6BAD224269CAB140071C070 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BAD223269CAB140071C070 /* SceneDelegate.m */; };
 		F6BAD22A269CAB140071C070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6BAD228269CAB140071C070 /* Main.storyboard */; };
@@ -123,8 +123,8 @@
 		F670BC0926A1F8F9001FF9D6 /* Pods_ProfessorAssessor_ProfessorAssessorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ProfessorAssessor_ProfessorAssessorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BEA1226A5E4BE00DE96B4 /* FacebookUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookUser.h; sourceTree = "<group>"; };
 		F69BEA1326A5E4BE00DE96B4 /* FacebookUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookUser.m; sourceTree = "<group>"; };
-		F6A37DAC26B9FB37009CC692 /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
-		F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		F6A37DAF26BA0606009CC692 /* ProfessorAssessor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProfessorAssessor-Bridging-Header.h"; sourceTree = "<group>"; };
+		F6A37DB026BA0606009CC692 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		F6BAD21C269CAB140071C070 /* ProfessorAssessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfessorAssessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6BAD21F269CAB140071C070 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6BAD220269CAB140071C070 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -308,14 +308,14 @@
 				F670BBFE26A0B65B001FF9D6 /* ComposeViewController.m */,
 				F670BBFA26A0B650001FF9D6 /* ProfessorViewController.h */,
 				F670BBFB26A0B650001FF9D6 /* ProfessorViewController.m */,
-				F6A37DAC26B9FB37009CC692 /* ReviewViewController.h */,
-				F6A37DAD26B9FB37009CC692 /* ReviewViewController.m */,
+				F6A37DB026BA0606009CC692 /* ReviewViewController.swift */,
 				F670BBF126A001D5001FF9D6 /* ProfessorSelectionViewController.h */,
 				F670BBF226A001D5001FF9D6 /* ProfessorSelectionViewController.m */,
 				F6EC926A26AF4B0B001767D9 /* CourseSelectionViewController.h */,
 				F6EC926B26AF4B0B001767D9 /* CourseSelectionViewController.m */,
 				F670BBC4269CEDF2001FF9D6 /* ProfileViewController.h */,
 				F670BBC5269CEDF2001FF9D6 /* ProfileViewController.m */,
+				F6A37DAF26BA0606009CC692 /* ProfessorAssessor-Bridging-Header.h */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -635,6 +635,7 @@
 			files = (
 				F6F0BB2926B8A2600043E59C /* ReviewCell.m in Sources */,
 				F624BF8A26B2168F007309E6 /* InfiniteScrollActivityView.m in Sources */,
+				F6A37DB126BA0606009CC692 /* ReviewViewController.swift in Sources */,
 				F6F0BB2426B885F50043E59C /* ProfessorCell.m in Sources */,
 				F670BBC3269CE8C8001FF9D6 /* AuthenticationViewController.m in Sources */,
 				F670BBFC26A0B650001FF9D6 /* ProfessorViewController.m in Sources */,
@@ -659,7 +660,6 @@
 				F670BBCF269CF38C001FF9D6 /* Review.m in Sources */,
 				F670BBC9269CEE07001FF9D6 /* HomeViewController.m in Sources */,
 				F670BBF326A001D5001FF9D6 /* ProfessorSelectionViewController.m in Sources */,
-				F6A37DAE26B9FB37009CC692 /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +836,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -849,6 +850,7 @@
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProfessorAssessor/View Controllers/ProfessorAssessor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -863,6 +865,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -876,6 +879,7 @@
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aalonge725.ProfessorAssessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProfessorAssessor/View Controllers/ProfessorAssessor-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -885,6 +889,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 062FA9BAFBDC6C4A2431EB29 /* Pods-ProfessorAssessorTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
@@ -906,6 +911,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0C08B80C2BE1B8477728EBF /* Pods-ProfessorAssessorTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
@@ -927,6 +933,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE879BC280B9BF9E8D026A0E /* Pods-ProfessorAssessor-ProfessorAssessorUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessorUITests/Info.plist;
@@ -946,6 +953,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63158E9454690C6B9E95E52F /* Pods-ProfessorAssessor-ProfessorAssessorUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU4A9HU47G;
 				INFOPLIST_FILE = ProfessorAssessorUITests/Info.plist;

@@ -729,7 +729,7 @@
             </objects>
             <point key="canvasLocation" x="-823.07692307692309" y="2133.4123222748813"/>
         </scene>
-        <!--Professor View Controller-->
+        <!--Professor-->
         <scene sceneID="A35-nu-7tP">
             <objects>
                 <viewController storyboardIdentifier="ProfessorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqV-NF-dWQ" customClass="ProfessorViewController" sceneMemberID="viewController">
@@ -794,7 +794,7 @@
                         <viewLayoutGuide key="safeArea" id="8Bj-VJ-JCd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="61W-8T-jGf">
+                    <navigationItem key="navigationItem" title="Professor" id="61W-8T-jGf">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="aQb-Fx-S5k">
                             <connections>
                                 <segue destination="FAZ-QC-5MT" kind="presentation" identifier="composeFromDetailSegue" id="epF-ye-jTr"/>
@@ -806,26 +806,85 @@
                         <outlet property="departmentName" destination="JEb-27-SbT" id="WvS-Dg-6yG"/>
                         <outlet property="professorName" destination="3eL-Gq-OPa" id="lHa-Hi-4kV"/>
                         <outlet property="tableView" destination="MJa-TA-fFR" id="v39-sw-wxE"/>
+                        <segue destination="GCS-Tc-eHW" kind="show" identifier="reviewDetailSegue" id="RWm-HV-j6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1g-iL-SFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-109.23076923076923" y="2133.4123222748813"/>
         </scene>
-        <!--View Controller-->
+        <!--Review-->
         <scene sceneID="Nnd-PA-2LR">
             <objects>
-                <viewController id="GCS-Tc-eHW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GCS-Tc-eHW" customClass="ReviewViewController" customModule="ProfessorAssessor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bm8-s3-2zl">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Professor X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU7-gC-gYC">
+                                <rect key="frame" x="16" y="106" width="279" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMQ-hi-dxt">
+                                <rect key="frame" x="16" y="150" width="189" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-yy-vdl">
+                                <rect key="frame" x="251" y="112" width="123" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbn-Ed-A45">
+                                <rect key="frame" x="16" y="226" width="358" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyy-Xo-0fi" customClass="HCSStarRatingView">
+                                <rect key="frame" x="16" y="183" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Lavender"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="filled-star"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="empty-star"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RF7-T1-UOy"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Lavender"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Review" id="wxz-0y-9q5"/>
+                    <connections>
+                        <outlet property="content" destination="Zbn-Ed-A45" id="Eqm-ek-Jna"/>
+                        <outlet property="courseName" destination="wMQ-hi-dxt" id="FrN-t6-cJF"/>
+                        <outlet property="date" destination="ZMh-yy-vdl" id="JOd-HJ-U5X"/>
+                        <outlet property="professorName" destination="sU7-gC-gYC" id="7bA-zN-mrC"/>
+                        <outlet property="rating" destination="Vyy-Xo-0fi" id="lga-XS-Em0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfa-SK-UPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="2133"/>
+            <point key="canvasLocation" x="626.15384615384619" y="2132.7014218009476"/>
         </scene>
         <!--Profile-->
         <scene sceneID="oSJ-AJ-XzZ">
@@ -1097,10 +1156,13 @@
         <designable name="F8g-gT-iQX">
             <size key="intrinsicContentSize" width="240" height="44"/>
         </designable>
+        <designable name="Vyy-Xo-0fi">
+            <size key="intrinsicContentSize" width="240" height="44"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="Kcj-5a-zsC"/>
-        <segue reference="BO3-nf-ruc"/>
+        <segue reference="epF-ye-jTr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="DefaultBlue"/>
     <resources>
@@ -1117,6 +1179,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="DefaultBlue">
             <color red="0.0" green="0.62352941176470589" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Lavender">
+            <color red="0.83921568627450982" green="0.85882352941176465" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
