@@ -9,7 +9,9 @@ static NSNumberFormatter *numberFormatter = nil;
 
 @interface ComposeViewController () <ProfessorSelectionViewControllerDelegate, CourseSelectionViewControllerDelegate, UITextViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UIView *nonContentViews;
 @property (nonatomic, strong) IBOutlet UILabel *professorLabel;
 @property (nonatomic, strong) IBOutlet UILabel *courseLabel;
 @property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
@@ -40,21 +42,34 @@ static NSNumberFormatter *numberFormatter = nil;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self updateConstraints:-1];
+    [self updateConstraints:YES];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    [self updateConstraints:1];
+    [self updateConstraints:NO];
 }
 
-- (void)updateConstraints:(int)direction {
-    [UIView animateWithDuration:0.5 animations:^{
-        CGFloat distance = self.reviewLabel.frame.origin.y - self.professorLabel.frame.origin.y;
-        CGRect contentViewFrame = self.contentView.frame;
+- (void)updateConstraints:(BOOL)moveViewsUp {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (moveViewsUp) {
+            self.nonContentViews.alpha = 0;
+        } else {
+            self.nonContentViews.alpha = 1;
+        }
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            CGFloat distance = self.reviewLabel.frame.origin.y - self.nonContentViews.frame.origin.y;
+            CGRect contentViewFrame = self.contentView.frame;
 
-        contentViewFrame.origin.y += distance * direction;
+            if (moveViewsUp) {
+                [self.scrollView setContentOffset:CGPointMake(0, distance)];
+            } else {
+                [self.scrollView setContentOffset:CGPointMake(0, 0)];
+            }
+            [self.scrollView setScrollEnabled:!moveViewsUp];
 
-        self.contentView.frame = contentViewFrame;
+            self.contentView.frame = contentViewFrame;
+        }];
     }];
 }
 

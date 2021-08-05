@@ -560,95 +560,153 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugl-xm-wOd">
-                                <rect key="frame" x="0.0" y="56" width="390" height="734"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCy-sD-yh8" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="734"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No professor selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR6-5b-nUL">
-                                                <rect key="frame" x="10" y="40" width="370" height="20"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azV-g3-D4l">
-                                                <rect key="frame" x="147.66666666666666" y="10" width="95" height="25"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="753-6r-uAi">
+                                                <rect key="frame" x="10" y="10" width="370" height="342.66666666666669"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azV-g3-D4l">
+                                                        <rect key="frame" x="137.66666666666666" y="0.0" width="95" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="95" id="59h-sq-VHr"/>
+                                                            <constraint firstAttribute="height" constant="25" id="6wx-KN-AlN"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No professor selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR6-5b-nUL">
+                                                        <rect key="frame" x="0.0" y="30" width="370" height="20"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0x-It-6lO">
+                                                        <rect key="frame" x="119" y="55" width="132" height="31"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="132" id="IxI-0p-scE"/>
+                                                            <constraint firstAttribute="height" constant="31" id="QjI-iK-K9H"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                        <state key="normal" title="Choose Professor"/>
+                                                        <connections>
+                                                            <segue destination="ZLm-pe-S7w" kind="presentation" identifier="professorSelectionSegue" id="a3T-Wb-N4I"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzQ-AS-otf">
+                                                        <rect key="frame" x="149.66666666666666" y="96" width="71" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="71" id="7js-4u-S09"/>
+                                                            <constraint firstAttribute="height" constant="25" id="G5h-2I-mBk"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No course selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-UG-J6z">
+                                                        <rect key="frame" x="0.0" y="126" width="370" height="20"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpY-Px-Ur6">
+                                                        <rect key="frame" x="128" y="151" width="114" height="31"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="114" id="D74-ch-Dhd"/>
+                                                            <constraint firstAttribute="height" constant="31" id="crA-yp-8N2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                        <state key="normal" title="Choose Course"/>
+                                                        <connections>
+                                                            <segue destination="19o-js-WKy" kind="presentation" identifier="courseSelectionSegue" id="Xft-fe-ZfG"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBr-Rr-qQR">
+                                                        <rect key="frame" x="151" y="192" width="68" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="68" id="Ab6-tq-jMk"/>
+                                                            <constraint firstAttribute="height" constant="25" id="mC1-ga-7ib"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate this professor by dragging the stars or typing in the text box." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdz-vz-nXY">
+                                                        <rect key="frame" x="0.0" y="222" width="370" height="32.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-gT-iQX" customClass="HCSStarRatingView">
+                                                        <rect key="frame" x="65" y="259.66666666666669" width="240" height="44"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="ApC-O4-Jda"/>
+                                                            <constraint firstAttribute="width" constant="240" id="uDQ-5D-ygb"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="empty-star"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="filled-star"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="ratingViewChanged:" destination="Jis-hl-jas" eventType="valueChanged" id="VnG-kW-7y9"/>
+                                                        </connections>
+                                                    </view>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIA-Zg-NGL">
+                                                        <rect key="frame" x="163" y="308.66666666666669" width="44" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="44" id="RaI-yt-x2e"/>
+                                                            <constraint firstAttribute="height" constant="34" id="u6J-B6-EAv"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <action selector="ratingFieldChanged:" destination="Jis-hl-jas" eventType="editingChanged" id="wzy-kv-Kes"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="95" id="59h-sq-VHr"/>
-                                                    <constraint firstAttribute="height" constant="25" id="6wx-KN-AlN"/>
+                                                    <constraint firstItem="UR6-5b-nUL" firstAttribute="leading" secondItem="753-6r-uAi" secondAttribute="leading" id="5pm-MT-F9F"/>
+                                                    <constraint firstItem="Fdz-vz-nXY" firstAttribute="top" secondItem="RBr-Rr-qQR" secondAttribute="bottom" constant="5" id="6iM-cz-Htz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UR6-5b-nUL" secondAttribute="trailing" id="Fwn-kN-EZB"/>
+                                                    <constraint firstItem="hzQ-AS-otf" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="GRi-jH-UTc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xIA-Zg-NGL" secondAttribute="bottom" id="Jut-0X-iER"/>
+                                                    <constraint firstItem="xIA-Zg-NGL" firstAttribute="top" secondItem="F8g-gT-iQX" secondAttribute="bottom" constant="5" id="PTG-Rq-gLm"/>
+                                                    <constraint firstItem="RBr-Rr-qQR" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="RA3-eO-5kk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ctH-UG-J6z" secondAttribute="trailing" id="Uat-Y2-vit"/>
+                                                    <constraint firstItem="IpY-Px-Ur6" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="VAT-Sx-nsb"/>
+                                                    <constraint firstItem="xIA-Zg-NGL" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="WDw-zF-ZBL"/>
+                                                    <constraint firstItem="azV-g3-D4l" firstAttribute="top" secondItem="753-6r-uAi" secondAttribute="top" id="Wyp-OF-tff"/>
+                                                    <constraint firstItem="F8g-gT-iQX" firstAttribute="top" secondItem="Fdz-vz-nXY" secondAttribute="bottom" constant="5" id="hcN-gg-PLC"/>
+                                                    <constraint firstItem="hzQ-AS-otf" firstAttribute="top" secondItem="W0x-It-6lO" secondAttribute="bottom" constant="10" id="jWa-bH-HW4"/>
+                                                    <constraint firstItem="UR6-5b-nUL" firstAttribute="top" secondItem="azV-g3-D4l" secondAttribute="bottom" constant="5" id="nVk-jw-hRK"/>
+                                                    <constraint firstItem="azV-g3-D4l" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="oST-Yb-cPc"/>
+                                                    <constraint firstItem="Fdz-vz-nXY" firstAttribute="leading" secondItem="753-6r-uAi" secondAttribute="leading" id="pTW-7z-Jg6"/>
+                                                    <constraint firstItem="RBr-Rr-qQR" firstAttribute="top" secondItem="IpY-Px-Ur6" secondAttribute="bottom" constant="10" id="rRZ-2b-rcP"/>
+                                                    <constraint firstItem="ctH-UG-J6z" firstAttribute="leading" secondItem="753-6r-uAi" secondAttribute="leading" id="tO9-zJ-JsZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Fdz-vz-nXY" secondAttribute="trailing" id="uGr-fW-3lT"/>
+                                                    <constraint firstItem="W0x-It-6lO" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="uIH-2y-jMV"/>
+                                                    <constraint firstItem="W0x-It-6lO" firstAttribute="top" secondItem="UR6-5b-nUL" secondAttribute="bottom" constant="5" id="vcg-I7-tLH"/>
+                                                    <constraint firstItem="IpY-Px-Ur6" firstAttribute="top" secondItem="ctH-UG-J6z" secondAttribute="bottom" constant="5" id="xQO-3o-ZsP"/>
+                                                    <constraint firstItem="F8g-gT-iQX" firstAttribute="centerX" secondItem="753-6r-uAi" secondAttribute="centerX" id="xvM-y4-vDM"/>
+                                                    <constraint firstItem="ctH-UG-J6z" firstAttribute="top" secondItem="hzQ-AS-otf" secondAttribute="bottom" constant="5" id="zHw-hL-Yie"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0x-It-6lO">
-                                                <rect key="frame" x="129" y="65" width="132" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="132" id="IxI-0p-scE"/>
-                                                    <constraint firstAttribute="height" constant="31" id="QjI-iK-K9H"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                                <state key="normal" title="Choose Professor"/>
-                                                <connections>
-                                                    <segue destination="ZLm-pe-S7w" kind="presentation" identifier="professorSelectionSegue" id="a3T-Wb-N4I"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzQ-AS-otf">
-                                                <rect key="frame" x="159.66666666666666" y="106" width="71" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="71" id="7js-4u-S09"/>
-                                                    <constraint firstAttribute="height" constant="25" id="G5h-2I-mBk"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No course selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-UG-J6z">
-                                                <rect key="frame" x="10" y="136" width="370" height="20"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpY-Px-Ur6">
-                                                <rect key="frame" x="138" y="161" width="114" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="114" id="D74-ch-Dhd"/>
-                                                    <constraint firstAttribute="height" constant="31" id="crA-yp-8N2"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
-                                                <state key="normal" title="Choose Course"/>
-                                                <connections>
-                                                    <segue destination="19o-js-WKy" kind="presentation" identifier="courseSelectionSegue" id="Xft-fe-ZfG"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBr-Rr-qQR">
-                                                <rect key="frame" x="161" y="202" width="68" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="68" id="Ab6-tq-jMk"/>
-                                                    <constraint firstAttribute="height" constant="25" id="mC1-ga-7ib"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate this professor by dragging the stars or typing in the text box." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdz-vz-nXY">
-                                                <rect key="frame" x="10" y="232" width="370" height="32.666666666666686"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIA-Zg-NGL">
-                                                <rect key="frame" x="173" y="318.66666666666669" width="44" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="RaI-yt-x2e"/>
-                                                    <constraint firstAttribute="height" constant="34" id="u6J-B6-EAv"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                <connections>
-                                                    <action selector="ratingFieldChanged:" destination="Jis-hl-jas" eventType="editingChanged" id="wzy-kv-Kes"/>
-                                                </connections>
-                                            </textField>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-kd-gI5">
                                                 <rect key="frame" x="158" y="362.66666666666669" width="74" height="25"/>
                                                 <constraints>
@@ -662,7 +720,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C0L-6w-y59">
                                                 <rect key="frame" x="10" y="392.66666666666669" width="370" height="120.00000000000006"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="BHO-kC-Xy0"/>
+                                                    <constraint firstAttribute="height" constant="120" id="fbi-a0-Zc1"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
@@ -672,75 +730,29 @@
                                                 </connections>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e20-NA-E1H">
-                                                <rect key="frame" x="314" y="517.66666666666663" width="66" height="21"/>
+                                                <rect key="frame" x="314" y="517.66666666666663" width="66" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="Ua2-T5-tav"/>
-                                                    <constraint firstAttribute="width" constant="66" id="abB-bL-FP7"/>
+                                                    <constraint firstAttribute="height" constant="20" id="0FG-be-oE5"/>
+                                                    <constraint firstAttribute="width" constant="66" id="jvq-I6-Whm"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-gT-iQX" customClass="HCSStarRatingView">
-                                                <rect key="frame" x="75" y="269.66666666666669" width="240" height="44"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="ApC-O4-Jda"/>
-                                                    <constraint firstAttribute="width" constant="240" id="uDQ-5D-ygb"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="empty-star"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="filled-star"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="ratingViewChanged:" destination="Jis-hl-jas" eventType="valueChanged" id="VnG-kW-7y9"/>
-                                                </connections>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="UR6-5b-nUL" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="11r-oI-rGB"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e20-NA-E1H" secondAttribute="bottom" constant="10" id="1DV-YG-wCg"/>
-                                            <constraint firstItem="hzQ-AS-otf" firstAttribute="top" secondItem="W0x-It-6lO" secondAttribute="bottom" constant="10" id="51X-He-por"/>
-                                            <constraint firstItem="azV-g3-D4l" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="9CD-Mh-jK6"/>
-                                            <constraint firstItem="ctH-UG-J6z" firstAttribute="top" secondItem="hzQ-AS-otf" secondAttribute="bottom" constant="5" id="9nx-oA-w2J"/>
-                                            <constraint firstAttribute="trailing" secondItem="C0L-6w-y59" secondAttribute="trailing" constant="10" id="HUq-T6-iQo"/>
-                                            <constraint firstItem="azV-g3-D4l" firstAttribute="top" secondItem="aCy-sD-yh8" secondAttribute="top" constant="10" id="ID6-fE-wCY"/>
-                                            <constraint firstItem="xIA-Zg-NGL" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="JWU-vA-hsQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="ctH-UG-J6z" secondAttribute="trailing" constant="10" id="K07-PE-dfM"/>
-                                            <constraint firstItem="W0x-It-6lO" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="KQF-rH-1w1"/>
-                                            <constraint firstItem="ubQ-kd-gI5" firstAttribute="top" secondItem="xIA-Zg-NGL" secondAttribute="bottom" constant="10" id="MQu-jS-PC5"/>
-                                            <constraint firstAttribute="trailing" secondItem="e20-NA-E1H" secondAttribute="trailing" constant="10" id="OfJ-VN-HFC"/>
-                                            <constraint firstItem="IpY-Px-Ur6" firstAttribute="top" secondItem="ctH-UG-J6z" secondAttribute="bottom" constant="5" id="R1M-u2-50l"/>
-                                            <constraint firstItem="Fdz-vz-nXY" firstAttribute="top" secondItem="RBr-Rr-qQR" secondAttribute="bottom" constant="5" id="R9I-lz-Or8"/>
-                                            <constraint firstItem="RBr-Rr-qQR" firstAttribute="top" secondItem="IpY-Px-Ur6" secondAttribute="bottom" constant="10" id="UxO-jC-ksk"/>
-                                            <constraint firstItem="W0x-It-6lO" firstAttribute="top" secondItem="UR6-5b-nUL" secondAttribute="bottom" constant="5" id="Xce-Q4-DiX"/>
+                                            <constraint firstItem="C0L-6w-y59" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="48r-9Y-V2g"/>
+                                            <constraint firstAttribute="trailing" secondItem="e20-NA-E1H" secondAttribute="trailing" constant="10" id="6wg-RI-iTr"/>
+                                            <constraint firstItem="753-6r-uAi" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="AXO-JV-vgj"/>
+                                            <constraint firstItem="e20-NA-E1H" firstAttribute="top" secondItem="C0L-6w-y59" secondAttribute="bottom" constant="5" id="Bjf-MH-5Pq"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e20-NA-E1H" secondAttribute="bottom" constant="10" id="IXT-XC-Dna"/>
                                             <constraint firstItem="ubQ-kd-gI5" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="Xf5-ic-IgX"/>
-                                            <constraint firstItem="xIA-Zg-NGL" firstAttribute="top" secondItem="F8g-gT-iQX" secondAttribute="bottom" constant="5" id="Zid-Sj-8qi"/>
-                                            <constraint firstItem="UR6-5b-nUL" firstAttribute="top" secondItem="azV-g3-D4l" secondAttribute="bottom" constant="5" id="bp1-R1-p3N"/>
-                                            <constraint firstItem="hzQ-AS-otf" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="dV3-7o-vMj"/>
-                                            <constraint firstAttribute="trailing" secondItem="Fdz-vz-nXY" secondAttribute="trailing" constant="10" id="eDc-Ib-XQY"/>
-                                            <constraint firstItem="F8g-gT-iQX" firstAttribute="top" secondItem="Fdz-vz-nXY" secondAttribute="bottom" constant="5" id="ehL-YJ-njj"/>
-                                            <constraint firstItem="F8g-gT-iQX" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="hAV-rC-2Ue"/>
-                                            <constraint firstItem="Fdz-vz-nXY" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="hUJ-M3-10D"/>
-                                            <constraint firstItem="C0L-6w-y59" firstAttribute="top" secondItem="ubQ-kd-gI5" secondAttribute="bottom" constant="5" id="jL4-W2-7Cg"/>
-                                            <constraint firstItem="e20-NA-E1H" firstAttribute="top" secondItem="C0L-6w-y59" secondAttribute="bottom" constant="5" id="lAd-oa-lz6"/>
-                                            <constraint firstItem="RBr-Rr-qQR" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="oar-aX-k1k"/>
-                                            <constraint firstItem="ctH-UG-J6z" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="ocx-2u-G4K"/>
-                                            <constraint firstItem="C0L-6w-y59" firstAttribute="leading" secondItem="aCy-sD-yh8" secondAttribute="leading" constant="10" id="qdt-Ol-oEf"/>
-                                            <constraint firstAttribute="trailing" secondItem="UR6-5b-nUL" secondAttribute="trailing" constant="10" id="xZd-pe-7KM"/>
-                                            <constraint firstItem="IpY-Px-Ur6" firstAttribute="centerX" secondItem="aCy-sD-yh8" secondAttribute="centerX" id="zOh-fN-QSC"/>
+                                            <constraint firstItem="ubQ-kd-gI5" firstAttribute="top" secondItem="753-6r-uAi" secondAttribute="bottom" constant="10" id="b8x-tn-6zz"/>
+                                            <constraint firstItem="C0L-6w-y59" firstAttribute="top" secondItem="ubQ-kd-gI5" secondAttribute="bottom" constant="5" id="czL-SL-rEp"/>
+                                            <constraint firstAttribute="trailing" secondItem="753-6r-uAi" secondAttribute="trailing" constant="10" id="p7v-SV-u6E"/>
+                                            <constraint firstItem="753-6r-uAi" firstAttribute="top" secondItem="aCy-sD-yh8" secondAttribute="top" constant="10" id="sfo-q9-jzA"/>
+                                            <constraint firstAttribute="trailing" secondItem="C0L-6w-y59" secondAttribute="trailing" constant="10" id="xDx-kp-d05"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -787,12 +799,14 @@
                         <outlet property="contentView" destination="aCy-sD-yh8" id="IC2-qG-3Zp"/>
                         <outlet property="courseLabel" destination="hzQ-AS-otf" id="Hkg-0j-hWZ"/>
                         <outlet property="courseName" destination="ctH-UG-J6z" id="Pv3-e9-QM1"/>
+                        <outlet property="nonContentViews" destination="753-6r-uAi" id="NZf-Oe-wJc"/>
                         <outlet property="professorLabel" destination="azV-g3-D4l" id="sD4-7r-UuI"/>
                         <outlet property="professorName" destination="UR6-5b-nUL" id="c5m-g9-ZqE"/>
                         <outlet property="rating" destination="F8g-gT-iQX" id="0Qe-yN-FXU"/>
                         <outlet property="ratingField" destination="xIA-Zg-NGL" id="1fE-eP-EzN"/>
                         <outlet property="ratingLabel" destination="RBr-Rr-qQR" id="tWg-CK-17F"/>
                         <outlet property="reviewLabel" destination="ubQ-kd-gI5" id="20i-fr-A1u"/>
+                        <outlet property="scrollView" destination="ugl-xm-wOd" id="Uiq-gB-dKl"/>
                         <outlet property="submitButton" destination="iMY-s4-jU0" id="HmP-vu-oWn"/>
                     </connections>
                 </viewController>
