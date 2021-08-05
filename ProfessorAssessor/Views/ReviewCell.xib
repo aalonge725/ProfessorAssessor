@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.ttf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ReviewCell">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="125"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-FQ-AtS">
+                        <rect key="frame" x="10" y="10" width="370" height="105"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbK-uS-kvo">
+                                <rect key="frame" x="10" y="10" width="123" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-s5-ZEy" customClass="HCSStarRatingView">
+                                <rect key="frame" x="10" y="38.5" width="130" height="30"/>
+                                <color key="backgroundColor" name="Lavender"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="FjR-XD-ag4"/>
+                                    <constraint firstAttribute="height" constant="30" id="Udg-29-WRz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="empty-star"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="filled-star"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdU-Yh-uHH">
+                                <rect key="frame" x="326.5" y="12.5" width="33.5" height="19"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Review content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-Nu-MLr">
+                                <rect key="frame" x="10" y="78.5" width="350" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Lavender"/>
+                        <constraints>
+                            <constraint firstItem="hbK-uS-kvo" firstAttribute="leading" secondItem="cUM-FQ-AtS" secondAttribute="leading" constant="10" id="Dgx-kJ-I03"/>
+                            <constraint firstItem="hRI-Nu-MLr" firstAttribute="top" secondItem="RhI-s5-ZEy" secondAttribute="bottom" constant="10" id="IFn-S5-0gB"/>
+                            <constraint firstAttribute="trailing" secondItem="hRI-Nu-MLr" secondAttribute="trailing" constant="10" id="ZGg-iP-IHJ"/>
+                            <constraint firstItem="jdU-Yh-uHH" firstAttribute="centerY" secondItem="hbK-uS-kvo" secondAttribute="centerY" id="dTW-XL-bw0"/>
+                            <constraint firstAttribute="trailing" secondItem="jdU-Yh-uHH" secondAttribute="trailing" constant="10" id="e0S-1Z-Lbu"/>
+                            <constraint firstItem="RhI-s5-ZEy" firstAttribute="top" secondItem="hbK-uS-kvo" secondAttribute="bottom" constant="5" id="gZg-bC-LdN"/>
+                            <constraint firstItem="jdU-Yh-uHH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hbK-uS-kvo" secondAttribute="trailing" constant="10" id="glV-6e-zJg"/>
+                            <constraint firstItem="hRI-Nu-MLr" firstAttribute="leading" secondItem="cUM-FQ-AtS" secondAttribute="leading" constant="10" id="gum-LG-AUX"/>
+                            <constraint firstItem="hbK-uS-kvo" firstAttribute="top" secondItem="cUM-FQ-AtS" secondAttribute="top" constant="10" id="i7y-9J-Bmi"/>
+                            <constraint firstItem="RhI-s5-ZEy" firstAttribute="leading" secondItem="cUM-FQ-AtS" secondAttribute="leading" constant="10" id="tGz-fr-bbX"/>
+                            <constraint firstAttribute="bottom" secondItem="hRI-Nu-MLr" secondAttribute="bottom" constant="10" id="zU0-7S-7jv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cUM-FQ-AtS" secondAttribute="trailing" constant="10" id="2Vo-hs-prl"/>
+                    <constraint firstItem="cUM-FQ-AtS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GRE-XN-6qp"/>
+                    <constraint firstAttribute="bottom" secondItem="cUM-FQ-AtS" secondAttribute="bottom" constant="10" id="cYN-uC-wY5"/>
+                    <constraint firstItem="cUM-FQ-AtS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gxY-CY-SeR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="background" destination="cUM-FQ-AtS" id="Er2-85-gRk"/>
+                <outlet property="content" destination="hRI-Nu-MLr" id="5th-MB-kdF"/>
+                <outlet property="courseName" destination="hbK-uS-kvo" id="XTE-uU-vJE"/>
+                <outlet property="date" destination="jdU-Yh-uHH" id="CZn-7B-Smt"/>
+                <outlet property="rating" destination="RhI-s5-ZEy" id="z8K-4f-xVv"/>
+            </connections>
+            <point key="canvasLocation" x="108.69565217391305" y="118.86160714285714"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="RhI-s5-ZEy">
+            <size key="intrinsicContentSize" width="220" height="44"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="empty-star" width="600" height="600"/>
+        <image name="filled-star" width="600" height="600"/>
+        <namedColor name="Lavender">
+            <color red="0.83921568627450982" green="0.85882352941176465" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

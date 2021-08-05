@@ -3,6 +3,7 @@
 @import DGActivityIndicatorView;
 #import "ProfessorViewController.h"
 #import "ComposeViewController.h"
+#import "ProfessorAssessor-Swift.h"
 #import "InfiniteScrollActivityView.h"
 #import "Networker.h"
 #import "ReviewCell.h"
@@ -20,6 +21,7 @@ static int queryLimitIncrement = 10;
 @property (nonatomic, strong) NSArray<Review *> *reviews;
 @property (nonatomic, strong) InfiniteScrollActivityView *loadingMoreView;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) Review *review;
 @property (nonatomic, assign) BOOL loadingMoreReviews;
 @property (nonatomic, assign) int queryLimit;
 @property (nonatomic) PFQuery *query;
@@ -30,18 +32,29 @@ static int queryLimitIncrement = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ReviewCell" bundle:nil] forCellReuseIdentifier:@"ReviewCell"];
 
     self.queryLimit = queryLimitIncrement;
     self.reviewCache = [NSCache new];
 
-    [self setUpInfiniteScrollView];
-
     [self setProfessorDetails];
 
+    [self setUpInfiniteScrollView];
     [self setUpActivityIndicator];
     [self setUpRefreshControl];
+    [self setUpGesture];
 
     [self fetchCoursesAndReviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSIndexPath *selected = self.tableView.indexPathForSelectedRow;
+
+    if (selected) {
+        [self.tableView deselectRowAtIndexPath:selected animated:animated];
+    }
 }
 
 - (void)setProfessorDetails {
@@ -193,6 +206,12 @@ static int queryLimitIncrement = 10;
     [self fetchReviewsForTagChange];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.review = self.reviews[indexPath.row];
+
+    [self performSegueWithIdentifier:@"reviewDetailSegue" sender:self];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.loadingMoreReviews) {
          int scrollViewContentHeight = self.tableView.contentSize.height;
@@ -241,12 +260,12 @@ static int queryLimitIncrement = 10;
     TTGTextTagStyle *unselectedStyle = [self
                                         setUpTagStyleWithColor:[UIColor lightGrayColor]];
     TTGTextTagStyle *selectedStyle = [self
-                                      setUpTagStyleWithColor:[UIColor systemTealColor]];
+                                      setUpTagStyleWithColor:[UIColor colorNamed:@"Salmon"]];
 
     for (Course *course in self.courses) {
+        TTGTextTagStringContent *content = [TTGTextTagStringContent contentWithText:course.name textFont:[UIFont fontWithName:@"Montserrat-Medium" size:15] textColor:nil];
         TTGTextTag *courseTag = [TTGTextTag
-                                 tagWithContent:[TTGTextTagStringContent
-                                                 contentWithText:course.name]
+                                 tagWithContent:content
                                  style:unselectedStyle];
 
         [courseTag setSelectedStyle:selectedStyle];
@@ -259,9 +278,13 @@ static int queryLimitIncrement = 10;
 }
 
 - (TTGTextTagCollectionView *)setUpTagCollectionView {
+    CGFloat yPosition = self.averageRating.frame.origin.y + self.averageRating.frame.size.height + 5;
     TTGTextTagCollectionView *tagCollectionView =
     [[TTGTextTagCollectionView alloc]
-     initWithFrame:CGRectMake(20, 127, 350, 64)];
+     initWithFrame:CGRectMake(10,
+                              yPosition,
+                              self.view.bounds.size.width - 20,
+                              self.departmentName.frame.size.height * 2)];
 
     tagCollectionView.delegate = self;
     tagCollectionView.alignment = TTGTagCollectionAlignmentCenter;
@@ -286,9 +309,21 @@ static int queryLimitIncrement = 10;
     [self fetchReviewsForRefresh];
 }
 
+- (void)setUpGesture {
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentComposePage)];
+    gesture.numberOfTapsRequired = 2;
+    [self.professorName addGestureRecognizer:gesture];
+}
+
+- (void)presentComposePage {
+    [self cancelQuery];
+
+    [self performSegueWithIdentifier:@"composeFromDetailSegue" sender:self];
+}
+
 - (void)setUpActivityIndicator {
     CGFloat width = self.view.bounds.size.width / 5.0f;
-    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor colorNamed:@"DefaultBlue"] size:width];
 
     self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
 
@@ -317,6 +352,7 @@ static int queryLimitIncrement = 10;
 
     Review *review = self.reviews[indexPath.row];
     [cell setReview:review];
+    [cell configureBackground];
 
     return cell;
 }
@@ -329,14 +365,6 @@ static int queryLimitIncrement = 10;
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
-
-    viewController.delegate = self;
-    viewController.professor = self.professor;
-}
-
 - (void)cancelQuery {
     [self.query cancel];
     self.query = nil;
@@ -344,6 +372,20 @@ static int queryLimitIncrement = 10;
     [self.loadingMoreView stopAnimating];
     [self.activityIndicator stopAnimating];
     self.loadingMoreReviews = NO;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:@"composeFromDetailSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *viewController = (ComposeViewController *)navigationController.topViewController;
+
+        viewController.delegate = self;
+        viewController.professor = self.professor;
+    } else if ([segue.identifier isEqual:@"reviewDetailSegue"]) {
+        ReviewViewController *viewController = [segue destinationViewController];
+
+        viewController.review = self.review;
+    }
 }
 
 @end

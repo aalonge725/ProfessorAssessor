@@ -1,3 +1,4 @@
+@import DGActivityIndicatorView;
 #import "ComposeViewController.h"
 #import "ProfessorSelectionViewController.h"
 #import "CourseSelectionViewController.h"
@@ -8,6 +9,9 @@ static NSNumberFormatter *numberFormatter = nil;
 
 @interface ComposeViewController () <ProfessorSelectionViewControllerDelegate, CourseSelectionViewControllerDelegate, UITextViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UIView *nonContentViews;
 @property (nonatomic, strong) IBOutlet UILabel *professorLabel;
 @property (nonatomic, strong) IBOutlet UILabel *courseLabel;
 @property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
@@ -15,6 +19,7 @@ static NSNumberFormatter *numberFormatter = nil;
 @property (nonatomic, strong) IBOutlet UILabel *characterCountLabel;
 @property (nonatomic, strong) IBOutlet UIButton *chooseCourseButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 - (IBAction)ratingViewChanged:(HCSStarRatingView *)sender;
 - (IBAction)ratingFieldChanged:(UITextField *)sender;
@@ -27,11 +32,45 @@ static NSNumberFormatter *numberFormatter = nil;
     [super viewDidLoad];
     [self decorateContentView];
 
+    [self setUpActivityIndicator];
+
     if (self.professor) {
         self.professorName.text = self.professor.name;
     } else {
         [self viewsEnabled:NO];
     }
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self updateConstraints:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self updateConstraints:NO];
+}
+
+- (void)updateConstraints:(BOOL)moveViewsUp {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (moveViewsUp) {
+            self.nonContentViews.alpha = 0;
+        } else {
+            self.nonContentViews.alpha = 1;
+        }
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            CGFloat distance = self.reviewLabel.frame.origin.y - self.nonContentViews.frame.origin.y;
+            CGRect contentViewFrame = self.contentView.frame;
+
+            if (moveViewsUp) {
+                [self.scrollView setContentOffset:CGPointMake(0, distance)];
+            } else {
+                [self.scrollView setContentOffset:CGPointMake(0, 0)];
+            }
+            [self.scrollView setScrollEnabled:!moveViewsUp];
+
+            self.contentView.frame = contentViewFrame;
+        }];
+    }];
 }
 
 - (IBAction)submitReview:(UIBarButtonItem *)sender {
@@ -42,6 +81,9 @@ static NSNumberFormatter *numberFormatter = nil;
     } else if (self.content.text.length == 0) {
         [self presentAlertWithTitle:nil withMessage:@"Please type your review of this professor"];
     } else {
+        [self.activityIndicator startAnimating];
+        self.contentView.userInteractionEnabled = NO;
+
         NSNumber *ratingValue = [NSNumber numberWithDouble:[self.ratingField.text doubleValue]];
 
         [Networker
@@ -53,10 +95,12 @@ static NSNumberFormatter *numberFormatter = nil;
             if (error == nil) {
                 [self.delegate didTapSubmit];
 
+                [self.activityIndicator stopAnimating];
+                self.contentView.userInteractionEnabled = YES;
+
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];
-        // TODO: optional - add to user's profile page
     }
 }
 
@@ -92,6 +136,15 @@ static NSNumberFormatter *numberFormatter = nil;
     self.ratingField.enabled = enabled;
     self.content.userInteractionEnabled = enabled;
     self.submitButton.enabled = enabled;
+}
+
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
 }
 
 - (void)decorateContentView {

@@ -28,6 +28,8 @@
                                                 NSError *error) {
             if (error == nil) {
                 [self displayHomePage];
+            } else {
+                [self presentAlertWithTitle:nil withMessage:error.localizedDescription];
             }
         }];
     }

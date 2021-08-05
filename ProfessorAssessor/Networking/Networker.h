@@ -26,10 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
                                      completion:(void (^)(BOOL succeeded,
                                                          NSError *_Nullable error))completion;
 
-+ (void)fetchSchool:(School *)school
-     withCompletion:(void (^)(PFObject *_Nullable object,
-                             NSError *_Nullable error))completion;
-
 + (void)fetchSchoolsWithCompletion:(
                                     void (^)(NSArray<School *> *_Nullable schools,
                                             NSError *_Nullable error))completion;
@@ -46,6 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
                                   void (^)
                                   (NSArray<Review *> *_Nullable objects,
                                    NSError *_Nullable error))completion;
+
++ (void)fetchReviewsForCurrentUserWithCompletion:(
+                                                  void (^)
+                                                  (NSArray<Review *> *_Nullable objects,
+                                                   NSError *_Nullable error))completion;
 
 @end
 

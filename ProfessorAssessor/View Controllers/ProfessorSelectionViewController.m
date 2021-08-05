@@ -1,5 +1,6 @@
+@import DGActivityIndicatorView;
 #import "ProfessorSelectionViewController.h"
-#import "ProfessorSelectionCell.h"
+#import "ProfessorCell.h"
 #import "Networker.h"
 #import "School.h"
 
@@ -9,6 +10,7 @@
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
 @property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
+@property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -16,13 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProfessorCell" bundle:nil] forCellReuseIdentifier:@"ProfessorCell"];
+
+    [self setUpActivityIndicator];
+    [self setUpRefreshControl];
 
     [self fetchProfessors];
-
-    [self setUpRefreshControl];
 }
 
 - (void)fetchProfessors {
+    [self.activityIndicator startAnimating];
+
     __weak typeof(self) weakSelf = self;
 
     [Networker
@@ -45,6 +51,7 @@
 
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
+            [strongSelf.activityIndicator stopAnimating];
         }
     }];
 
@@ -60,15 +67,25 @@
     [self.tableView insertSubview:self.tableView.refreshControl atIndex:0];
 }
 
+- (void)setUpActivityIndicator {
+    CGFloat width = self.view.bounds.size.width / 5.0f;
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+
+    self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
+
+    [self.view addSubview:self.activityIndicator];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.filteredProfessors.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProfessorSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorSelectionCell" forIndexPath:indexPath];
+    ProfessorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfessorCell" forIndexPath:indexPath];
 
     Professor *professor = self.filteredProfessors[indexPath.row];
     [cell setProfessor:professor];
+    [cell configureBackground];
 
     return cell;
 }
@@ -101,6 +118,10 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.view endEditing:YES];
+}
+
+- (IBAction)close:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

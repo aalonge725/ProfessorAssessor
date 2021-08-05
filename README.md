@@ -15,7 +15,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 ### App Evaluation
 - **Category:** Education
-- **Mobile:** Utilizes push notifications for periodic reminders to post experiences and alerts for when a post is made under a course that a student is following.
+- **Mobile:** Used a flow that feels more proper for an app.
 - **Story:** Makes it easier for students to pick the right professor and course options available.
 - **Market:** Students, particularly college students.
 - **Habit:** Users may periodically use this app when making posts, and may frequently use it at the beginning of a new semester when determining trying to make their ideal schedule.
@@ -27,20 +27,23 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 **Required Must-have Stories**
 
-- [ ] User can login
-- [ ] User can create a new account
-- [ ] User can search for professor
-- [ ] User can see reviews made about a professor
-- [ ] User can compose a review for a professor
+- [x] User can log in
+- [x] User can create a new account
+- [x] User can search for professor
+- [x] User can see reviews made about a professor
+- [x] User can compose a review for a professor
+- [x] User can see a professor's detail page that includes reviews made about the professor
 
 **Optional Nice-to-have Stories**
 
-- [ ] User can filter reviews
-- [ ] User can see a professor's profile page
-- [ ] User can see their profile page
-- [ ] User can see the profile page of other students, including a history of the students' reviews
-- [ ] User can rate other students' reviews
-- [ ] User can receive push notifications for new reviews and reminders for posting
+- [x] User can log in with Facebook
+- [ ] User can log in as a guest
+- [x] User can sort professors
+- [x] User can filter reviews for a professor by course
+- [x] User can see their profile page
+- [x] User can see a review's detail page
+- [ ] User can follow
+- [ ] User can like or dislike other students' reviews
 
 
 ### 2. Screen Archetypes

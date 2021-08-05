@@ -1,5 +1,5 @@
 #import "CourseSelectionViewController.h"
-#import "CourseSelectionCell.h"
+#import "CourseCell.h"
 
 @interface CourseSelectionViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,10 +47,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CourseSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourseSelectionCell" forIndexPath:indexPath];
+    CourseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourseCell" forIndexPath:indexPath];
 
     Course *course = self.courses[indexPath.row];
     [cell setCourse:course];
+    [cell configureBackground];
 
     return cell;
 }
@@ -59,6 +60,10 @@
     Course *course = self.courses[indexPath.row];
 
     [self.delegate didSelectCourse:course];
+}
+
+- (IBAction)close:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

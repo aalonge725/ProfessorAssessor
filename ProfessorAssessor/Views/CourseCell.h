@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CourseCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UIView *background;
+@property (nonatomic, strong) IBOutlet UIView *background;
 
 - (void)setCourse:(Course *)course;
 - (void)configureBackground;

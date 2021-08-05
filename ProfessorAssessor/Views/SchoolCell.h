@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (nonatomic, strong) IBOutlet UILabel *address;
-@property (strong, nonatomic) IBOutlet UIView *background;
+@property (nonatomic, strong) IBOutlet UIView *background;
 
 - (void)setSchool:(School *)school;
 - (void)configureBackground;
