@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
 #import "School.h"
-#import "Review.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -5,11 +5,13 @@
 #import "AuthenticationViewController.h"
 #import "SchoolSelectionViewController.h"
 #import "HomeViewController.h"
+#import "ProfessorAssessor-Swift.h"
 #import "SceneDelegate.h"
 #import "Networker.h"
 #import "ReviewCell.h"
 #import "User.h"
 #import "School.h"
+#import "Review.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate, SchoolSelectionViewControllerDelegate>
 
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray<Review *> *reviews;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) Review *review;
 
 - (IBAction)logout:(UIBarButtonItem *)sender;
 
@@ -130,6 +133,12 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.review = self.reviews[indexPath.row];
+
+    [self performSegueWithIdentifier:@"reviewDetailFromProfileSegue" sender:self];
+}
+
 - (void)setUpActivityIndicator {
     CGFloat width = self.view.bounds.size.width / 5.0f;
     self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
@@ -167,10 +176,16 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    SchoolSelectionViewController *viewController = (SchoolSelectionViewController *)navigationController.topViewController;
+    if ([segue.identifier isEqual:@"changeSchoolSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        SchoolSelectionViewController *viewController = (SchoolSelectionViewController *)navigationController.topViewController;
 
-    viewController.delegate = self;
+        viewController.delegate = self;
+    } else if ([segue.identifier isEqual:@"reviewDetailFromProfileSegue"]) {
+        ReviewViewController *viewController = [segue destinationViewController];
+
+        viewController.review = self.review;
+    }
 }
 
 @end

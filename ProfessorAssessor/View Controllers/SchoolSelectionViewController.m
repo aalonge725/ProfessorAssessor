@@ -92,4 +92,8 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)close:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

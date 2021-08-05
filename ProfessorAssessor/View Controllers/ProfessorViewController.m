@@ -37,12 +37,12 @@ static int queryLimitIncrement = 10;
     self.queryLimit = queryLimitIncrement;
     self.reviewCache = [NSCache new];
 
-    [self setUpInfiniteScrollView];
-
     [self setProfessorDetails];
 
+    [self setUpInfiniteScrollView];
     [self setUpActivityIndicator];
     [self setUpRefreshControl];
+    [self setUpGesture];
 
     [self fetchCoursesAndReviews];
 }
@@ -278,9 +278,13 @@ static int queryLimitIncrement = 10;
 }
 
 - (TTGTextTagCollectionView *)setUpTagCollectionView {
+    CGFloat yPosition = self.averageRating.frame.origin.y + self.averageRating.frame.size.height + 5;
     TTGTextTagCollectionView *tagCollectionView =
     [[TTGTextTagCollectionView alloc]
-     initWithFrame:CGRectMake(20, 127, 350, 64)];
+     initWithFrame:CGRectMake(10,
+                              yPosition,
+                              self.view.bounds.size.width - 20,
+                              self.departmentName.frame.size.height * 2)];
 
     tagCollectionView.delegate = self;
     tagCollectionView.alignment = TTGTagCollectionAlignmentCenter;
@@ -303,6 +307,18 @@ static int queryLimitIncrement = 10;
 
 - (void)didTapSubmit {
     [self fetchReviewsForRefresh];
+}
+
+- (void)setUpGesture {
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentComposePage)];
+    gesture.numberOfTapsRequired = 2;
+    [self.professorName addGestureRecognizer:gesture];
+}
+
+- (void)presentComposePage {
+    [self cancelQuery];
+
+    [self performSegueWithIdentifier:@"composeFromDetailSegue" sender:self];
 }
 
 - (void)setUpActivityIndicator {

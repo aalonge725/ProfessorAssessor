@@ -9,6 +9,7 @@ static NSNumberFormatter *numberFormatter = nil;
 
 @interface ComposeViewController () <ProfessorSelectionViewControllerDelegate, CourseSelectionViewControllerDelegate, UITextViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (nonatomic, strong) IBOutlet UILabel *professorLabel;
 @property (nonatomic, strong) IBOutlet UILabel *courseLabel;
 @property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
@@ -36,6 +37,25 @@ static NSNumberFormatter *numberFormatter = nil;
     } else {
         [self viewsEnabled:NO];
     }
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self updateConstraints:-1];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self updateConstraints:1];
+}
+
+- (void)updateConstraints:(int)direction {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGFloat distance = self.reviewLabel.frame.origin.y - self.professorLabel.frame.origin.y;
+        CGRect contentViewFrame = self.contentView.frame;
+
+        contentViewFrame.origin.y += distance * direction;
+
+        self.contentView.frame = contentViewFrame;
+    }];
 }
 
 - (IBAction)submitReview:(UIBarButtonItem *)sender {

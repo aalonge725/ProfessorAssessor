@@ -62,4 +62,8 @@
     [self.delegate didSelectCourse:course];
 }
 
+- (IBAction)close:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

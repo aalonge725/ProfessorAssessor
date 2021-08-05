@@ -2,7 +2,6 @@ import UIKit
 import HCSStarRatingView
 
 @objc public class ReviewViewController: UIViewController {
-    static var dateFormatter: DateFormatter?
 
     @IBOutlet var professorName: UILabel!
     @IBOutlet var courseName: UILabel!
@@ -24,13 +23,11 @@ import HCSStarRatingView
         content.text = review.content
         rating.value = CGFloat(review.rating.doubleValue)
 
-        if ReviewViewController.dateFormatter != nil {
-            ReviewViewController.dateFormatter = DateFormatter()
-            ReviewViewController.dateFormatter?.dateStyle = .medium
-            ReviewViewController.dateFormatter?.timeStyle = .none
-        }
-
-        date.text = ReviewViewController.dateFormatter?.string(from: review.createdAt)
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        date.text = formatter.string(from: review.createdAt)
+        print(date.text!)
     }
 
 }

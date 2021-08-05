@@ -14,6 +14,7 @@
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, ProfessorSelectionViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIView *tableViewHeader;
 @property (nonatomic, strong) IBOutlet UILabel *schoolName;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *searchButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *composeButton;
@@ -96,8 +97,8 @@
         }];
 
         [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
-    [alert addAction:bestReviewed];
 
     UIAlertAction *recentlyReviewed = [UIAlertAction
                                actionWithTitle:@"Recently Reviewed"
@@ -110,8 +111,8 @@
         }];
 
         [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
-    [alert addAction:recentlyReviewed];
 
     UIAlertAction *alphabetical = [UIAlertAction
                                actionWithTitle:@"Alphabetical (first name)"
@@ -124,8 +125,8 @@
         }];
 
         [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
-    [alert addAction:alphabetical];
 
     UIAlertAction *reverseAlphabetical = [UIAlertAction
                                actionWithTitle:@"Reverse Alphabetical (first name)"
@@ -138,14 +139,25 @@
         }];
 
         [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
-    [alert addAction:reverseAlphabetical];
 
     UIAlertAction *cancel = [UIAlertAction
                                actionWithTitle:@"Cancel"
                                style:UIAlertActionStyleCancel
                                handler:^(UIAlertAction *_Nonnull action) {
     }];
+
+    [bestReviewed setValue:[UIColor colorNamed:@"DefaultBlue"] forKey:@"titleTextColor"];
+    [recentlyReviewed setValue:[UIColor colorNamed:@"DefaultBlue"] forKey:@"titleTextColor"];
+    [alphabetical setValue:[UIColor colorNamed:@"DefaultBlue"] forKey:@"titleTextColor"];
+    [reverseAlphabetical setValue:[UIColor colorNamed:@"DefaultBlue"] forKey:@"titleTextColor"];
+    [cancel setValue:[UIColor colorNamed:@"DefaultBlue"] forKey:@"titleTextColor"];
+
+    [alert addAction:bestReviewed];
+    [alert addAction:recentlyReviewed];
+    [alert addAction:alphabetical];
+    [alert addAction:reverseAlphabetical];
     [alert addAction:cancel];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -188,7 +200,7 @@
 
 - (void)setUpActivityIndicator {
     CGFloat width = self.view.bounds.size.width / 5.0f;
-    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor systemTealColor] size:width];
+    self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallClipRotateMultiple tintColor:[UIColor colorNamed:@"DefaultBlue"] size:width];
 
     self.activityIndicator.frame = CGRectMake(self.view.center.x - width / 2, self.view.center.y - width / 2, width, width);
 

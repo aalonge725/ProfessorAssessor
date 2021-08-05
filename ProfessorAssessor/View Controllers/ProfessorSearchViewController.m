@@ -8,8 +8,6 @@
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray<Professor *> *filteredProfessors;
 
-- (IBAction)cancel:(UIBarButtonItem *)sender;
-
 @end
 
 @implementation ProfessorSearchViewController
@@ -72,7 +70,7 @@
     [self.searchBar endEditing:YES];
 }
 
-- (IBAction)cancel:(UIBarButtonItem *)sender {
+- (IBAction)close:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
