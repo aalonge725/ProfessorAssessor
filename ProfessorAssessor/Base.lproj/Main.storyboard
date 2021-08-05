@@ -566,7 +566,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="734"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="753-6r-uAi">
-                                                <rect key="frame" x="10" y="10" width="370" height="342.66666666666669"/>
+                                                <rect key="frame" x="10" y="10" width="370" height="346.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azV-g3-D4l">
                                                         <rect key="frame" x="137.66666666666666" y="0.0" width="95" height="25"/>
@@ -579,13 +579,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No professor selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR6-5b-nUL">
-                                                        <rect key="frame" x="0.0" y="30" width="370" height="20"/>
+                                                        <rect key="frame" x="0.0" y="30" width="370" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0x-It-6lO">
-                                                        <rect key="frame" x="119" y="55" width="132" height="31"/>
+                                                        <rect key="frame" x="119" y="56" width="132" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="132" id="IxI-0p-scE"/>
                                                             <constraint firstAttribute="height" constant="31" id="QjI-iK-K9H"/>
@@ -597,7 +597,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzQ-AS-otf">
-                                                        <rect key="frame" x="149.66666666666666" y="96" width="71" height="25"/>
+                                                        <rect key="frame" x="149.66666666666666" y="97" width="71" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="71" id="7js-4u-S09"/>
                                                             <constraint firstAttribute="height" constant="25" id="G5h-2I-mBk"/>
@@ -607,13 +607,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No course selected)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-UG-J6z">
-                                                        <rect key="frame" x="0.0" y="126" width="370" height="20"/>
+                                                        <rect key="frame" x="0.0" y="127" width="370" height="21"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpY-Px-Ur6">
-                                                        <rect key="frame" x="128" y="151" width="114" height="31"/>
+                                                        <rect key="frame" x="128" y="153" width="114" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="114" id="D74-ch-Dhd"/>
                                                             <constraint firstAttribute="height" constant="31" id="crA-yp-8N2"/>
@@ -625,7 +625,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBr-Rr-qQR">
-                                                        <rect key="frame" x="151" y="192" width="68" height="25"/>
+                                                        <rect key="frame" x="151" y="194" width="68" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="68" id="Ab6-tq-jMk"/>
                                                             <constraint firstAttribute="height" constant="25" id="mC1-ga-7ib"/>
@@ -635,13 +635,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate this professor by dragging the stars or typing in the text box." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdz-vz-nXY">
-                                                        <rect key="frame" x="0.0" y="222" width="370" height="32.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="224" width="370" height="34.333333333333314"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-gT-iQX" customClass="HCSStarRatingView">
-                                                        <rect key="frame" x="65" y="259.66666666666669" width="240" height="44"/>
+                                                        <rect key="frame" x="65" y="263.33333333333331" width="240" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="ApC-O4-Jda"/>
@@ -667,7 +667,7 @@
                                                         </connections>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIA-Zg-NGL">
-                                                        <rect key="frame" x="163" y="308.66666666666669" width="44" height="34"/>
+                                                        <rect key="frame" x="163" y="312.33333333333331" width="44" height="34"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="44" id="RaI-yt-x2e"/>
                                                             <constraint firstAttribute="height" constant="34" id="u6J-B6-EAv"/>
@@ -708,7 +708,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-kd-gI5">
-                                                <rect key="frame" x="158" y="362.66666666666669" width="74" height="25"/>
+                                                <rect key="frame" x="158" y="366.33333333333331" width="74" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="942-Cl-iOL"/>
                                                     <constraint firstAttribute="width" constant="74" id="r4z-jH-cef"/>
@@ -718,7 +718,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C0L-6w-y59">
-                                                <rect key="frame" x="10" y="392.66666666666669" width="370" height="120.00000000000006"/>
+                                                <rect key="frame" x="10" y="396.33333333333331" width="370" height="119.99999999999994"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="fbi-a0-Zc1"/>
                                                 </constraints>
@@ -730,7 +730,7 @@
                                                 </connections>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e20-NA-E1H">
-                                                <rect key="frame" x="314" y="517.66666666666663" width="66" height="20"/>
+                                                <rect key="frame" x="314" y="521.33333333333337" width="66" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0FG-be-oE5"/>
                                                     <constraint firstAttribute="width" constant="66" id="jvq-I6-Whm"/>

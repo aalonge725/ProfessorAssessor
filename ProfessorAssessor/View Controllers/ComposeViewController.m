@@ -82,6 +82,7 @@ static NSNumberFormatter *numberFormatter = nil;
         [self presentAlertWithTitle:nil withMessage:@"Please type your review of this professor"];
     } else {
         [self.activityIndicator startAnimating];
+        self.contentView.userInteractionEnabled = NO;
 
         NSNumber *ratingValue = [NSNumber numberWithDouble:[self.ratingField.text doubleValue]];
 
@@ -95,11 +96,11 @@ static NSNumberFormatter *numberFormatter = nil;
                 [self.delegate didTapSubmit];
 
                 [self.activityIndicator stopAnimating];
+                self.contentView.userInteractionEnabled = YES;
 
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];
-        // TODO: optional - add to user's profile page
     }
 }
 
