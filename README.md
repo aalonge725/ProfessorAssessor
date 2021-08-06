@@ -11,11 +11,11 @@ Original App Design Project
 
 ## Overview
 ### Description
-ProfessorAssessor lets students find the right professors and courses for them by allowing students to periodically share experiences in the courses. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
+ProfessorAssessor lets students find the right professors and courses for them by allowing students to share experiences in the courses. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
 
 ### App Evaluation
 - **Category:** Education
-- **Mobile:** Utilizes push notifications for periodic reminders to post experiences and alerts for when a post is made under a course that a student is following.
+- **Mobile:** Used a flow that feels more proper for an app than a website.
 - **Story:** Makes it easier for students to pick the right professor and course options available.
 - **Market:** Students, particularly college students.
 - **Habit:** Users may periodically use this app when making posts, and may frequently use it at the beginning of a new semester when determining trying to make their ideal schedule.
@@ -27,20 +27,22 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 **Required Must-have Stories**
 
-- [ ] User can login
-- [ ] User can create a new account
-- [ ] User can search for professor
-- [ ] User can see reviews made about a professor
-- [ ] User can compose a review for a professor
+- [x] User can log in
+- [x] User can create a new account
+- [x] User can search for professor
+- [x] User can see reviews made about a professor
+- [x] User can compose a review for a professor
+- [x] User can see a professor's detail page that includes reviews made about the professor
 
 **Optional Nice-to-have Stories**
 
-- [ ] User can filter reviews
-- [ ] User can see a professor's profile page
-- [ ] User can see their profile page
-- [ ] User can see the profile page of other students, including a history of the students' reviews
-- [ ] User can rate other students' reviews
-- [ ] User can receive push notifications for new reviews and reminders for posting
+- [x] User can log in with Facebook
+- [ ] User can log in as a guest
+- [x] User can sort professors
+- [x] User can filter reviews for a professor by course
+- [x] User can see their profile page
+- [x] User can see a review's detail page
+- [x] User can like or dislike other students' reviews
 
 
 ### 2. Screen Archetypes
@@ -79,7 +81,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
     * Stream
 
 ## Wireframes
-<img src="https://github.com/aalonge725/ProfessorAssessor/blob/develop/wireframe.jpg" width=600>
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/develop/wireframe.JPG" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
@@ -90,45 +92,42 @@ ProfessorAssessor lets students find the right professors and courses for them b
 ### Models
 
 #### User
-   | Property    | Type                        | Description                                                    |
-   | ----------- | --------------------------- | -------------------------------------------------------------- |
-   | objectID    | String                      | Unique id for the user (default field)                         |
-   | createdAt   | DateTime                    | Date when user is created (default field)                      |
-   | updatedAt   | DateTime                    | Date when user is last updated (default field)                 |
-   | username    | String                      | User’s username                                                |
-   | firstName   | String                      | User’s first name                                              |
-   | lastName    | String                      | User’s last name                                               |
-   | password    | String                      | User’s password                                                |
-   | school      | Pointer to School           | User’s school                                                  |
-   | profList    | Array<Pointer to Professor> | List of professors a user has had or currently has             |
-   | programs    | Array<String>               | Programs of study that user majors, minors, or has interest in |
-   | reviewCount | Number                      | Number of reviews a user has posted                            |
-   | reviews     | Array<Pointer to Review>    | List of reviews made by user                                   |
+   | Property      | Type                        | Description                                                    |
+   | ------------- | --------------------------- | -------------------------------------------------------------- |
+   | objectID      | String                      | Unique id for the user (default field)                         |
+   | createdAt     | DateTime                    | Date when user is created (default field)                      |
+   | updatedAt     | DateTime                    | Date when user is last updated (default field)                 |
+   | username      | String                      | User’s username                                                |
+   | firstName     | String                      | User’s first name                                              |
+   | lastName      | String                      | User’s last name                                               |
+   | password      | String                      | User’s password                                                |
+   | school        | Pointer to School           | User’s school                                                  |
+   | professors    | Array<Pointer to Professor> | List of professors a user has had or currently has             |
+   | reviews       | Array<Pointer to Review>    | List of reviews made by user                                   |
 
    
 #### School
 
-   | Property  | Type                        | Description                                      |
-   | --------- | --------------------------- | ------------------------------------------------ |
-   | objectID  | String                      | Unique id for the school (default field)         |
-   | createdAt | DateTime                    | Date when school is created (default field)      |
-   | updatedAt | DateTime                    | Date when school is last updated (default field) |
-   | name      | String                      | School’s name                                    |
-   | profList  | Array<Pointer to Professor> | List of school’s professors                      |
-   | address   | String                      | School’s address                                 |
-   | programs  | Array<String>               | Programs of study available at the school        |
+   | Property    | Type                        | Description                                      |
+   | ----------- | --------------------------- | ------------------------------------------------ |
+   | objectID    | String                      | Unique id for the school (default field)         |
+   | createdAt   | DateTime                    | Date when school is created (default field)      |
+   | updatedAt   | DateTime                    | Date when school is last updated (default field) |
+   | name        | String                      | School’s name                                    |
+   | professors  | Array<Pointer to Professor> | List of school’s professors                      |
+   | address     | String                      | School’s address                                 |
    
 #### Professor
 
-   | objectID        | String                   | Unique id for the professor (default field)                 |
-   | --------------- | ------------------------ | ----------------------------------------------------------- |
-   | createdAt       | DateTime                 | Date when professor is created (default field)              |
-   | updatedAt       | DateTime                 | Date when professor is last updated (default field)         |
-   | name            | String                   | Professor’s name                                            |
-   | reviewsByCourse | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
-   | department      | String                   | Professor’s department                                      |
-   | reviewCount     | Number                   | Number of reviews a professor has received                  |
-   | avgRating       | Number                   | Average rating for professor from their reviews             |
+   | Property            | Type                     | Description                                                 |
+   | ------------------- | ------------------------ | ----------------------------------------------------------- |
+   | objectID            | String                   | Unique id for the professor (default field)                 |
+   | createdAt           | DateTime                 | Date when professor is created (default field)              |
+   | updatedAt           | DateTime                 | Date when professor is last updated (default field)         |
+   | name                | String                   | Professor’s name                                            |
+   | courses             | Array<Pointer to Course> | List of courses a professor has taught or currently teaches |
+   | departmentName      | String                   | Professor’s department                                      |
+   | averageRating       | Number                   | Average rating for professor from their reviews             |
    
 #### Review
 
@@ -137,8 +136,8 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | objectID  | String               | Unique id for the review (default field)         |
    | createdAt | DateTime             | Date when review is created (default field)      |
    | updatedAt | DateTime             | Date when review is last updated (default field) |
-   | author    | Pointer to User      | User who made the review                         |
-   | course    | String               | Course that the review is about                  |
+   | reviewer  | Pointer to User      | User who made the review                         |
+   | course    | Course               | Course that the review is about                  |
    | rating    | Number               | Rating for a professor for a specific course     |
    | content   | String               | Text of a review made by a user                  |
    | professor | Pointer to Professor | The professor that a review is about             |
@@ -156,7 +155,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
 ### Networking
 
 * Reviews screen
-    * (GET) Query all reviews where professor is the one selected by the user
+    * (GET) Query reviews where professor is the one selected by the user
     * (POST) Create a rating on a post
     * (DELETE) Delete an existing rating
 * Create screen
