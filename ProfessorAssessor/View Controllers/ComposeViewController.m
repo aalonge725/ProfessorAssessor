@@ -17,6 +17,7 @@ static NSNumberFormatter *numberFormatter = nil;
 @property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
 @property (nonatomic, strong) IBOutlet UILabel *reviewLabel;
 @property (nonatomic, strong) IBOutlet UILabel *characterCountLabel;
+@property (strong, nonatomic) IBOutlet UIButton *chooseProfessorButton;
 @property (nonatomic, strong) IBOutlet UIButton *chooseCourseButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
@@ -30,7 +31,8 @@ static NSNumberFormatter *numberFormatter = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self decorateContentView];
+
+    [self decorateViews];
 
     [self setUpActivityIndicator];
 
@@ -147,12 +149,6 @@ static NSNumberFormatter *numberFormatter = nil;
     [self.view addSubview:self.activityIndicator];
 }
 
-- (void)decorateContentView {
-    self.content.layer.borderWidth = 2.0f;
-    self.content.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.content.layer.cornerRadius = 5;
-}
-
 - (IBAction)ratingViewChanged:(HCSStarRatingView *)sender {
     NSNumber *ratingValue = [NSNumber numberWithDouble:sender.value];
 
@@ -215,6 +211,32 @@ static NSNumberFormatter *numberFormatter = nil;
     [alert addAction:okAction];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)decorateViews {
+    [self decorateButton:self.chooseProfessorButton];
+    [self decorateButton:self.chooseCourseButton];
+    [self decorateTextField:self.ratingField];
+    [self decorateTextView:self.content];
+}
+
+- (void)decorateButton:(UIButton *)button {
+    button.layer.borderWidth = 2.0f;
+    button.layer.borderColor = [[UIColor colorNamed:@"DefaultBlue"] CGColor];
+    button.layer.cornerRadius = 8;
+    button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+}
+
+- (void)decorateTextField:(UITextField *)field {
+    field.layer.borderWidth = 2.0f;
+    field.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
+    field.layer.cornerRadius = 8;
+}
+
+- (void)decorateTextView:(UITextView *)view {
+    view.layer.borderWidth = 2.0f;
+    view.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
+    view.layer.cornerRadius = 8;
 }
 
 #pragma mark - Navigation

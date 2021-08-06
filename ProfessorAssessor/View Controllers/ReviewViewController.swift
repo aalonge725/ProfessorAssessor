@@ -27,7 +27,6 @@ import HCSStarRatingView
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         date.text = formatter.string(from: review.createdAt)
-        print(date.text!)
     }
 
 }

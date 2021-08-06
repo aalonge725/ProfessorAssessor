@@ -9,7 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSDate *updatedAt;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSArray<Professor *> *professors;
 
 + (School *)schoolFromPFObject:(PFObject *)object;

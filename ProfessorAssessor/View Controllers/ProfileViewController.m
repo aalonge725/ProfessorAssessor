@@ -35,6 +35,8 @@
     self.user = [User currentUser];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReviewCell" bundle:nil] forCellReuseIdentifier:@"ReviewCell"];
 
+    [self decorateViews];
+
     [self setUpActivityIndicator];
     [self setUpRefreshControl];
 
@@ -171,6 +173,17 @@
     self.logoutButton.enabled = enabled;
     self.changeSchoolButton.enabled = enabled;
     self.tabBarController.tabBar.userInteractionEnabled = enabled;
+}
+
+- (void)decorateViews {
+    [self decorateButton:self.changeSchoolButton];
+}
+
+- (void)decorateButton:(UIButton *)button {
+    button.layer.borderWidth = 2.0f;
+    button.layer.borderColor = [[UIColor colorNamed:@"DefaultBlue"] CGColor];
+    button.layer.cornerRadius = 8;
+    button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 #pragma mark - Navigation

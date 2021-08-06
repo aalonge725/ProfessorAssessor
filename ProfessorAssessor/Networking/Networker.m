@@ -9,36 +9,6 @@ static NSNumberFormatter *numberFormatter = nil;
 
 @implementation Networker
 
-+ (void)createSchoolWithName:(NSString *)name
-                 withAddress:(NSString *)address
-              withCompletion:(PFBooleanResultBlock)completion {
-    School *newSchool = [School new];
-    
-    newSchool.name = name;
-    newSchool.address = address;
-
-    [newSchool saveInBackgroundWithBlock:completion];
-}
-
-+ (void)createProfessorWithName:(NSString *)name
-             withDepartmentName:(NSString *)departmentName
-                 withCompletion:(PFBooleanResultBlock)completion {
-    Professor *newProfessor = [Professor new];
-
-    newProfessor.name = name;
-    newProfessor.departmentName = departmentName;
-
-    [newProfessor saveInBackgroundWithBlock:completion];
-}
-+ (void)createCourseWithName:(NSString *)name
-              withCompletion:(PFBooleanResultBlock)completion {
-    Course *newCourse = [Course new];
-
-    newCourse.name = name;
-
-    [newCourse saveInBackgroundWithBlock:completion];
-}
-
 + (void)updateDatabaseForNewReviewWithProfessor:(Professor *)professor
                                          course:(Course *)course
                                         content:(NSString *)content
@@ -128,6 +98,7 @@ static NSNumberFormatter *numberFormatter = nil;
                                              NSError *_Nullable error))completion {
     PFQuery *schoolQuery = [School query];
 
+    schoolQuery.limit = 200;
     [schoolQuery orderByAscending:@"name"];
     [schoolQuery includeKey:@"professors"];
 

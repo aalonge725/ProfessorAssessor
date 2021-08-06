@@ -10,12 +10,21 @@
 
 @interface LogInViewController ()
 
+@property (strong, nonatomic) IBOutlet UIButton *logInButton;
+@property (strong, nonatomic) IBOutlet UIButton *logInWithFacebookButton;
+
 - (IBAction)logIn:(UIButton *)sender;
 - (IBAction)logInWithFacebook:(UIButton *)sender;
 
 @end
 
 @implementation LogInViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self decorateViews];
+}
 
 - (IBAction)logIn:(UIButton *)sender {
     NSString *username = self.username.text;
@@ -134,6 +143,26 @@
 
 - (IBAction)dismissKeyboard:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
+}
+
+- (void)decorateViews {
+    [self decorateButton:self.logInButton];
+    [self decorateButton:self.logInWithFacebookButton];
+    [self decorateTextField:self.username];
+    [self decorateTextField:self.password];
+}
+
+- (void)decorateButton:(UIButton *)button {
+    button.layer.borderWidth = 2.0f;
+    button.layer.borderColor = [[UIColor colorNamed:@"DefaultBlue"] CGColor];
+    button.layer.cornerRadius = 8;
+    button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+}
+
+- (void)decorateTextField:(UITextField *)field {
+    field.layer.borderWidth = 2.0f;
+    field.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
+    field.layer.cornerRadius = 8;
 }
 
 @end

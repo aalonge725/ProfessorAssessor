@@ -11,6 +11,7 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *signUpButton;
 @property (nonatomic, strong) IBOutlet UIButton *signUpWithFacebookButton;
+@property (strong, nonatomic) IBOutlet UIButton *selectSchoolButton;
 @property (nonatomic, strong) FacebookUser *user;
 
 - (IBAction)signUp:(UIButton *)sender;
@@ -24,6 +25,8 @@
     [super viewDidLoad];
 
     [self disableSignUpFieldsAndButtons];
+
+    [self decorateViews];
 }
 
 - (IBAction)signUp:(UIButton *)sender {
@@ -194,6 +197,28 @@
 
 - (IBAction)dismissKeyboard:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
+}
+
+- (void)decorateViews {
+    [self decorateButton:self.signUpButton];
+    [self decorateButton:self.signUpWithFacebookButton];
+    [self decorateButton:self.selectSchoolButton];
+
+    [self decorateTextField:self.username];
+    [self decorateTextField:self.password];
+}
+
+- (void)decorateButton:(UIButton *)button {
+    button.layer.borderWidth = 2.0f;
+    button.layer.borderColor = [[UIColor colorNamed:@"DefaultBlue"] CGColor];
+    button.layer.cornerRadius = 8;
+    button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+}
+
+- (void)decorateTextField:(UITextField *)field {
+    field.layer.borderWidth = 2.0f;
+    field.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
+    field.layer.cornerRadius = 8;
 }
 
 #pragma mark - Navigation

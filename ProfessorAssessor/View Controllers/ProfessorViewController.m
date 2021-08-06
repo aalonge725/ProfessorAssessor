@@ -286,10 +286,19 @@ static int queryLimitIncrement = 10;
                               self.view.bounds.size.width - 20,
                               self.departmentName.frame.size.height * 2)];
 
+    [self decorateTagView:tagCollectionView];
+
     tagCollectionView.delegate = self;
     tagCollectionView.alignment = TTGTagCollectionAlignmentCenter;
 
     return tagCollectionView;
+}
+
+- (void)decorateTagView:(TTGTextTagCollectionView *)tagCollectionView {
+    tagCollectionView.layer.borderWidth = 2.0f;
+    tagCollectionView.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
+    tagCollectionView.layer.cornerRadius = 8;
+    tagCollectionView.contentInset = UIEdgeInsetsMake(8, 3, 8, 3);
 }
 
 - (TTGTextTagStyle *)setUpTagStyleWithColor:(UIColor *)color {
