@@ -1,6 +1,7 @@
 #import <Parse/Parse.h>
 #import "School.h"
 #import "Professor.h"
+#import "Review.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) School *school;
 @property (nonatomic, strong) NSMutableArray<Professor *> *professors;
+@property (nonatomic, strong) NSMutableArray<Review *> *likedReviews;
+@property (nonatomic, strong) NSMutableArray<Review *> *dislikedReviews;
 
 @end
 

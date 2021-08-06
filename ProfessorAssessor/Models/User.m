@@ -14,5 +14,7 @@
 @dynamic email;
 @dynamic school;
 @dynamic professors;
+@dynamic likedReviews;
+@dynamic dislikedReviews;
 
 @end

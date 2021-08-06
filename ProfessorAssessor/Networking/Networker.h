@@ -8,17 +8,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Networker : NSObject
 
-+ (void)createSchoolWithName:(NSString *)name
-                 withAddress:(NSString *)address
-              withCompletion:(PFBooleanResultBlock _Nullable)completion;
-
-+ (void)createProfessorWithName:(NSString *)name
-             withDepartmentName:(NSString *)departmentName
-                 withCompletion:(PFBooleanResultBlock _Nullable)completion;
-
-+ (void)createCourseWithName:(NSString *)name
-              withCompletion:(PFBooleanResultBlock _Nullable)completion;
-
 + (void)updateDatabaseForNewReviewWithProfessor:(Professor *)professor
                                          course:(Course *)course
                                         content:(NSString *)content

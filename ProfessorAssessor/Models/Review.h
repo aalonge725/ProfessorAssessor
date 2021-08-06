@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, weak) Professor *professor;
+@property (nonatomic, strong) NSNumber *likes;
+@property (nonatomic, strong) NSNumber *dislikes;
 
 + (Review *)reviewFromPFObject:(PFObject *)object;
 

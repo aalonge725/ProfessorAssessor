@@ -4,7 +4,7 @@
 
 - (void)setSchool:(School *)school {
     self.name.text = school.name;
-    self.address.text = school.address;
+    self.address.text = [NSString stringWithFormat:@"%@, %@", school.city, school.state];
 }
 
 - (void)configureBackground {

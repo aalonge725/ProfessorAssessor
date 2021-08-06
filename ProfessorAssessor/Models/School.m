@@ -6,7 +6,8 @@
 @dynamic createdAt;
 @dynamic updatedAt;
 @dynamic name;
-@dynamic address;
+@dynamic city;
+@dynamic state;
 @dynamic professors;
 
 + (nonnull NSString *)parseClassName {
@@ -21,7 +22,8 @@
         school.createdAt = object.createdAt;
         school.updatedAt = object.updatedAt;
         school.name = object[@"name"];
-        school.address = object[@"address"];
+        school.city = object[@"city"];
+        school.state = object[@"state"];
         school.professors = object[@"professors"];
     }
 

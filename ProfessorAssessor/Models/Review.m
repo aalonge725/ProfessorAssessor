@@ -13,6 +13,8 @@
 @dynamic rating;
 @dynamic content;
 @dynamic professor;
+@dynamic likes;
+@dynamic dislikes;
 
 + (nonnull NSString *)parseClassName {
     return @"Review";
@@ -30,6 +32,8 @@
         review.rating = object[@"rating"];
         review.content = object[@"content"];
         review.professor = object[@"professor"];
+        review.likes = object[@"likes"];
+        review.dislikes = object[@"likes"];
     }
 
     return review;
