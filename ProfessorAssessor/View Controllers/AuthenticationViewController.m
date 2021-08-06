@@ -2,9 +2,9 @@
 
 @interface AuthenticationViewController ()
 
-@property (strong, nonatomic) IBOutlet UIButton *logInButton;
-@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
-@property (strong, nonatomic) IBOutlet UIButton *guestButton;
+@property (nonatomic, strong) IBOutlet UIButton *logInButton;
+@property (nonatomic, strong) IBOutlet UIButton *signUpButton;
+@property (nonatomic, strong) IBOutlet UIButton *guestButton;
 
 @end
 

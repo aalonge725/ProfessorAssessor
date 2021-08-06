@@ -10,8 +10,8 @@
 
 @interface LogInViewController ()
 
-@property (strong, nonatomic) IBOutlet UIButton *logInButton;
-@property (strong, nonatomic) IBOutlet UIButton *logInWithFacebookButton;
+@property (nonatomic, strong) IBOutlet UIButton *logInButton;
+@property (nonatomic, strong) IBOutlet UIButton *logInWithFacebookButton;
 
 - (IBAction)logIn:(UIButton *)sender;
 - (IBAction)logInWithFacebook:(UIButton *)sender;

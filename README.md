@@ -11,11 +11,11 @@ Original App Design Project
 
 ## Overview
 ### Description
-ProfessorAssessor lets students find the right professors and courses for them by allowing students to periodically share experiences in the courses. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
+ProfessorAssessor lets students find the right professors and courses for them by allowing students to share experiences in the courses. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
 
 ### App Evaluation
 - **Category:** Education
-- **Mobile:** Used a flow that feels more proper for an app.
+- **Mobile:** Used a flow that feels more proper for an app than a website.
 - **Story:** Makes it easier for students to pick the right professor and course options available.
 - **Market:** Students, particularly college students.
 - **Habit:** Users may periodically use this app when making posts, and may frequently use it at the beginning of a new semester when determining trying to make their ideal schedule.
@@ -42,8 +42,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
 - [x] User can filter reviews for a professor by course
 - [x] User can see their profile page
 - [x] User can see a review's detail page
-- [ ] User can follow
-- [ ] User can like or dislike other students' reviews
+- [x] User can like or dislike other students' reviews
 
 
 ### 2. Screen Archetypes

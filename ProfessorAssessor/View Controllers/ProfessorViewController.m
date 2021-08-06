@@ -7,6 +7,7 @@
 #import "InfiniteScrollActivityView.h"
 #import "Networker.h"
 #import "ReviewCell.h"
+#import "User.h"
 
 static int queryLimitIncrement = 10;
 
@@ -33,6 +34,7 @@ static int queryLimitIncrement = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReviewCell" bundle:nil] forCellReuseIdentifier:@"ReviewCell"];
+    self.tableView.userInteractionEnabled = NO;
 
     self.queryLimit = queryLimitIncrement;
     self.reviewCache = [NSCache new];
@@ -44,7 +46,7 @@ static int queryLimitIncrement = 10;
     [self setUpRefreshControl];
     [self setUpGesture];
 
-    [self fetchCoursesAndReviews];
+    [self fetchUserLikesAndDislikes];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -173,6 +175,7 @@ static int queryLimitIncrement = 10;
 
             strongSelf.reviews = objects;
 
+            self.tableView.userInteractionEnabled = YES;
             [strongSelf.tableView reloadData];
             [strongSelf.tableView.refreshControl endRefreshing];
             [strongSelf.activityIndicator stopAnimating];
@@ -182,6 +185,22 @@ static int queryLimitIncrement = 10;
             strongSelf.query = nil;
         }];
     }
+}
+
+- (void)fetchUserLikesAndDislikes {
+    [self.activityIndicator startAnimating];
+    PFQuery *userQuery = [User query];
+
+    [userQuery whereKey:@"username" equalTo:[User currentUser].username];
+    [userQuery includeKeys:@[@"likedReviews", @"dislikedReviews"]];
+
+    [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (error == nil) {
+            [self.activityIndicator stopAnimating];
+
+            [self fetchCoursesAndReviews];
+        }
+    }];
 }
 
 - (NSArray<NSString *> *)courseNames:(NSSet *)courses {
@@ -298,7 +317,7 @@ static int queryLimitIncrement = 10;
     tagCollectionView.layer.borderWidth = 2.0f;
     tagCollectionView.layer.borderColor = [[UIColor colorNamed:@"Salmon"] CGColor];
     tagCollectionView.layer.cornerRadius = 8;
-    tagCollectionView.contentInset = UIEdgeInsetsMake(8, 3, 8, 3);
+    tagCollectionView.contentInset = UIEdgeInsetsMake(6, 1, 5, 1);
 }
 
 - (TTGTextTagStyle *)setUpTagStyleWithColor:(UIColor *)color {
@@ -360,7 +379,7 @@ static int queryLimitIncrement = 10;
                         forIndexPath:indexPath];
 
     Review *review = self.reviews[indexPath.row];
-    [cell setReview:review];
+    [cell setReviewCell:review];
     [cell configureBackground];
 
     return cell;
@@ -381,6 +400,7 @@ static int queryLimitIncrement = 10;
     [self.loadingMoreView stopAnimating];
     [self.activityIndicator stopAnimating];
     self.loadingMoreReviews = NO;
+    self.tableView.userInteractionEnabled = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

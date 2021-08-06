@@ -11,7 +11,7 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *signUpButton;
 @property (nonatomic, strong) IBOutlet UIButton *signUpWithFacebookButton;
-@property (strong, nonatomic) IBOutlet UIButton *selectSchoolButton;
+@property (nonatomic, strong) IBOutlet UIButton *selectSchoolButton;
 @property (nonatomic, strong) FacebookUser *user;
 
 - (IBAction)signUp:(UIButton *)sender;

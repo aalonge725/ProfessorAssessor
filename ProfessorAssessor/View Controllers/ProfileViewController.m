@@ -83,7 +83,7 @@
                         forIndexPath:indexPath];
 
     Review *review = self.reviews[indexPath.row];
-    [cell setReview:review];
+    [cell setReviewCell:review];
     [cell configureBackground];
 
     return cell;

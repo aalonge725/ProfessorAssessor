@@ -8,6 +8,10 @@ import HCSStarRatingView
     @IBOutlet var date: UILabel!
     @IBOutlet var content: UILabel!
     @IBOutlet var rating: HCSStarRatingView!
+    @IBOutlet var likes: UILabel!
+    @IBOutlet var dislikes: UILabel!
+    @objc @IBOutlet var likeButton: UIButton!
+    @objc @IBOutlet var dislikeButton: UIButton!
 
     @objc var review: Review!
 
@@ -27,6 +31,14 @@ import HCSStarRatingView
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         date.text = formatter.string(from: review.createdAt)
+
+        likes.text = review.likes.stringValue
+        dislikes.text = review.dislikes.stringValue
+
+        let user = User.current()
+
+        likeButton.isSelected = user!.likedReviews.contains(review)
+        dislikeButton.isSelected = user!.dislikedReviews.contains(review)
     }
 
 }

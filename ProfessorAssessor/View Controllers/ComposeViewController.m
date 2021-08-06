@@ -9,15 +9,15 @@ static NSNumberFormatter *numberFormatter = nil;
 
 @interface ComposeViewController () <ProfessorSelectionViewControllerDelegate, CourseSelectionViewControllerDelegate, UITextViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (strong, nonatomic) IBOutlet UIView *nonContentViews;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, strong) IBOutlet UIView *nonContentViews;
 @property (nonatomic, strong) IBOutlet UILabel *professorLabel;
 @property (nonatomic, strong) IBOutlet UILabel *courseLabel;
 @property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
 @property (nonatomic, strong) IBOutlet UILabel *reviewLabel;
 @property (nonatomic, strong) IBOutlet UILabel *characterCountLabel;
-@property (strong, nonatomic) IBOutlet UIButton *chooseProfessorButton;
+@property (nonatomic, strong) IBOutlet UIButton *chooseProfessorButton;
 @property (nonatomic, strong) IBOutlet UIButton *chooseCourseButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *submitButton;
 @property (nonatomic, strong) DGActivityIndicatorView *activityIndicator;
