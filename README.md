@@ -11,14 +11,21 @@ Original App Design Project
 
 ## Overview
 ### Description
-ProfessorAssessor lets students find the right professors and courses for them by allowing students to share experiences in the courses. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
+ProfessorAssessor lets students find the right professors and courses for them by allowing students to read about the experiences of others and write about their own. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
+
+### Video Walkthrough
+![]()
+![]()
+![]()
+![]()
+![]()
 
 ### App Evaluation
 - **Category:** Education
 - **Mobile:** Used a flow that feels more proper for an app than a website.
 - **Story:** Makes it easier for students to pick the right professor and course options available.
 - **Market:** Students, particularly college students.
-- **Habit:** Users may periodically use this app when making posts, and may frequently use it at the beginning of a new semester when determining trying to make their ideal schedule.
+- **Habit:** Users may periodically use this app when making posts, and may frequently use it at the beginning of a new semester when trying to make their ideal schedule.
 - **Scope:** A stripped-down version would still be interesting to build and there are a couple of ways to expand the scope of the app (ex. special options for professors using the app).
 
 ## Product Spec
@@ -37,7 +44,6 @@ ProfessorAssessor lets students find the right professors and courses for them b
 **Optional Nice-to-have Stories**
 
 - [x] User can log in with Facebook
-- [ ] User can log in as a guest
 - [x] User can sort professors
 - [x] User can filter reviews for a professor by course
 - [x] User can see their profile page
@@ -52,7 +58,7 @@ ProfessorAssessor lets students find the right professors and courses for them b
 * Registration screen
     * User can create a new account
 * Search
-    * User can search for a professor
+    * User can search for a school or professor
 * Stream
     * User can see reviews made about a professor
 * Create
@@ -64,21 +70,31 @@ ProfessorAssessor lets students find the right professors and courses for them b
 **Tab Navigation** (Tab to Screen)
 
 * Home
-* Search
-* Create
+* Profile
 
 **Flow Navigation** (Screen to Screen)
 
+* Authentication screen
+    * Login
+    * Signup
 * Login screen
     * Home
-* Registration screen
+* Signup screen
     * Home
+* Home
+    * Search
+    * Create
 * Search
     * Stream
 * Stream
+    * Detail
     * Create
+* Detail
+    * Stream
 * Create
     * Stream
+* Profile
+    * Detail
 
 ## Wireframes
 <img src="https://github.com/aalonge725/ProfessorAssessor/blob/develop/wireframe.JPG" width=600>
@@ -92,18 +108,20 @@ ProfessorAssessor lets students find the right professors and courses for them b
 ### Models
 
 #### User
-   | Property      | Type                        | Description                                                    |
-   | ------------- | --------------------------- | -------------------------------------------------------------- |
-   | objectID      | String                      | Unique id for the user (default field)                         |
-   | createdAt     | DateTime                    | Date when user is created (default field)                      |
-   | updatedAt     | DateTime                    | Date when user is last updated (default field)                 |
-   | username      | String                      | User’s username                                                |
-   | firstName     | String                      | User’s first name                                              |
-   | lastName      | String                      | User’s last name                                               |
-   | password      | String                      | User’s password                                                |
-   | school        | Pointer to School           | User’s school                                                  |
-   | professors    | Array<Pointer to Professor> | List of professors a user has had or currently has             |
-   | reviews       | Array<Pointer to Review>    | List of reviews made by user                                   |
+   | Property        | Type                        | Description                                                    |
+   | --------------- | --------------------------- | -------------------------------------------------------------- |
+   | objectID        | String                      | Unique id for the user (default field)                         |
+   | createdAt       | DateTime                    | Date when user is created (default field)                      |
+   | updatedAt       | DateTime                    | Date when user is last updated (default field)                 |
+   | username        | String                      | User’s username                                                |
+   | firstName       | String                      | User’s first name                                              |
+   | lastName        | String                      | User’s last name                                               |
+   | password        | String                      | User’s password                                                |
+   | email           | String                      | User's email                                                   |
+   | school          | Pointer to School           | User’s school                                                  |
+   | reviews         | Array<Pointer to Review>    | List of reviews made by user                                   |
+   | likedReviews    | Array<Pointer to Review>    | User’s liked reviews                                           |
+   | dislikedReviews | Array<Pointer to Review>    | User’s disliked reviews                                        |
 
    
 #### School
@@ -115,7 +133,8 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | updatedAt   | DateTime                    | Date when school is last updated (default field) |
    | name        | String                      | School’s name                                    |
    | professors  | Array<Pointer to Professor> | List of school’s professors                      |
-   | address     | String                      | School’s address                                 |
+   | city        | String                      | School’s city                                    |
+   | state       | String                      | School’s state                                   |
    
 #### Professor
 
@@ -141,6 +160,8 @@ ProfessorAssessor lets students find the right professors and courses for them b
    | rating    | Number               | Rating for a professor for a specific course     |
    | content   | String               | Text of a review made by a user                  |
    | professor | Pointer to Professor | The professor that a review is about             |
+   | likes     | Number               | Number of likes a review has                     |
+   | dislikes  | Number               | Number of dislikes a review has                  |
    
 #### Course
 
@@ -154,10 +175,13 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 ### Networking
 
+* Signup screen
+    * (GET) Query list of schools in the database
+* Home screen
+    * (GET) Query professors that teach at the school selected by the user
 * Reviews screen
     * (GET) Query reviews where professor is the one selected by the user
     * (POST) Create a rating on a post
-    * (DELETE) Delete an existing rating
 * Create screen
     * (POST) Create a new review object
 * Profile screen
