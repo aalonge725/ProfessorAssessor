@@ -14,11 +14,21 @@ Original App Design Project
 ProfessorAssessor lets students find the right professors and courses for them by allowing students to read about the experiences of others and write about their own. In doing so, students can give each other a better idea of what to expect when taking a specific course with a specific professor.
 
 ### Video Walkthrough
-![]()
-![]()
-![]()
-![]()
-![]()
+
+Signup page
+![](https://github.com/aalonge725/ProfessorAssessor/blob/main/signup.gif)
+
+Home page
+![](https://github.com/aalonge725/ProfessorAssessor/blob/main/home.gif)
+
+Professor and review detail pages
+![](https://github.com/aalonge725/ProfessorAssessor/blob/main/professor-and-review-detail.gif)
+
+Compose page
+![](https://github.com/aalonge725/ProfessorAssessor/blob/main/compose.gif)
+
+Profile and login pages
+![](https://github.com/aalonge725/ProfessorAssessor/blob/main/profile.gif)
 
 ### App Evaluation
 - **Category:** Education
