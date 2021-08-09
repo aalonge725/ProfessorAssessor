@@ -15,20 +15,15 @@ ProfessorAssessor lets students find the right professors and courses for them b
 
 ### Video Walkthrough
 
-Signup page
-![](https://github.com/aalonge725/ProfessorAssessor/blob/main/signup.gif)
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/main/signup.gif" width="300">
 
-Home page
-![](https://github.com/aalonge725/ProfessorAssessor/blob/main/home.gif)
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/main/home.gif" width="300">
 
-Professor and review detail pages
-![](https://github.com/aalonge725/ProfessorAssessor/blob/main/professor-and-review-detail.gif)
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/main/professor-and-review-detail.gif" width="300">
 
-Compose page
-![](https://github.com/aalonge725/ProfessorAssessor/blob/main/compose.gif)
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/main/compose.gif" width="300">
 
-Profile and login pages
-![](https://github.com/aalonge725/ProfessorAssessor/blob/main/profile.gif)
+<img src="https://github.com/aalonge725/ProfessorAssessor/blob/main/profile.gif" width="300">
 
 ### App Evaluation
 - **Category:** Education
